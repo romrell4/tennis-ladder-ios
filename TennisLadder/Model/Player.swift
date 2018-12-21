@@ -8,15 +8,13 @@
 
 import Foundation
 
-struct Player {
-    let name : String
-    let ranking : Int
-    let points : Int
-    let wins : Int
-    let losses : Int
-}
-
-struct Match {
-    let pointsScored : Int
-    let pointsGiven : Int
+struct Player: Codable {
+	let userId: String
+	let ladderId: Int
+    let name: String
+	let photoUrl: String?
+	let score: Int
+    let ranking: Int
+    let wins: Int
+    let losses: Int
 }

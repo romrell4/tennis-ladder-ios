@@ -6,20 +6,11 @@
 //  Copyright © 2018 Z Tai. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-struct Ladder { //rename to Ladder
-    let id: Int
+struct Ladder: Codable {
+    let ladderId: Int
     let name: String
     let startDate: Date
     let endDate: Date
 }
-
-//struct DateFormat {
-//    let day : String?
-//    let month : String?
-//    let year : String?
-//    let dateFormatted : String?
-//
-//    dateFormatted = day + "/" + month + "/" year
-//}
