@@ -9,26 +9,43 @@
 import UIKit
 
 class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+    var ladderId : Int?
     var players = [Player]()
-    var matches = [Match]()
     
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-		
-		players = [Player(
-            userId: "abcdef",
-            ladderId: 1,
-            name: "Kobe Bryant",
-            photoUrl: nil,
-            score: 50,
-            ranking: 5,
-            wins: 30,
-            losses: 20)]
+        
+        if let id = ladderId {
+            Endpoints.getPlayers(id).response { (response: Response<[Player]>) in
+                switch response {
+                case .success(let players):
+                    self.players = players
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail",
+            let vc = segue.destination as? DetailViewController,
+            let cell = sender as? UITableViewCell,
+            let indexPath = tableView.indexPath(for: cell) {
+            
+            vc.player = players[indexPath.row]
+        } else if segue.identifier == "playerSelected",
+            let vc = segue.destination as? DetailViewController,
+            let player = sender as? Player {
+            
+            vc.player = player
+        }
+    }
+    
+    //MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return players.count
@@ -46,44 +63,18 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "detail", sender: indexPath)
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let selectedPath = sender as? IndexPath else {
-            return
+    
+    @IBAction func reportMatchTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Who did you play agaisnt?", message: nil, preferredStyle: .actionSheet)
+        
+        players.forEach { player in
+            alert.addAction(UIAlertAction(title: player.name, style: .default) { (_) in
+                self.performSegue(withIdentifier: "playerSelected", sender: player)
+            })
         }
-        if segue.identifier == "detail", let vc = segue.destination as? DetailViewController {
-            let selectedRow = selectedPath.row
-            vc.image = UIImageView(image: UIImage(named: "userIcon"))
-            vc.currentRanking = players[selectedRow].ranking
-            vc.wins = players[selectedRow].wins
-            vc.losses = players[selectedRow].losses
-        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
     }
 }
 
-
-
-
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-////        guard let selectedPath = self.tableView.indexPathForSelectedRow else { return }
-////        let selectedRow = selectedPath.row
-////
-////        if segue.identifier == "detail", let vc = segue.destination as? DetailViewController {
-////            vc.playerImage = UIImageView(image: UIImage(named: "userIcon"))
-////            vc.currentRankingLabel.text = String(players[selectedRow].ranking)
-////            vc.scoreLabel.text = String("\(players[selectedRow].wins) - \(players[selectedRow].losses)")
-////        }
-//        let selectedPath = self.tableView.indexPath(for: sender as! UITableViewCell)!
-////        guard let selectedRow = sender as? Int else { return }
-//
-//        if segue.identifier == "detail", let vc = segue.destination as? DetailViewController {
-//            vc.playerImage = UIImageView(image: UIImage(named: "userIcon"))
-//            vc.currentRankingLabel.text = String(players[selectedRow].ranking)
-//            vc.scoreLabel.text = String("\(players[selectedRow].wins) - \(players[selectedRow].losses)")
-//        }
-//    }

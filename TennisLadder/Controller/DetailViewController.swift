@@ -20,16 +20,22 @@ class DetailViewController : UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet var matchReport: UIToolbar!
     
     //Data from previous VC
-    var image : UIImageView?
-    var currentRanking : Int = 0
-    var wins : Int = 0
-    var losses : Int = 0
-    
+    var player: Player!
     var matches = [Match]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadViews()
+        
+        Endpoints.getMatches(player.ladderId, player.userId).response { (response: Response<[Match]>) in
+            switch response {
+            case .success(let matches):
+                self.players = matches
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
         
         matches = [Match(
             matchId: 3,

@@ -10,7 +10,7 @@
 		0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */; };
 		0C3CCEA021CCA0F3005CBE57 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9F21CCA0F3005CBE57 /* Match.swift */; };
 		0CC57F9921CD5CD5006B91C0 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC57F9821CD5CD5006B91C0 /* DetailCell.swift */; };
-		0CC57F9B21CD6C0F006B91C0 /* ReportMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC57F9A21CD6C0F006B91C0 /* ReportMatchViewController.swift */; };
+		0CC57F9D21CD8D51006B91C0 /* AddMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC57F9C21CD8D51006B91C0 /* AddMatchViewController.swift */; };
 		0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EC021C15F8500480763 /* AppDelegate.swift */; };
 		0CD92EC321C15F8500480763 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EC221C15F8500480763 /* PlayerViewController.swift */; };
 		0CD92EC621C15F8500480763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD92EC421C15F8500480763 /* Main.storyboard */; };
@@ -50,7 +50,7 @@
 		0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		0C3CCE9F21CCA0F3005CBE57 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		0CC57F9821CD5CD5006B91C0 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
-		0CC57F9A21CD6C0F006B91C0 /* ReportMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMatchViewController.swift; sourceTree = "<group>"; };
+		0CC57F9C21CD8D51006B91C0 /* AddMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMatchViewController.swift; sourceTree = "<group>"; };
 		0CD92EBD21C15F8500480763 /* TennisLadder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisLadder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD92EC021C15F8500480763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD92EC221C15F8500480763 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 				0CD92EF421C160B000480763 /* HomeViewController.swift */,
 				0CD92EC221C15F8500480763 /* PlayerViewController.swift */,
 				0CD92EF621C160CC00480763 /* DetailViewController.swift */,
-				0CC57F9A21CD6C0F006B91C0 /* ReportMatchViewController.swift */,
+				0CC57F9C21CD8D51006B91C0 /* AddMatchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 				0CD92EC921C15F8500480763 /* Tennis.xcdatamodeld in Sources */,
 				0CC57F9921CD5CD5006B91C0 /* DetailCell.swift in Sources */,
 				0CD92EF721C160CC00480763 /* DetailViewController.swift in Sources */,
-				0CC57F9B21CD6C0F006B91C0 /* ReportMatchViewController.swift in Sources */,
+				0CC57F9D21CD8D51006B91C0 /* AddMatchViewController.swift in Sources */,
 				0CD92EFE21C18C8100480763 /* Extensions.swift in Sources */,
 				0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */,
 				0CD92F0221C19A2200480763 /* PlayerCell.swift in Sources */,
