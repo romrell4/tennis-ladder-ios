@@ -34,12 +34,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cells = [Ladder(ladderId: 1, name: "Alex's Ladder", startDate: Date(), endDate: Date())]
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "player", let vc = segue.destination as? PlayerViewController {
-            //pass data
-        }
-    }
-    
     func tableView(_ trableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cells.count
     }
@@ -56,5 +50,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "player", let vc = segue.destination as? PlayerViewController {
+            //pass data
+        }
+    }
 }

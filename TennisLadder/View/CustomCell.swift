@@ -12,3 +12,6 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var ladderText: UILabel!
     @IBOutlet weak var dateRange: UILabel!
 }
+
+
+
