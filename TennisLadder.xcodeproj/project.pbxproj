@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */; };
+		0C3CCEA021CCA0F3005CBE57 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9F21CCA0F3005CBE57 /* Match.swift */; };
 		0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EC021C15F8500480763 /* AppDelegate.swift */; };
 		0CD92EC321C15F8500480763 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EC221C15F8500480763 /* PlayerViewController.swift */; };
 		0CD92EC621C15F8500480763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD92EC421C15F8500480763 /* Main.storyboard */; };
@@ -22,6 +24,7 @@
 		0CD92EFE21C18C8100480763 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EFD21C18C8100480763 /* Extensions.swift */; };
 		0CD92F0021C1921500480763 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EFF21C1921500480763 /* Player.swift */; };
 		0CD92F0221C19A2200480763 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92F0121C19A2200480763 /* PlayerCell.swift */; };
+		9581D24EE7956145AF4F4F60 /* Pods_TennisLadder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5877F652E3692A7AD7ECEB0A /* Pods_TennisLadder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		0C3CCE9F21CCA0F3005CBE57 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		0CD92EBD21C15F8500480763 /* TennisLadder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisLadder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD92EC021C15F8500480763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD92EC221C15F8500480763 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +68,9 @@
 		0CD92EFD21C18C8100480763 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0CD92EFF21C1921500480763 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0CD92F0121C19A2200480763 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		4F9180E292F5EBAC27967091 /* Pods-TennisLadder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisLadder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder.debug.xcconfig"; sourceTree = "<group>"; };
+		5877F652E3692A7AD7ECEB0A /* Pods_TennisLadder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisLadder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4E4BB323CF0F78FCE102409 /* Pods-TennisLadder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisLadder.release.xcconfig"; path = "Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9581D24EE7956145AF4F4F60 /* Pods_TennisLadder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +106,8 @@
 				0CD92ED721C15F8600480763 /* TennisLadderTests */,
 				0CD92EE221C15F8600480763 /* TennisLadderUITests */,
 				0CD92EBE21C15F8500480763 /* Products */,
+				A4FCBE9759D24AC95D403A16 /* Pods */,
+				280E58EC012540CB009D9B4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -146,8 +157,10 @@
 		0CD92EF121C15FC600480763 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */,
 				0CD92EF821C16F0500480763 /* Ladder.swift */,
 				0CD92EFF21C1921500480763 /* Player.swift */,
+				0C3CCE9F21CCA0F3005CBE57 /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,6 +194,23 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		280E58EC012540CB009D9B4F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5877F652E3692A7AD7ECEB0A /* Pods_TennisLadder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4FCBE9759D24AC95D403A16 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F9180E292F5EBAC27967091 /* Pods-TennisLadder.debug.xcconfig */,
+				D4E4BB323CF0F78FCE102409 /* Pods-TennisLadder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,9 +218,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CD92EE821C15F8600480763 /* Build configuration list for PBXNativeTarget "TennisLadder" */;
 			buildPhases = (
+				EBD20C0CDE5501AD9475BAED /* [CP] Check Pods Manifest.lock */,
 				0CD92EB921C15F8500480763 /* Sources */,
 				0CD92EBA21C15F8500480763 /* Frameworks */,
 				0CD92EBB21C15F8500480763 /* Resources */,
+				6924DBEA6A6DAB54F168184C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -307,6 +339,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6924DBEA6A6DAB54F168184C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBD20C0CDE5501AD9475BAED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TennisLadder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0CD92EB921C15F8500480763 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -316,12 +387,14 @@
 				0CD92EC921C15F8500480763 /* Tennis.xcdatamodeld in Sources */,
 				0CD92EF721C160CC00480763 /* DetailViewController.swift in Sources */,
 				0CD92EFE21C18C8100480763 /* Extensions.swift in Sources */,
+				0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */,
 				0CD92F0221C19A2200480763 /* PlayerCell.swift in Sources */,
 				0CD92EFB21C1727500480763 /* CustomCell.swift in Sources */,
 				0CD92EF921C16F0500480763 /* Ladder.swift in Sources */,
 				0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */,
 				0CD92F0021C1921500480763 /* Player.swift in Sources */,
 				0CD92EF521C160B000480763 /* HomeViewController.swift in Sources */,
+				0C3CCEA021CCA0F3005CBE57 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +567,7 @@
 		};
 		0CD92EE921C15F8600480763 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F9180E292F5EBAC27967091 /* Pods-TennisLadder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -512,6 +586,7 @@
 		};
 		0CD92EEA21C15F8600480763 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4E4BB323CF0F78FCE102409 /* Pods-TennisLadder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

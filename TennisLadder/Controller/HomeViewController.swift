@@ -20,8 +20,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        cells = [Ladder(id: 1, name: "Alex's Ladder", startDate: Date(), endDate: Date())]
+		
+//		Endpoints.getLadders().response { (response: Response<[Ladder]>) in
+//			switch response {
+//			case .success(let ladders):
+//				self.cells = ladders
+//				self.tableView.reloadData()
+//			case .failure(let error):
+//				print(error)
+//			}
+//		}
+		
+        cells = [Ladder(ladderId: 1, name: "Alex's Ladder", startDate: Date(), endDate: Date())]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

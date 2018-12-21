@@ -19,9 +19,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        matches = [Match(pointsScored: 15, pointsGiven: 40), Match(pointsScored: 30, pointsGiven: 40), Match(pointsScored: 30, pointsGiven: 40)]
-        players = [Player(name: "Kobe Bryant", ranking: 5, points: 50, wins: 30, losses: 20)]
+		
+		players = [Player(userId: "abcdef", ladderId: 1, name: "Kobe Bryant", photoUrl: nil, score: 50, ranking: 5, wins: 30, losses: 20)]
     }
     
     
@@ -35,7 +34,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         if let cell = cell as? PlayerCell {
             let player = players[indexPath.row]
             cell.name.text = player.name
-            cell.points.text = String(player.points)
+            cell.points.text = String(player.score)
             cell.userImage = UIImageView(image: UIImage(named: "userIcon"))
         }
         
