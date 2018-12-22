@@ -9,13 +9,13 @@
 import UIKit
 
 class AddMatchViewController: UIViewController {
+    let opponentName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
     }
-    
-    @IBAction func cancelButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+
+
 }

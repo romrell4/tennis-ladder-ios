@@ -27,34 +27,28 @@ class DetailViewController : UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
         loadViews()
         
-        Endpoints.getMatches(player.ladderId, player.userId).response { (response: Response<[Match]>) in
-            switch response {
-            case .success(let matches):
-                self.players = matches
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
+        if let userId = Int(player.userId) {
+            Endpoints.getMatches(player.ladderId, userId).response { (response: Response<[Match]>) in
+                switch response {
+                case .success(let matches):
+                    self.matches = matches
+                    self.matchTableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
-        
-        matches = [Match(
-            matchId: 3,
-            ladderId: 1,
-            matchDate: Date(),
-            winner: Player(userId: "abcdef", ladderId: 1, name: "Kobe Bryant", photoUrl: nil, score: 50, ranking: 5, wins: 30, losses: 20),
-            loser: Player(userId: "abcdef", ladderId: 1, name: "Kobe Bryant", photoUrl: nil, score: 50, ranking: 5, wins: 30, losses: 20),
-            winnerSet1Score: 40,
-            loserSet1Score: 30,
-            winnerSet2Score: 0,
-            loserSet2Score: 40,
-            winnerSet3Score: nil,
-            loserSet3Score: nil)]
     }
     
     func loadViews() {
+        let image = UIImageView()
+        if let url = player.photoUrl {
+            image.downloaded(from: url)
+        }
+        
         playerImage = image
-        currentRankingLabel.text = "# \(String(currentRanking))"
-        scoreLabel.text = String("\(wins) - \(losses)")
+        currentRankingLabel.text = "# \(String(player.ranking))"
+        scoreLabel.text = String("\(player.wins) - \(player.losses)")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -38,11 +38,10 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             
             vc.player = players[indexPath.row]
         } else if segue.identifier == "playerSelected",
-            let vc = segue.destination as? DetailViewController,
+            let vc = segue.destination as? MatchViewController,
             let player = sender as? Player {
-            
-            vc.player = player
-        }
+                vc.player2 = player
+            }
     }
     
     //MARK: UITableViewDelegate

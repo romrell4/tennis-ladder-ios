@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C34B5CF21CDB93E00CB333A /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C34B5CE21CDB93E00CB333A /* MatchViewController.swift */; };
 		0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */; };
 		0C3CCEA021CCA0F3005CBE57 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9F21CCA0F3005CBE57 /* Match.swift */; };
 		0CC57F9921CD5CD5006B91C0 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC57F9821CD5CD5006B91C0 /* DetailCell.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C34B5CE21CDB93E00CB333A /* MatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewController.swift; sourceTree = "<group>"; };
 		0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		0C3CCE9F21CCA0F3005CBE57 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		0CC57F9821CD5CD5006B91C0 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				0CD92EF421C160B000480763 /* HomeViewController.swift */,
 				0CD92EC221C15F8500480763 /* PlayerViewController.swift */,
 				0CD92EF621C160CC00480763 /* DetailViewController.swift */,
+				0C34B5CE21CDB93E00CB333A /* MatchViewController.swift */,
 				0CC57F9C21CD8D51006B91C0 /* AddMatchViewController.swift */,
 			);
 			path = Controller;
@@ -398,6 +401,7 @@
 				0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */,
 				0CD92F0221C19A2200480763 /* PlayerCell.swift in Sources */,
 				0CD92EFB21C1727500480763 /* CustomCell.swift in Sources */,
+				0C34B5CF21CDB93E00CB333A /* MatchViewController.swift in Sources */,
 				0CD92EF921C16F0500480763 /* Ladder.swift in Sources */,
 				0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */,
 				0CD92F0021C1921500480763 /* Player.swift in Sources */,
