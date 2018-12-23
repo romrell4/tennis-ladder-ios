@@ -18,17 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Tennis App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAQ-Z3-2id">
-                                <rect key="frame" x="80.5" y="315.5" width="214" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <color key="highlightedColor" red="0.0" green="0.77287079020000005" blue="0.094083471279999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PD4-Gh-NQt">
+                                <rect key="frame" x="79" y="208.5" width="217" height="250.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIconVector" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-vG-wnD">
+                                        <rect key="frame" x="0.0" y="0.0" width="217" height="217"/>
+                                        <color key="backgroundColor" red="0.1450980392" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="VvX-vG-wnD" secondAttribute="height" multiplier="1:1" id="S4d-0l-W5J"/>
+                                            <constraint firstAttribute="height" constant="217" id="plB-0S-xTA"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tennis Ladder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzL-tb-lic">
+                                        <rect key="frame" x="17.5" y="217" width="182.5" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.77287079015544036" blue="0.094083471280992051" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.3644348680973053" green="0.61958569288253784" blue="0.32151150703430176" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="iAQ-Z3-2id" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="XFn-eR-OkM"/>
-                            <constraint firstItem="iAQ-Z3-2id" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="wAS-Va-Bc7"/>
+                            <constraint firstItem="PD4-Gh-NQt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="A1F-XE-44s"/>
+                            <constraint firstItem="PD4-Gh-NQt" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Y4S-wj-36F"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -53,4 +66,7 @@
             <point key="canvasLocation" x="1350" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppIconVector" width="1024" height="1024"/>
+    </resources>
 </document>
