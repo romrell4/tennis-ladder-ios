@@ -76,3 +76,22 @@ extension Result {
 	}
 }
 
+extension UITableView {
+	func dequeueCell(at indexPath: IndexPath) -> UITableViewCell {
+		return dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+	}
+	
+	func deselectSelectedRow() {
+		if let row = self.indexPathForSelectedRow {
+			self.deselectRow(at: row, animated: true)
+		}
+	}
+}
+
+extension UIViewController {
+	func displayError(_ error: Error) {
+		let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default))
+		self.present(alert, animated: true)
+	}
+}

@@ -9,11 +9,15 @@
 import UIKit
 
 class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-    
-    var players = [Player]()
-    var matches = [Match]()
-    
-    @IBOutlet var tableView: UITableView!
+	
+	//MARK: Public properties
+	var ladder: Ladder!
+	
+	//MARK: Private properties
+	private var players = [Player]()
+	
+	//MARK: Outlets
+    @IBOutlet private var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +27,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 		players = [Player(userId: "abcdef", ladderId: 1, name: "Kobe Bryant", photoUrl: nil, score: 50, ranking: 5, wins: 30, losses: 20)]
     }
     
-    
+	//MARK: UITableViewDelegate/Datasource
+	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return players.count
     }
