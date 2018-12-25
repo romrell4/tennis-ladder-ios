@@ -80,7 +80,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			try? Auth.auth().signOut()
 		} else {
 			guard let authUI = FUIAuth.defaultAuthUI() else { return }
-			authUI.delegate = self
 			authUI.providers = [
 				FUIGoogleAuth()
 			]
