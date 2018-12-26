@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qz7-dB-6jG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1620" y="770.46476761619192"/>
+            <point key="canvasLocation" x="1620" y="770"/>
         </scene>
         <!--Add Match View Controller-->
         <scene sceneID="enL-YI-KKr">
@@ -905,6 +905,7 @@
                             <constraint firstAttribute="trailing" secondItem="XfE-wO-oto" secondAttribute="trailing" id="mmI-Lb-QgK"/>
                             <constraint firstAttribute="trailing" secondItem="Q0b-XJ-g0U" secondAttribute="trailing" id="q1R-we-J3L"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Byn-KR-eMN"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aSX-PJ-EhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -954,7 +955,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xCj-at-UQL">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xCj-at-UQL">
                                                         <rect key="frame" x="44.5" y="8" width="80" height="80"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="80" id="3of-tN-1Td"/>
@@ -984,7 +985,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aJu-nE-8HU">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="aJu-nE-8HU">
                                                         <rect key="frame" x="44.5" y="8" width="80" height="80"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="Mue-84-eeQ"/>
@@ -1088,6 +1089,7 @@
                             <constraint firstAttribute="bottom" secondItem="X8Y-nB-GLd" secondAttribute="bottom" id="y2v-pV-voB"/>
                             <constraint firstAttribute="bottom" secondItem="QJf-Un-CyG" secondAttribute="bottom" id="yJm-wJ-2sC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="D0M-G5-X4T"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZt-gf-GxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
