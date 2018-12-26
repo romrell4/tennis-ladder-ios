@@ -17,9 +17,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	//MARK: Outlets
 	@IBOutlet private weak var statusButton: UIBarButtonItem!
 	@IBOutlet private weak var statusLabel: UILabel!
-    @IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
-	
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -50,7 +50,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "player", let vc = segue.destination as? PlayerViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+        if segue.identifier == "player", let vc = segue.destination as? LadderViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
 			//Pass the ladder they click on to the next view controller
 			vc.ladder = ladders[indexPath.row]
         }

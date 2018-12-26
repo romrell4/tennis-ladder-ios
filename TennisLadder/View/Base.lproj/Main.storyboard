@@ -139,17 +139,17 @@
                         <outlet property="spinner" destination="Qjv-C6-ynu" id="cGU-Zw-xI1"/>
                         <outlet property="statusButton" destination="CTd-3s-dol" id="V6L-wI-K40"/>
                         <outlet property="statusLabel" destination="5Gn-I3-7JF" id="3X0-Hc-2eq"/>
-                        <outlet property="tableView" destination="8Vu-8R-oyY" id="5vM-7O-wZJ"/>
+                        <outlet property="tableView" destination="8Vu-8R-oyY" id="cZr-aR-2rX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJ3-Yn-gKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-122.40000000000001" y="91.304347826086968"/>
         </scene>
-        <!--Player View Controller-->
+        <!--Ladder View Controller-->
         <scene sceneID="xl7-4f-Gi3">
             <objects>
-                <viewController id="S9k-L7-jyX" customClass="PlayerViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="S9k-L7-jyX" customClass="LadderViewController" sceneMemberID="viewController" customModule="TennisLadder" customModuleProvider="target">
                     <view key="view" contentMode="scaleToFill" id="AuY-um-ykN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -248,10 +248,10 @@
             </objects>
             <point key="canvasLocation" x="744.79999999999995" y="91.304347826086968"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Player View Controller-->
         <scene sceneID="Pkm-YV-sA6">
             <objects>
-                <viewController id="Q6L-4W-ixA" customClass="DetailViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Q6L-4W-ixA" customClass="PlayerViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svv-ao-YxB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -438,10 +438,10 @@
             </objects>
             <point key="canvasLocation" x="745" y="875"/>
         </scene>
-        <!--Match View Controller-->
+        <!--Report Match View Controller-->
         <scene sceneID="JaV-iP-pWA">
             <objects>
-                <viewController id="Sbw-hX-iDM" customClass="MatchViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Sbw-hX-iDM" customClass="ReportMatchViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fsr-9R-BeD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="489"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -595,10 +595,10 @@
                         <viewLayoutGuide key="safeArea" id="D0M-G5-X4T"/>
                     </view>
                     <connections>
-                        <outlet property="playerOneImage" destination="kbM-5T-HoI" id="WfP-nG-1Cy"/>
-                        <outlet property="playerOneNameLabel" destination="sHf-AZ-mco" id="K6G-Qz-bD8"/>
-                        <outlet property="playerTwoImage" destination="n4k-GF-YVI" id="Wqt-Pa-JWq"/>
-                        <outlet property="playerTwoNameLabel" destination="Yte-1h-U3h" id="JHQ-s1-Fx9"/>
+                        <outlet property="playerOneImage" destination="kbM-5T-HoI" id="NN2-sh-lVw"/>
+                        <outlet property="playerOneNameLabel" destination="sHf-AZ-mco" id="IYi-Ir-fae"/>
+                        <outlet property="playerTwoImage" destination="n4k-GF-YVI" id="ynA-Ay-RhO"/>
+                        <outlet property="playerTwoNameLabel" destination="Yte-1h-U3h" id="CiQ-1y-s3N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZt-gf-GxR" userLabel="First Responder" sceneMemberID="firstResponder"/>

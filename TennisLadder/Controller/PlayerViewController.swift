@@ -1,82 +1,78 @@
 //
-//  ViewController.swift
+//  DetailViewController.swift
 //  Tennis
 //
 //  Created by Z Tai on 12/12/18.
 //  Copyright © 2018 Z Tai. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import moa
 
-class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-	//MARK: Public properties
-	var ladder: Ladder!
-	
-	//MARK: Private properties
-	private var players = [Player]()
-	
-	//MARK: Outlets
-    @IBOutlet private var tableView: UITableView!
+private let DATE_FORMATTTER = DateFormatter.defaultDateFormat("dd/MM/yyyy")
+
+class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    //MARK: Public Properties
+    var player: Player!
+    
+    //MARK: Private Properties
+    private var matches = [Match]()
+    
+    //MARK: Outlets
+    @IBOutlet var playerImage: UIImageView!
+    @IBOutlet var currentRankingLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var reportMatchBarButton: UIBarButtonItem!
+    @IBOutlet var matchTableView: UITableView!
+    @IBOutlet var matchReport: UIToolbar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadViews()
         
-        Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
-            switch response {
-            case .success(let players):
-                self.players = players
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
+        if let userId = Int(player.userId) {
+            Endpoints.getMatches(player.ladderId, userId).response { (response: Response<[Match]>) in
+                switch response {
+                case .success(let matches):
+                    self.matches = matches
+                    self.matchTableView.reloadData()
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail",
-            let vc = segue.destination as? DetailViewController,
-            let cell = sender as? UITableViewCell,
-            let indexPath = tableView.indexPath(for: cell) {
-            
-            vc.player = players[indexPath.row]
-        } else if segue.identifier == "playerSelected",
-            let vc = segue.destination as? MatchViewController,
-            let player = sender as? Player {
-            //TODO: figure out which player belongs to who
-                vc.playerTwo = player
-            }
+    func loadViews() {
+        playerImage.moa.url = player.photoUrl
+        currentRankingLabel.text = "# \(String(player.ranking))"
+        scoreLabel.text = String("\(player.wins) - \(player.losses)")
     }
     
-	//MARK: UITableViewDelegate/Datasource
-	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return players.count
+        return matches.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath)
+        let cell = matchTableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
         
-        if let cell = cell as? PlayerCell {
-            let player = players[indexPath.row]
-            cell.name.text = player.name
-            cell.points.text = String(player.score)
-            cell.userImage = UIImageView(image: UIImage(named: "userIcon"))
+        if let cell = cell as? DetailCell {
+            let match = matches[indexPath.row]
+            cell.matchLabel.text = "\(match.matchId)"
+            cell.setScoresLabel.text = "\(match.winnerSet1Score)-\(match.loserSet1Score), \(match.winnerSet2Score)-\(match.loserSet2Score)"
         }
         
         return cell
     }
     
-    @IBAction func reportMatchTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Who did you play agaisnt?", message: nil, preferredStyle: .actionSheet)
-        
-        players.forEach { player in
-            alert.addAction(UIAlertAction(title: player.name, style: .default) { (_) in
-                self.performSegue(withIdentifier: "playerSelected", sender: player)
-            })
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "playerSelected",
+            let vc = segue.destination as? ReportMatchViewController {
+            
+            //TODO: Figure out player one and why this is not passing anything
+            vc.playerTwo = player
+            vc.playerOne = player
         }
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alert, animated: true)
     }
 }
-
