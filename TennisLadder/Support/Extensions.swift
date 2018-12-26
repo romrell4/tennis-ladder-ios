@@ -76,6 +76,12 @@ extension Result {
 	}
 }
 
+extension String {
+	func format(_ format: String) -> String {
+		return String(format: format, self)
+	}
+}
+
 extension UITableView {
 	func dequeueCell(at indexPath: IndexPath) -> UITableViewCell {
 		return dequeueReusableCell(withIdentifier: "cell", for: indexPath)

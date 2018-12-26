@@ -25,6 +25,9 @@
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="hidesShadow" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -44,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-8R-oyY">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
+                                <rect key="frame" x="0.0" y="24" width="375" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="84" id="zca-j3-9p9" customClass="LadderTableViewCell" customModule="TennisLadder" customModuleProvider="target">
@@ -92,27 +95,56 @@
                                 <rect key="frame" x="169" y="257" width="37" height="37"/>
                                 <color key="color" red="0.36443486809999998" green="0.61958569289999998" blue="0.32151150699999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-1Q-CWg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gn-I3-7JF">
+                                        <rect key="frame" x="20" y="16" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.36443486809999998" green="0.61958569289999998" blue="0.32151150699999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5Gn-I3-7JF" secondAttribute="bottom" constant="8" id="0pJ-P3-MJQ"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Gn-I3-7JF" secondAttribute="trailing" constant="16" id="GRA-xt-CQP"/>
+                                    <constraint firstAttribute="height" constant="24" id="ZMu-At-kcg"/>
+                                    <constraint firstItem="5Gn-I3-7JF" firstAttribute="leading" secondItem="6lg-1Q-CWg" secondAttribute="leading" constant="20" id="eu4-h3-Lu3"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8Vu-8R-oyY" firstAttribute="leading" secondItem="X5V-Di-j0K" secondAttribute="leading" id="0AD-v6-SoT"/>
                             <constraint firstItem="Qjv-C6-ynu" firstAttribute="centerX" secondItem="ALs-F2-Azm" secondAttribute="centerX" id="252-UL-73p"/>
+                            <constraint firstItem="8Vu-8R-oyY" firstAttribute="top" secondItem="6lg-1Q-CWg" secondAttribute="bottom" id="6IS-pU-7F6"/>
+                            <constraint firstItem="6lg-1Q-CWg" firstAttribute="top" secondItem="X5V-Di-j0K" secondAttribute="top" id="GqV-Fb-4QD"/>
+                            <constraint firstItem="6lg-1Q-CWg" firstAttribute="leading" secondItem="X5V-Di-j0K" secondAttribute="leading" id="MlE-lh-Xo2"/>
                             <constraint firstItem="8Vu-8R-oyY" firstAttribute="bottom" secondItem="X5V-Di-j0K" secondAttribute="bottom" id="caf-I7-DXo"/>
                             <constraint firstItem="Qjv-C6-ynu" firstAttribute="centerY" secondItem="ALs-F2-Azm" secondAttribute="centerY" id="crG-n4-okO"/>
                             <constraint firstItem="8Vu-8R-oyY" firstAttribute="trailing" secondItem="X5V-Di-j0K" secondAttribute="trailing" id="llj-s7-8v1"/>
-                            <constraint firstItem="8Vu-8R-oyY" firstAttribute="top" secondItem="ALs-F2-Azm" secondAttribute="top" id="ycG-rH-yp3"/>
+                            <constraint firstItem="6lg-1Q-CWg" firstAttribute="trailing" secondItem="X5V-Di-j0K" secondAttribute="trailing" id="rfC-Wv-Njc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="X5V-Di-j0K"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Tennis Ladder" id="rUM-Fw-uQK"/>
+                    <navigationItem key="navigationItem" title="Tennis Ladder" id="rUM-Fw-uQK">
+                        <barButtonItem key="rightBarButtonItem" id="CTd-3s-dol">
+                            <connections>
+                                <action selector="settingsTapped:" destination="HX2-na-rtR" id="vpZ-j3-0oQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="spinner" destination="Qjv-C6-ynu" id="cGU-Zw-xI1"/>
+                        <outlet property="statusButton" destination="CTd-3s-dol" id="V6L-wI-K40"/>
+                        <outlet property="statusLabel" destination="5Gn-I3-7JF" id="3X0-Hc-2eq"/>
                         <outlet property="tableView" destination="8Vu-8R-oyY" id="5vM-7O-wZJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJ3-Yn-gKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-121" y="92"/>
+            <point key="canvasLocation" x="-122.40000000000001" y="91.304347826086968"/>
         </scene>
         <!--Player View Controller-->
         <scene sceneID="xl7-4f-Gi3">
