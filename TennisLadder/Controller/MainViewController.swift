@@ -8,10 +8,15 @@
 
 import Foundation
 import UIKit
+import FirebaseUI
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FUIAuthDelegate {
+	//MARK: Private properties
     private var ladders = [Ladder]()
-    
+	
+	//MARK: Outlets
+	@IBOutlet private weak var statusButton: UIBarButtonItem!
+	@IBOutlet private weak var statusLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
 	
@@ -20,6 +25,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 		//Make the extra empty rows disappear
 		tableView.tableFooterView = UIView()
+		
+		//Listen for login updates
+		updateLoginStatus()
+		Auth.auth().addStateDidChangeListener { (auth, user) in
+			self.updateLoginStatus()
+		}
 		
 		//Make a request to get the ladders and reload the UI when the response comes back
 		Endpoints.getLadders().response { (response: Response<[Ladder]>) in
@@ -44,6 +55,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			vc.ladder = ladders[indexPath.row]
         }
     }
+	
+	//MARK: UITableViewDelegate/Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ladders.count
@@ -59,4 +72,30 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
+	
+	//MARK: Listeners
+	
+	@IBAction func settingsTapped(_ sender: Any) {
+		if Auth.auth().currentUser != nil {
+			try? Auth.auth().signOut()
+		} else {
+			guard let authUI = FUIAuth.defaultAuthUI() else { return }
+			authUI.providers = [
+				FUIGoogleAuth()
+			]
+			present(authUI.authViewController(), animated: true)
+		}
+	}
+	
+	//MARK: Private functions
+	
+	private func updateLoginStatus() {
+		if let user = Auth.auth().currentUser {
+			self.statusButton.title = "Log Out"
+			self.statusLabel.text = "Logged in as \(user.displayName ?? "Anonymous")"
+		} else {
+			self.statusButton.title = "Log In"
+			self.statusLabel.text = "Not logged in"
+		}
+	}
 }

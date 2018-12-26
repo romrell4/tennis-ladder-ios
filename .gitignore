@@ -2,3 +2,4 @@ xcuserdata
 xcshareddata
 Pods/*
 Podfile.lock
+GoogleService-info.plist

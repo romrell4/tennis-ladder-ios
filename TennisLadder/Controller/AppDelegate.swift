@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import CoreData
+import Firebase
+import FirebaseUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+		
+		//Initialize the firebase application
+		FirebaseApp.configure()
+		
+		//Change the status bar color for the entire app
+		UINavigationBar.appearance().barStyle = .black
+		
         return true
     }
+	
+	func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+		if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String) ?? false {
+			return true
+		}
+		
+		//Other URL handling goes here.
+		return false
+	}
 }
 
