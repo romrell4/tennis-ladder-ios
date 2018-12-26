@@ -562,6 +562,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D0M-G5-X4T"/>
                     </view>
+                    <connections>
+                        <outlet property="playerOneImage" destination="kbM-5T-HoI" id="WfP-nG-1Cy"/>
+                        <outlet property="playerOneNameLabel" destination="sHf-AZ-mco" id="K6G-Qz-bD8"/>
+                        <outlet property="playerTwoImage" destination="n4k-GF-YVI" id="Wqt-Pa-JWq"/>
+                        <outlet property="playerTwoNameLabel" destination="Yte-1h-U3h" id="JHQ-s1-Fx9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZt-gf-GxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

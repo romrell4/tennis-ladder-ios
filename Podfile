@@ -7,4 +7,5 @@ target 'TennisLadder' do
 
   # Pods for TennisLadder
   pod 'Alamofire', '~> 4.8.0'
+  pod 'moa', '~> 10.0'	
 end

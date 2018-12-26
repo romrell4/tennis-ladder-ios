@@ -12,16 +12,19 @@ import UIKit
 private let DATE_FORMATTTER = DateFormatter.defaultDateFormat("dd/MM/yyyy")
 
 class DetailViewController : UIViewController, UITableViewDataSource, UITableViewDelegate {
+    //MARK: Public Properties
+    var player: Player!
+    
+    //MARK: Private Properties
+    private var matches = [Match]()
+    
+    //MARK: Outlets
     @IBOutlet var playerImage: UIImageView!
     @IBOutlet var currentRankingLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
     @IBOutlet var reportMatchBarButton: UIBarButtonItem!
     @IBOutlet var matchTableView: UITableView!
     @IBOutlet var matchReport: UIToolbar!
-    
-    //Data from previous VC
-    var player: Player!
-    var matches = [Match]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

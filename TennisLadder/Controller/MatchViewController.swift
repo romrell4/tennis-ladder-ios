@@ -9,14 +9,33 @@
 import UIKit
 
 class MatchViewController: UIViewController {
+    //MARK: Public Propertise
+    var playerOne : Player?
+    var playerTwo : Player?
     
-    var player1 : Player?
-    var player2 : Player?
+    //MARK: Outlets
+    @IBOutlet var playerOneImage: UIImageView!
+    @IBOutlet var playerTwoImage: UIImageView!
+    @IBOutlet var playerOneNameLabel: UILabel!
+    @IBOutlet var playerTwoNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUpViews()
+        
+    }
+    
+    func setUpViews() {
+        //TODO: Add image API Calls
+        
+        
+        if let playOne = playerOne {
+            playerOneNameLabel.text = playOne.name
+        }
+        
+        if let playTwo = playerTwo {
+            playerTwoNameLabel.text = playTwo.name
+        }
     }
 
     @IBAction func reportPressed(_ sender: Any) {

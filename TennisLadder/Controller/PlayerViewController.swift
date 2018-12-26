@@ -42,7 +42,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         } else if segue.identifier == "playerSelected",
             let vc = segue.destination as? MatchViewController,
             let player = sender as? Player {
-                vc.player2 = player
+            //TODO: figure out which player belongs to who
+                vc.playerTwo = player
             }
     }
     

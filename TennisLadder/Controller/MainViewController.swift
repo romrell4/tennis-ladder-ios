@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    //MARK: Private Properties
     private var ladders = [Ladder]()
     
+    //MARK: Outlets
     @IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
 	
