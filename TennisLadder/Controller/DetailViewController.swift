@@ -43,7 +43,7 @@ class DetailViewController : UIViewController, UITableViewDataSource, UITableVie
     func loadViews() {
         let image = UIImageView()
         if let url = player.photoUrl {
-            image.downloaded(from: url)
+            //URL session to get image
         }
         
         playerImage = image

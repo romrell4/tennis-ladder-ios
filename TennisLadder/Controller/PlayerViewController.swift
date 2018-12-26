@@ -9,23 +9,25 @@
 import UIKit
 
 class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
-    var ladderId : Int?
-    var players = [Player]()
-    
-    @IBOutlet var tableView: UITableView!
+	//MARK: Public properties
+	var ladder: Ladder!
+	
+	//MARK: Private properties
+	private var players = [Player]()
+	
+	//MARK: Outlets
+    @IBOutlet private var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let id = ladderId {
-            Endpoints.getPlayers(id).response { (response: Response<[Player]>) in
-                switch response {
-                case .success(let players):
-                    self.players = players
-                    self.tableView.reloadData()
-                case .failure(let error):
-                    print(error)
-                }
+        Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
+            switch response {
+            case .success(let players):
+                self.players = players
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -44,8 +46,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             }
     }
     
-    //MARK: UITableViewDelegate
-    
+	//MARK: UITableViewDelegate/Datasource
+	
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return players.count
     }
