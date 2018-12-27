@@ -68,8 +68,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             let vc = segue.destination as? ReportMatchViewController {
             
             //TODO: Figure out player one and why this is not passing anything
-            vc.playerTwo = player
-            vc.playerOne = player
+            vc.currentPlayer = player
+            vc.opponentPlayer = player
             vc.delegate = self
         }
     }

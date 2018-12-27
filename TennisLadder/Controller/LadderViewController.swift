@@ -44,8 +44,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
             let vc = segue.destination as? ReportMatchViewController,
             let player = sender as? Player {
             //TODO: figure out which player belongs to who
-                vc.playerTwo = player
-                vc.playerOne = player
+                vc.currentPlayer = player
+                vc.opponentPlayer = player
             }
     }
     

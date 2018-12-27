@@ -15,7 +15,12 @@ class MatchTableViewCell: UITableViewCell {
     var match: Match! {
         didSet {
             matchLabel.text = "\(match.matchId)"
-            recordLabel.text = "\(match.winnerSet1Score)-\(match.loserSet1Score), \(match.winnerSet2Score)-\(match.loserSet2Score)"
+            
+            if let set3WinnerScore = match.winnerSet3Score, let set3LoserScore = match.loserSet3Score {
+                recordLabel.text = "\(match.winnerSet1Score)-\(match.loserSet1Score), \(match.winnerSet2Score)-\(match.loserSet2Score), \(set3WinnerScore)-\(set3LoserScore)"
+            } else {
+                recordLabel.text = "\(match.winnerSet1Score)-\(match.loserSet1Score), \(match.winnerSet2Score)-\(match.loserSet2Score)"
+            }
         }
     }
 }
