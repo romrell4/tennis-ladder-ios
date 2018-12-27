@@ -45,6 +45,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
             let player = sender as? Player {
             //TODO: figure out which player belongs to who
                 vc.playerTwo = player
+                vc.playerOne = player
             }
     }
     

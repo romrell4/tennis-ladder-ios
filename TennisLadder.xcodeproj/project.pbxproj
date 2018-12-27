@@ -189,8 +189,8 @@
 				0CD92EC021C15F8500480763 /* AppDelegate.swift */,
 				0CD92EF421C160B000480763 /* MainViewController.swift */,
 				0CD92EC221C15F8500480763 /* LadderViewController.swift */,
-				0C62ADDE21D40F1C00AB8470 /* ReportMatchViewController.swift */,
 				0CD92EF621C160CC00480763 /* PlayerViewController.swift */,
+				0C62ADDE21D40F1C00AB8470 /* ReportMatchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -624,6 +624,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.romrell4.tennis-ladder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -643,6 +644,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.romrell4.tennis-ladder";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -149,7 +149,7 @@
         <!--Ladder View Controller-->
         <scene sceneID="xl7-4f-Gi3">
             <objects>
-                <viewController id="S9k-L7-jyX" customClass="LadderViewController" sceneMemberID="viewController" customModule="TennisLadder" customModuleProvider="target">
+                <viewController id="S9k-L7-jyX" customClass="LadderViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AuY-um-ykN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -456,12 +456,12 @@
                                     <barButtonItem title="Cancel" id="zW7-XP-dbG">
                                         <color key="tintColor" red="0.0" green="0.14807494060000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <action selector="cancelPressed:" destination="Sbw-hX-iDM" id="Im1-2H-cqJ"/>
+                                            <action selector="cancelPressed:" destination="Sbw-hX-iDM" id="v83-qy-hPO"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QJf-Un-CyG">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="QJf-Un-CyG">
                                 <rect key="frame" x="0.0" y="52" width="375" height="437"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yhm-nk-ezJ">
@@ -508,49 +508,134 @@
                                             <constraint firstAttribute="height" constant="132" id="FN2-tJ-5VY"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V9t-R9-lhj">
-                                        <rect key="frame" x="0.0" y="152" width="375" height="285"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Tu-5V-dB0">
+                                        <rect key="frame" x="0.0" y="136" width="375" height="79"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Please report the scores from your perspective. For example, if you lost 6-0, 6-0, report 0-6, 0-6. If you did not play a third set (or tiebreak), leave the scores at 0-0.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="V9t-R9-lhj">
+                                        <rect key="frame" x="0.0" y="219" width="375" height="218"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ebW-N8-pU3">
-                                                <rect key="frame" x="0.0" y="24.5" width="125" height="236.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ebW-N8-pU3">
+                                                <rect key="frame" x="0.0" y="0.0" width="122.5" height="218"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baW-jN-WT3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="19"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZM-Bj-3Vo">
-                                                        <rect key="frame" x="0.0" y="20.5" width="125" height="216"/>
-                                                    </pickerView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Mbz-g1-GE4">
+                                                        <rect key="frame" x="0.0" y="19" width="122.5" height="199"/>
+                                                        <subviews>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jEs-fl-hZX">
+                                                                <rect key="frame" x="0.0" y="0.0" width="41" height="199"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="Sbw-hX-iDM" id="Xnb-z4-AK6"/>
+                                                                    <outlet property="delegate" destination="Sbw-hX-iDM" id="ZAj-ZC-dZS"/>
+                                                                </connections>
+                                                            </pickerView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erf-Yu-rS3">
+                                                                <rect key="frame" x="41" y="0.0" width="40.5" height="199"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyL-hI-8JE">
+                                                                <rect key="frame" x="81.5" y="0.0" width="41" height="199"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="Sbw-hX-iDM" id="qtC-wk-3SI"/>
+                                                                    <outlet property="delegate" destination="Sbw-hX-iDM" id="Naq-ud-bzC"/>
+                                                                </connections>
+                                                            </pickerView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="Erf-Yu-rS3" firstAttribute="width" secondItem="jEs-fl-hZX" secondAttribute="width" id="ID4-yy-CtS"/>
+                                                            <constraint firstItem="Erf-Yu-rS3" firstAttribute="width" secondItem="wyL-hI-8JE" secondAttribute="width" id="Wt3-vh-sTT"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zIe-F1-Sz9">
-                                                <rect key="frame" x="125" y="24.5" width="125" height="236.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="zIe-F1-Sz9">
+                                                <rect key="frame" x="126.5" y="0.0" width="122" height="218"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZ8-OD-vGN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZJ-OL-ySx">
+                                                        <rect key="frame" x="0.0" y="0.0" width="122" height="19"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ps-cF-NxR">
-                                                        <rect key="frame" x="0.0" y="20.5" width="125" height="216"/>
-                                                    </pickerView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bVW-H5-o5O">
+                                                        <rect key="frame" x="0.0" y="19" width="122" height="199"/>
+                                                        <subviews>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0iO-HV-bcP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="40.5" height="199"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="Sbw-hX-iDM" id="e17-HF-uXd"/>
+                                                                    <outlet property="delegate" destination="Sbw-hX-iDM" id="KMb-Ua-kaO"/>
+                                                                </connections>
+                                                            </pickerView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfa-BO-thx">
+                                                                <rect key="frame" x="40.5" y="0.0" width="41" height="199"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvV-Xp-pSl">
+                                                                <rect key="frame" x="81.5" y="0.0" width="40.5" height="199"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="Sbw-hX-iDM" id="R5T-JO-DSE"/>
+                                                                    <outlet property="delegate" destination="Sbw-hX-iDM" id="icr-hi-2X0"/>
+                                                                </connections>
+                                                            </pickerView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="zfa-BO-thx" firstAttribute="width" secondItem="0iO-HV-bcP" secondAttribute="width" id="QsL-bn-wMG"/>
+                                                            <constraint firstItem="zfa-BO-thx" firstAttribute="width" secondItem="wvV-Xp-pSl" secondAttribute="width" id="hYd-dK-J8U"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KXV-fE-G8G">
-                                                <rect key="frame" x="250" y="24.5" width="125" height="236.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="KXV-fE-G8G">
+                                                <rect key="frame" x="252.5" y="0.0" width="122.5" height="218"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Shb-lR-Pu7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="122.5" height="19"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRl-HF-bn9">
-                                                        <rect key="frame" x="0.0" y="20.5" width="125" height="216"/>
-                                                    </pickerView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eK6-gw-jBn">
+                                                        <rect key="frame" x="0.0" y="19" width="122.5" height="199"/>
+                                                        <subviews>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRl-HF-bn9">
+                                                                <rect key="frame" x="0.0" y="0.0" width="41" height="199"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="Sbw-hX-iDM" id="RPz-GI-n6b"/>
+                                                                    <outlet property="delegate" destination="Sbw-hX-iDM" id="lHr-5v-E3t"/>
+                                                                </connections>
+                                                            </pickerView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44X-WX-KfB">
+                                                                <rect key="frame" x="41" y="0.0" width="40.5" height="199"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRr-VG-sFx">
+                                                                <rect key="frame" x="81.5" y="0.0" width="41" height="199"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="Sbw-hX-iDM" id="heA-tM-OFj"/>
+                                                                    <outlet property="delegate" destination="Sbw-hX-iDM" id="vpo-Be-T12"/>
+                                                                </connections>
+                                                            </pickerView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="44X-WX-KfB" firstAttribute="width" secondItem="lRr-VG-sFx" secondAttribute="width" id="bCI-Ov-Dny"/>
+                                                            <constraint firstItem="44X-WX-KfB" firstAttribute="width" secondItem="vRl-HF-bn9" secondAttribute="width" id="jS5-9A-cWe"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -564,15 +649,12 @@
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8Y-nB-GLd">
                                 <rect key="frame" x="0.0" y="445" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="nvr-jj-kr2"/>
-                                </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="6vY-dL-abW"/>
                                     <barButtonItem title="Report This Match" id="fUL-8J-BJN">
                                         <color key="tintColor" red="0.0" green="0.14807494060000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <action selector="reportPressed:" destination="Sbw-hX-iDM" id="cZ8-ig-hE5"/>
+                                            <action selector="reportPressed:" destination="Sbw-hX-iDM" id="fPS-pd-Kxj"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SRR-kE-jfg"/>
@@ -583,18 +665,25 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FoF-KS-h5p" secondAttribute="trailing" id="DV5-MW-Ujw"/>
                             <constraint firstItem="QJf-Un-CyG" firstAttribute="top" secondItem="FoF-KS-h5p" secondAttribute="bottom" constant="8" id="Dfx-Mj-QtL"/>
+                            <constraint firstItem="X8Y-nB-GLd" firstAttribute="bottom" secondItem="D0M-G5-X4T" secondAttribute="bottom" id="KtB-G6-eV0"/>
                             <constraint firstItem="FoF-KS-h5p" firstAttribute="leading" secondItem="Fsr-9R-BeD" secondAttribute="leading" id="ONH-Sb-Jcu"/>
                             <constraint firstItem="QJf-Un-CyG" firstAttribute="leading" secondItem="D0M-G5-X4T" secondAttribute="leading" id="XHE-Ne-6eP"/>
                             <constraint firstItem="FoF-KS-h5p" firstAttribute="top" secondItem="Fsr-9R-BeD" secondAttribute="top" id="aOT-m5-d9c"/>
-                            <constraint firstAttribute="trailing" secondItem="X8Y-nB-GLd" secondAttribute="trailing" id="gMy-xy-YkA"/>
-                            <constraint firstItem="X8Y-nB-GLd" firstAttribute="leading" secondItem="Fsr-9R-BeD" secondAttribute="leading" id="lWq-p1-Sew"/>
                             <constraint firstAttribute="bottom" secondItem="QJf-Un-CyG" secondAttribute="bottom" id="mYW-dm-8MY"/>
+                            <constraint firstItem="X8Y-nB-GLd" firstAttribute="trailing" secondItem="D0M-G5-X4T" secondAttribute="trailing" id="p7l-hZ-EHM"/>
+                            <constraint firstItem="X8Y-nB-GLd" firstAttribute="top" secondItem="V9t-R9-lhj" secondAttribute="bottom" constant="-44" id="pqM-fv-cZx"/>
                             <constraint firstAttribute="trailing" secondItem="QJf-Un-CyG" secondAttribute="trailing" id="wnX-Ir-gQF"/>
-                            <constraint firstAttribute="bottom" secondItem="X8Y-nB-GLd" secondAttribute="bottom" id="y2v-pV-voB"/>
+                            <constraint firstItem="X8Y-nB-GLd" firstAttribute="leading" secondItem="D0M-G5-X4T" secondAttribute="leading" id="xRC-xy-wJ6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D0M-G5-X4T"/>
                     </view>
                     <connections>
+                        <outlet property="matchOneFirst" destination="jEs-fl-hZX" id="AXf-kW-lGl"/>
+                        <outlet property="matchOneSecond" destination="wyL-hI-8JE" id="XIt-my-fgv"/>
+                        <outlet property="matchThreeFirst" destination="vRl-HF-bn9" id="uxQ-Ju-0gx"/>
+                        <outlet property="matchThreeSecond" destination="lRr-VG-sFx" id="cag-6w-FVl"/>
+                        <outlet property="matchTwoFirst" destination="0iO-HV-bcP" id="cPE-AE-3L5"/>
+                        <outlet property="matchTwoSecond" destination="wvV-Xp-pSl" id="vzN-sp-ORE"/>
                         <outlet property="playerOneImage" destination="kbM-5T-HoI" id="NN2-sh-lVw"/>
                         <outlet property="playerOneNameLabel" destination="sHf-AZ-mco" id="IYi-Ir-fae"/>
                         <outlet property="playerTwoImage" destination="n4k-GF-YVI" id="ynA-Ay-RhO"/>
@@ -610,7 +699,7 @@
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ejI-MY-sZD"/>
+        <segue reference="yR0-np-IFy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.93333333330000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
