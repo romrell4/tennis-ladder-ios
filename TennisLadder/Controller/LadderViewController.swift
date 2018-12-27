@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LadderViewController.swift
 //  Tennis
 //
 //  Created by Z Tai on 12/12/18.
@@ -34,13 +34,13 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detail",
+        if segue.identifier == "playerSelected",
             let vc = segue.destination as? PlayerViewController,
             let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell) {
             
             vc.player = players[indexPath.row]
-        } else if segue.identifier == "playerSelected",
+        } else if segue.identifier == "matchReported",
             let vc = segue.destination as? ReportMatchViewController,
             let player = sender as? Player {
             //TODO: figure out which player belongs to who
@@ -56,13 +56,10 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlayerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         if let cell = cell as? PlayerCell {
             let player = players[indexPath.row]
-            cell.name.text = player.name
-            cell.points.text = String(player.score)
-            cell.userImage.moa.url = player.photoUrl
         }
         
         return cell

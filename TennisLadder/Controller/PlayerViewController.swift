@@ -1,16 +1,13 @@
 //
-//  DetailViewController.swift
+//  PlayerViewController.swift
 //  Tennis
 //
 //  Created by Z Tai on 12/12/18.
 //  Copyright © 2018 Z Tai. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import moa
-
-private let DATE_FORMATTTER = DateFormatter.defaultDateFormat("dd/MM/yyyy")
 
 class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //MARK: Public Properties
@@ -20,12 +17,10 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     private var matches = [Match]()
     
     //MARK: Outlets
-    @IBOutlet var playerImage: UIImageView!
-    @IBOutlet var currentRankingLabel: UILabel!
-    @IBOutlet var scoreLabel: UILabel!
-    @IBOutlet var reportMatchBarButton: UIBarButtonItem!
-    @IBOutlet var matchTableView: UITableView!
-    @IBOutlet var matchReport: UIToolbar!
+    @IBOutlet private weak var playerImage: UIImageView!
+    @IBOutlet private weak var currentRankingLabel: UILabel!
+    @IBOutlet private weak var recordLabel: UILabel!
+    @IBOutlet private weak var matchTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +39,14 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    func loadViews() {
+    override func viewDidAppear(_ animated: Bool) {
+        self.matchTableView.reloadData()
+    }
+    
+    private func loadViews() {
         playerImage.moa.url = player.photoUrl
-        currentRankingLabel.text = "# \(String(player.ranking))"
-        scoreLabel.text = String("\(player.wins) - \(player.losses)")
+        currentRankingLabel.text = "#\(String(player.ranking))"
+        recordLabel.text = String("\(player.wins) - \(player.losses)")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,24 +54,29 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = matchTableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath)
+        let cell = matchTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        if let cell = cell as? DetailCell {
-            let match = matches[indexPath.row]
-            cell.matchLabel.text = "\(match.matchId)"
-            cell.setScoresLabel.text = "\(match.winnerSet1Score)-\(match.loserSet1Score), \(match.winnerSet2Score)-\(match.loserSet2Score)"
+        if let cell = cell as? MatchTableViewCell {
+            cell.match = matches[indexPath.row]
         }
         
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "playerSelected",
+        if segue.identifier == "matchReported",
             let vc = segue.destination as? ReportMatchViewController {
             
             //TODO: Figure out player one and why this is not passing anything
             vc.playerTwo = player
             vc.playerOne = player
+            vc.delegate = self
         }
+    }
+}
+
+extension PlayerViewController: ReportMatchViewControllerDelegate {
+    func passNewMatch(match: Match) {
+        matches.append(match)
     }
 }

@@ -9,43 +9,40 @@
 import UIKit
 import moa
 
+protocol ReportMatchViewControllerDelegate {
+    func passNewMatch(match: Match)
+}
+
 class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: Public Properties
-    var playerOne : Player!
-    var playerTwo : Player!
+    var playerOne: Player!
+    var matches: [Match]!
+    var playerTwo: Player!
+    var delegate: ReportMatchViewControllerDelegate!
     
     //MARK: Private Properties
-    private var possibleScores = [0, 1, 2, 3, 4, 5, 6, 7]
+    private var possibleScores = Array(0...7)
     private var scores = [0, 0, 0, 0, 0, 0, 0]
     
     //MARK: Outlets
-    @IBOutlet var playerOneImage: UIImageView!
-    @IBOutlet var playerOneNameLabel: UILabel!
+    @IBOutlet private weak var playerOneImage: UIImageView!
+    @IBOutlet private weak var playerOneNameLabel: UILabel!
     
-    @IBOutlet var playerTwoImage: UIImageView!
-    @IBOutlet var playerTwoNameLabel: UILabel!
+    @IBOutlet private weak var playerTwoImage: UIImageView!
+    @IBOutlet private weak var playerTwoNameLabel: UILabel!
     
-    @IBOutlet var matchOneFirst: UIPickerView!
-    @IBOutlet var matchOneSecond: UIPickerView!
-    @IBOutlet var matchTwoFirst: UIPickerView!
-    @IBOutlet var matchTwoSecond: UIPickerView!
-    @IBOutlet var matchThreeFirst: UIPickerView!
-    @IBOutlet var matchThreeSecond: UIPickerView!
+    @IBOutlet private weak var matchOneFirst: UIPickerView!
+    @IBOutlet private weak var matchOneSecond: UIPickerView!
+    @IBOutlet private weak var matchTwoFirst: UIPickerView!
+    @IBOutlet private weak var matchTwoSecond: UIPickerView!
+    @IBOutlet private weak var matchThreeFirst: UIPickerView!
+    @IBOutlet private weak var matchThreeSecond: UIPickerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var player = playerOne
-        var pickers = [
-            matchOneFirst,
-            matchOneSecond,
-            matchTwoFirst,
-            matchTwoSecond,
-            matchThreeFirst,
-            matchThreeSecond,
-            ]
         setUpViews()
     }
-    
+
     func setUpViews() {
         if let playOne = playerOne {
             playerOneImage.moa.url = playOne.photoUrl
@@ -58,7 +55,7 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
     }
     
-    func numberOfComponents(in matchOnePV: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1;
     }
     
@@ -73,78 +70,76 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == matchOneFirst {
             scores[0] = possibleScores[row]
-        }
-        else if pickerView == matchOneSecond {
+        } else if pickerView == matchOneSecond {
             scores[1] = possibleScores[row]
-        }
-        else if pickerView == matchTwoFirst {
+        } else if pickerView == matchTwoFirst {
             scores[2] = possibleScores[row]
-        }
-        else if pickerView == matchTwoSecond {
+        } else if pickerView == matchTwoSecond {
             scores[3] = possibleScores[row]
-        }
-        else if pickerView == matchThreeFirst {
+        } else if pickerView == matchThreeFirst {
             scores[4] = possibleScores[row]
-        }
-        else if pickerView == matchThreeSecond {
+        } else if pickerView == matchThreeSecond {
             scores[5] = possibleScores[row]
         }
    }
     
     @IBAction func reportPressed(_ sender: Any) {
-        var outcome = checkMatchOutcome(scores)
-        
-        //TODO: figure out the victory and losing message
+        let outcome = checkMatchOutcome(scores)
         let message = generateMessage(outcome, scores)
         
         let reportConfirmAlert = UIAlertController(title: "Confirm", message: message, preferredStyle: UIAlertController.Style.alert)
         
-        reportConfirmAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action: UIAlertAction!) in
+        reportConfirmAlert.addAction(UIAlertAction(title: "Yes", style: .default) { (_) in
             //TODO: Create Match object and encode JSON
-            self.presentingViewController?.dismiss(animated: true, completion: nil)
-        }))
+            var newMatch = Match(matchId: 0,
+                 ladderId: 0,
+                 matchDate: Date(),
+                 winner: self.playerOne,
+                 loser: self.playerTwo,
+                 winnerSet1Score: self.scores[1],
+                 loserSet1Score: self.scores[0],
+                 winnerSet2Score: self.scores[3],
+                 loserSet2Score: self.scores[2],
+                 winnerSet3Score: self.scores[4],
+                 loserSet3Score: self.scores[5])
+            
+            self.delegate.passNewMatch(match: newMatch)
+            self.presentingViewController?.dismiss(animated: true)
+        })
         
-        reportConfirmAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-        }))
+        reportConfirmAlert.addAction(UIAlertAction(title: "No", style: .cancel) { (_) in })
         
-        present(reportConfirmAlert, animated: true, completion: nil)
+        present(reportConfirmAlert, animated: true)
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true)
     }
-}
 
-extension UIViewController {
-    func checkMatchOutcome(_ scores: [Int]) -> Bool{
+    private func checkMatchOutcome(_ scores: [Int]) -> Bool {
         var userWin = 0;
         
-        if (scores[0] > scores[1]) {
+        if scores[0] > scores[1] {
             userWin += 1;
         }
-        if (scores[2] > scores[3]) {
+        if scores[2] > scores[3] {
+            userWin += 1;
+        }
+        if scores[5] > scores[4] {
             userWin += 1;
         }
         
-        return (userWin > 1) ? true : false
+        return userWin > 1
     }
     
-    func generateMessage(_ result: Bool, _ scores: [Int]) ->String {
+    private func generateMessage(_ result: Bool, _ scores: [Int]) ->String {
         var message = ""
-        var outcome = ""
         var score = ""
-        
-        if result == true {
-            outcome = "won"
-        }
-        else {
-            outcome = "lost"
-        }
+        let outcome = result ? "won" : "lost" 
     
         if scores[5] == 0 && scores[4] == 0 {
             score = String("\(scores[0])-\(scores[1]), \(scores[2])-\(scores[3])")
-        }
-        else {
+        } else {
             score = String("\(scores[0])-\(scores[1]), \(scores[2])-\(scores[3]), \(scores[4])-\(scores[5])")
         }
         

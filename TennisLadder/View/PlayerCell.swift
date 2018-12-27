@@ -9,7 +9,15 @@
 import UIKit
 
 class PlayerCell: UITableViewCell {
-    @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var points: UILabel!
-    @IBOutlet var userImage: UIImageView!
+    @IBOutlet private weak var name: UILabel!
+    @IBOutlet private weak var points: UILabel!
+    @IBOutlet private weak var userImage: UIImageView!
+
+    var player: Player! {
+        didSet {
+            name.text = player.name
+            points.text = String(player.score)
+            userImage.moa.url = player.photoUrl
+        }
+    }
 }
