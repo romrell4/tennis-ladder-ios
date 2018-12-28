@@ -72,7 +72,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
             cell.player = player
         
             //Highlight the logged in player
-            cell.backgroundColor = player == me ? UIColor(red: 1, green: 249/255, blue: 195/255, alpha: 1) : .clear
+            cell.backgroundColor = player == me ? .meRowColor : .clear
         }
         
         return cell

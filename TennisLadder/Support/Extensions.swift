@@ -82,6 +82,12 @@ extension String {
 	}
 }
 
+extension UIColor {
+    static var meRowColor: UIColor {
+        return UIColor(red: 1, green: 249/255, blue: 195/255, alpha: 1)
+    }
+}
+
 extension UITableView {
 	func dequeueCell(at indexPath: IndexPath) -> UITableViewCell {
 		return dequeueReusableCell(withIdentifier: "cell", for: indexPath)
