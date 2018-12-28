@@ -118,8 +118,8 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
             set3WinnerScoreTextField.text = String(scores[5])
         }
    }
-    
-    @IBAction func reportPressed(_ sender: Any) {
+
+    @IBAction func reportMatchPressed(_ sender: Any) {
         print("registered")
         let outcome = checkMatchOutcome(scores)
         let message = generateMessage(outcome, scores)
@@ -128,19 +128,19 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         reportConfirmAlert.addAction(UIAlertAction(title: "Yes", style: .default) { (_) in
             //TODO: Create Match object and encode JSON
-//            var newMatch = Match(matchId: 0,
-//                 ladderId: 0,
-//                 matchDate: Date(),
-//                 winner: self.playerOne,
-//                 loser: self.playerTwo,
-//                 winnerSet1Score: self.scores[1],
-//                 loserSet1Score: self.scores[0],
-//                 winnerSet2Score: self.scores[3],
-//                 loserSet2Score: self.scores[2],
-//                 winnerSet3Score: self.scores[4],
-//                 loserSet3Score: self.scores[5])
+            //            var newMatch = Match(matchId: 0,
+            //                 ladderId: 0,
+            //                 matchDate: Date(),
+            //                 winner: self.playerOne,
+            //                 loser: self.playerTwo,
+            //                 winnerSet1Score: self.scores[1],
+            //                 loserSet1Score: self.scores[0],
+            //                 winnerSet2Score: self.scores[3],
+            //                 loserSet2Score: self.scores[2],
+            //                 winnerSet3Score: self.scores[4],
+            //                 loserSet3Score: self.scores[5])
             
-//            self.delegate.passNewMatch(match: newMatch)
+            //            self.delegate.passNewMatch(match: newMatch)
             self.presentingViewController?.dismiss(animated: true)
         })
         

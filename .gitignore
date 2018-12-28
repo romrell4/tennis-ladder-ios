@@ -3,3 +3,4 @@ xcshareddata
 Pods/*
 Podfile.lock
 GoogleService-info.plist
+.DS_Store
