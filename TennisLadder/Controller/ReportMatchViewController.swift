@@ -28,7 +28,7 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     private var picker4 = UIPickerView()
     private var picker5 = UIPickerView()
     private var picker6 = UIPickerView()
-    private var newMatch: Match?
+    private var newMatch: Match!
 
     //MARK: Outlets
     @IBOutlet private weak var set1LoserScoreTextField: UITextField!
@@ -38,8 +38,8 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet private weak var set3LoserScoreTextField: UITextField!
     @IBOutlet private weak var set3WinnerScoreTextField: UITextField!
     
-    @IBOutlet private weak var userPlayerImage: UIImageView!
-    @IBOutlet private weak var currentPlayerImage: UIImageView!
+    @IBOutlet private weak var meImageView: UIImageView!
+    @IBOutlet private weak var opponentImageView: UIImageView!
     
     @IBOutlet private weak var userPlayerNameLabel: UILabel!
     @IBOutlet private weak var currentPlayerNameLabel: UILabel!
@@ -48,6 +48,19 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        newMatch = Match(matchId: nil,
+              ladderId: self.me.ladderId,
+              matchDate: nil,
+              winner: self.me,
+              loser: self.opponent,
+              winnerSet1Score: 0,
+              loserSet1Score: 0,
+              winnerSet2Score: 0,
+              loserSet2Score: 0,
+              winnerSet3Score: nil,
+              loserSet3Score: nil)
+        
         setUpViews()
         
         let pickers = [picker1, picker2, picker3, picker4, picker5, picker6]
@@ -69,11 +82,10 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
             bottomToolBar.isHidden = true
         }
         
-        userPlayerImage.moa.url = me.photoUrl
+        meImageView.moa.url = me.photoUrl
         userPlayerNameLabel.text = me.name
 
-
-        currentPlayerImage.moa.url = opponent.photoUrl
+        opponentImageView.moa.url = opponent.photoUrl
         currentPlayerNameLabel.text = opponent.name
     }
     
@@ -135,20 +147,7 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         let reportConfirmAlert = UIAlertController(title: "Confirm", message: message, preferredStyle: UIAlertController.Style.alert)
         
         reportConfirmAlert.addAction(UIAlertAction(title: "Yes", style: .default) { (_) in
-            //TODO: Create Match object and encode JSON
-            //            var newMatch = Match(matchId: 0,
-            //                 ladderId: 0,
-            //                 matchDate: Date(),
-            //                 winner: self.playerOne,
-            //                 loser: self.playerTwo,
-            //                 winnerSet1Score: self.scores[1],
-            //                 loserSet1Score: self.scores[0],
-            //                 winnerSet2Score: self.scores[3],
-            //                 loserSet2Score: self.scores[2],
-            //                 winnerSet3Score: self.scores[4],
-            //                 loserSet3Score: self.scores[5])
-            
-            //            self.delegate.passNewMatch(match: newMatch)
+//            self.delegate.passNewMatch(match: self.newMatch)
             self.dismiss(animated: true)
         })
         
