@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import moa
 
 class LadderViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
@@ -14,7 +15,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	var ladder: Ladder!
 	
 	//MARK: Private properties
-	private var players = [Player]()
+    private var me: Player?
+    private var players = [Player]()
 	
 	//MARK: Outlets
     @IBOutlet private var tableView: UITableView!
@@ -26,6 +28,11 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
             switch response {
             case .success(let players):
                 self.players = players
+                
+                self.me = players.first { player in
+                    return player.userId == Auth.auth().currentUser?.uid
+                }
+                
                 self.tableView.reloadData()
             case .failure(let error):
                 self.displayError(error)
@@ -43,10 +50,10 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         } else if segue.identifier == "matchReported",
             let vc = segue.destination as? ReportMatchViewController,
             let player = sender as? Player {
-                //TODO: Figure out Google's Auth.auth().currentUser.userId
-                vc.me = player
-                vc.opponent = player
-            }
+            
+            vc.me = me
+            vc.opponent = player
+        }
     }
     
 	//MARK: UITableViewDelegate/Datasource
