@@ -66,7 +66,7 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         bottomToolBar.isHidden = false
         //Hide Report Match if the player is the user
         if currentPlayer.userId == userPlayer.userId {
-            bottomToolBar.isHidden = true;
+            bottomToolBar.isHidden = true
         }
         
         if let userPlay = userPlayer {
