@@ -14,7 +14,7 @@ enum Endpoints: URLRequestConvertible {
 	
 	case getLadders()
 	case getPlayers(Int)
-	case getMatches(Int, Int)
+	case getMatches(Int, String)
 	case reportMatch(Int, Match)
 	
 	private var method: HTTPMethod {
