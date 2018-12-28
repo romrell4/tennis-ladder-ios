@@ -13,7 +13,7 @@ protocol ReportMatchViewControllerDelegate {
     func passNewMatch(match: Match)
 }
 
-class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ReportMatchViewController: UIViewController {
     //MARK: Public Properties
     var me: Player!
     var opponent: Player!
@@ -21,12 +21,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     //MARK: Private Properties
     private var possibleScores = Array(0...7)
-    private var picker1 = UIPickerView()
-    private var picker2 = UIPickerView()
-    private var picker3 = UIPickerView()
-    private var picker4 = UIPickerView()
-    private var picker5 = UIPickerView()
-    private var picker6 = UIPickerView()
     private var newMatch: Match!
 
     //MARK: Outlets
@@ -60,9 +54,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         
         setUpViews()
         
-        let pickers = [picker1, picker2, picker3, picker4, picker5, picker6]
-        setUpPickers(pickers)
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         
         view.addGestureRecognizer(tap)
@@ -79,53 +70,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         opponentImageView.moa.url = opponent.photoUrl
         opponentNameLabel.text = opponent.name
     }
-    
-    private func setUpPickers(_ pickers: [UIPickerView]) {
-        for (_, picker) in pickers.enumerated() {
-            picker.delegate = self
-            picker.dataSource = self
-        }
-        
-        set1LoserScoreTextField.inputView = picker1
-        set1WinnerScoreTextField.inputView = picker2
-        set2LoserScoreTextField.inputView = picker3
-        set2WinnerScoreTextField.inputView = picker4
-        set3LoserScoreTextField.inputView = picker5
-        set3WinnerScoreTextField.inputView = picker6
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1;
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return possibleScores.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(possibleScores[row])
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let text = String(possibleScores[row])
-        
-        switch pickerView {
-            case picker1:
-                set1LoserScoreTextField.text = text
-            case picker2:
-                set1WinnerScoreTextField.text = text
-            case picker3:
-                set2LoserScoreTextField.text = text
-            case picker4:
-                set2WinnerScoreTextField.text = text
-            case picker5:
-                set3LoserScoreTextField.text = text
-            case picker6:
-                set3WinnerScoreTextField.text = text
-            default:
-                fatalError("Invalid picker selected.")
-        }
-   }
 
     @IBAction func reportMatchPressed(_ sender: Any) {
         let message = generateMessage()
@@ -147,11 +91,19 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     private func generateMessage() -> String {
-        let result = checkMatchOutcome()
-    
-        let score = "\(set1WinnerScoreTextField.textNN)-\(set1LoserScoreTextField.textNN), \(set2WinnerScoreTextField.textNN)-\(set2LoserScoreTextField.textNN)\(set3WinnerScoreTextField.text != "0" || set2LoserScoreTextField.text != "0" ? ", \(set3WinnerScoreTextField.textNN)-\(set3LoserScoreTextField.textNN)" : "")"
+        let list: [(UITextField, UITextField)] = [
+            (set1WinnerScoreTextField, set1LoserScoreTextField),
+            (set2WinnerScoreTextField, set2LoserScoreTextField),
+            (set3WinnerScoreTextField, set3LoserScoreTextField)
+        ]
         
-        return "You have reported that you \(result ? "won" : "lost") this match:\n\n\(score)\n\nIs this correct?"
+        //Turn textfields into match string
+        let matchScore = list.map { ($0.0.textNN, $0.1.textNN) }
+            .filter { $0.0 != "0" && $0.1 != "0" }
+            .map { "\($0.0)-\($0.1)" }
+            .joined(separator: ", ")
+        
+        return "You have reported that you \(checkMatchOutcome() ? "won" : "lost") this match:\n\n\(matchScore)\n\nIs this correct?"
     }
     
     private func checkMatchOutcome() -> Bool {
