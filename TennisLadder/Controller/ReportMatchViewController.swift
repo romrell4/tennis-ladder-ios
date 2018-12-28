@@ -107,29 +107,31 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == picker1 {
-            scores[0] = possibleScores[row]
-            set1LoserScoreTextField.text = String(scores[0])
-        } else if pickerView == picker2 {
-            scores[1] = possibleScores[row]
-            set1WinnerScoreTextField.text = String(scores[1])
-        } else if pickerView == picker3 {
-            scores[2] = possibleScores[row]
-            set2LoserScoreTextField.text = String(scores[2])
-        } else if pickerView == picker4 {
-            scores[3] = possibleScores[row]
-            set2WinnerScoreTextField.text = String(scores[3])
-        } else if pickerView == picker5 {
-            scores[4] = possibleScores[row]
-            set3LoserScoreTextField.text = String(scores[4])
-        } else if pickerView == picker6 {
-            scores[5] = possibleScores[row]
-            set3WinnerScoreTextField.text = String(scores[5])
+        switch pickerView {
+            case picker1:
+                scores[0] = possibleScores[row]
+                set1LoserScoreTextField.text = String(scores[0])
+            case picker2:
+                scores[1] = possibleScores[row]
+                set1WinnerScoreTextField.text = String(scores[1])
+            case picker3:
+                scores[2] = possibleScores[row]
+                set2LoserScoreTextField.text = String(scores[2])
+            case picker4:
+                scores[3] = possibleScores[row]
+                set2WinnerScoreTextField.text = String(scores[3])
+            case picker5:
+                scores[4] = possibleScores[row]
+                set3LoserScoreTextField.text = String(scores[4])
+            case picker6:
+                scores[5] = possibleScores[row]
+                set3WinnerScoreTextField.text = String(scores[5])
+            default:
+                fatalError("Invalid picker selected.")
         }
    }
 
     @IBAction func reportMatchPressed(_ sender: Any) {
-        print("registered")
         let outcome = checkMatchOutcome(scores)
         let message = generateMessage(outcome, scores)
         
