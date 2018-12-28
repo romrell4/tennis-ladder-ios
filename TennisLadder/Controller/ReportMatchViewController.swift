@@ -54,7 +54,7 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         view.addGestureRecognizer(tap)
     }
     
-    @objc func dismissKeyboard() {
+    @objc private func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
@@ -84,7 +84,7 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         match3LoserScoreTextField.inputView = picker5
         match3WinnerScoreTextField.inputView = picker6
     }
-        
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1;
     }
