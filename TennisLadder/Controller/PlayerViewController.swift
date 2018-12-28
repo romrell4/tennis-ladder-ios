@@ -66,9 +66,9 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         if segue.identifier == "matchReported",
             let vc = segue.destination as? ReportMatchViewController {
             
-            //TODO: Figure out player one and why this is not passing anything
+            //currentPlayer is the opponent
             vc.currentPlayer = player
-            vc.opponentPlayer = player
+            vc.userPlayer = player //has to be replace by the Firebase userid
             vc.delegate = self
         }
     }

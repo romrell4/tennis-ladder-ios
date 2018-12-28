@@ -43,9 +43,9 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         } else if segue.identifier == "matchReported",
             let vc = segue.destination as? ReportMatchViewController,
             let player = sender as? Player {
-            //TODO: figure out which player belongs to who
+            //TODO: Figure out Google's Auth.auth().currentUser.userId
                 vc.currentPlayer = player
-                vc.opponentPlayer = player
+                vc.userPlayer = player
             }
     }
     

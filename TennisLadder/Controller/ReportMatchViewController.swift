@@ -16,7 +16,7 @@ protocol ReportMatchViewControllerDelegate {
 class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: Public Properties
     var currentPlayer: Player!
-    var opponentPlayer: Player!
+    var userPlayer: Player!
     var delegate: ReportMatchViewControllerDelegate!
     
     //MARK: Private Properties
@@ -39,11 +39,17 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet private weak var set3LoserScoreTextField: UITextField!
     @IBOutlet private weak var set3WinnerScoreTextField: UITextField!
     
-    @IBOutlet private weak var opponentImage: UIImageView!
+    @IBOutlet private weak var userPlayerImage: UIImageView!
     @IBOutlet private weak var currentPlayerImage: UIImageView!
+    
+    @IBOutlet private weak var userPlayerNameLabel: UILabel!
+    @IBOutlet private weak var currentPlayerNameLabel: UILabel!
+    
+    @IBOutlet private weak var bottomToolBar: UIToolbar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpViews()
         
         let pickers = [picker1, picker2, picker3, picker4, picker5, picker6]
@@ -60,15 +66,21 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     private func setUpViews() {
-//        if let currentPlay = playerOne {
-//            playerOneImage.moa.url = playOne.photoUrl
-//            playerTwoImage.moa.url = playOne.photoUrl
-//        }
-//
-//        if let playTwo = playerTwo {
-//            playerOneNameLabel.text = playTwo.name
-//            playerTwoNameLabel.text = playTwo.name
-//        }
+        bottomToolBar.isHidden = false
+        //Hide Report Match if the player is the user
+        if currentPlayer.userId == userPlayer.userId {
+            bottomToolBar.isHidden = true;
+        }
+        
+        if let userPlay = userPlayer {
+            userPlayerImage.moa.url = userPlay.photoUrl
+            userPlayerNameLabel.text = userPlay.name
+        }
+
+        if let currentPlay = currentPlayer {
+            currentPlayerImage.moa.url = currentPlay.photoUrl
+            currentPlayerNameLabel.text = currentPlay.name
+        }
     }
     
     private func setUpPickers(_ pickers: [UIPickerView]) {
