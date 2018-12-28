@@ -650,9 +650,10 @@
                     </view>
                     <connections>
                         <outlet property="bottomToolBar" destination="ftb-Qu-tdG" id="MNX-cV-v0L"/>
-                        <outlet property="currentPlayerNameLabel" destination="7an-bm-utQ" id="1TS-Ji-hnQ"/>
                         <outlet property="meImageView" destination="ftz-SQ-4Wv" id="0w8-wq-SfL"/>
+                        <outlet property="meNameLabel" destination="Abd-Xg-fs2" id="mup-Qo-10a"/>
                         <outlet property="opponentImageView" destination="QHS-e7-63p" id="CMZ-Ea-9yV"/>
+                        <outlet property="opponentNameLabel" destination="7an-bm-utQ" id="1TS-Ji-hnQ"/>
                         <outlet property="set1LoserScoreTextField" destination="HNo-mJ-Y7j" id="ysG-nZ-0nX"/>
                         <outlet property="set1WinnerScoreTextField" destination="ke0-sk-Ppz" id="oqf-58-E5b"/>
                         <outlet property="set2LoserScoreTextField" destination="3mp-i2-3Ub" id="1Rn-Jg-vBo"/>

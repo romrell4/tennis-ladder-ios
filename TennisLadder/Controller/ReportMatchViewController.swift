@@ -41,8 +41,8 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet private weak var meImageView: UIImageView!
     @IBOutlet private weak var opponentImageView: UIImageView!
     
-    @IBOutlet private weak var userPlayerNameLabel: UILabel!
-    @IBOutlet private weak var currentPlayerNameLabel: UILabel!
+    @IBOutlet private weak var meNameLabel: UILabel!
+    @IBOutlet private weak var opponentNameLabel: UILabel!
     
     @IBOutlet private weak var bottomToolBar: UIToolbar!
     
@@ -83,10 +83,10 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         }
         
         meImageView.moa.url = me.photoUrl
-        userPlayerNameLabel.text = me.name
+        meNameLabel.text = me.name
 
         opponentImageView.moa.url = opponent.photoUrl
-        currentPlayerNameLabel.text = opponent.name
+        opponentNameLabel.text = opponent.name
     }
     
     private func setUpPickers(_ pickers: [UIPickerView]) {
