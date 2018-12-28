@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Player: Codable {
+struct Player: Codable, Equatable {
 	let userId: String
 	let ladderId: Int
     let name: String

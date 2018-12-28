@@ -66,8 +66,13 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueCell(at: indexPath)
         
         if let cell = cell as? PlayerCell {
+            let player = players[indexPath.row]
+            
             //Initialize the cell with the ladder at that index path
-            cell.player = players[indexPath.row]
+            cell.player = player
+        
+            //Highlight the logged in player
+            cell.backgroundColor = player == me ? UIColor(red: 1, green: 249/255, blue: 195/255, alpha: 1) : .clear
         }
         
         return cell

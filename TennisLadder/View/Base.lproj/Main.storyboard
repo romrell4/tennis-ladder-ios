@@ -676,7 +676,7 @@
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vdg-dd-gvY"/>
+        <segue reference="DWy-ad-bzb"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.93333333330000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
