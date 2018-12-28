@@ -614,7 +614,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4F9180E292F5EBAC27967091 /* Pods-TennisLadder.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TN3XLNWBJ8;
@@ -634,7 +633,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4E4BB323CF0F78FCE102409 /* Pods-TennisLadder.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TN3XLNWBJ8;
