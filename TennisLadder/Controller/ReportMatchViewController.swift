@@ -15,8 +15,8 @@ protocol ReportMatchViewControllerDelegate {
 
 class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: Public Properties
-    var currentPlayer: Player!
-    var userPlayer: Player!
+    var me: Player!
+    var opponent: Player!
     var delegate: ReportMatchViewControllerDelegate!
     
     //MARK: Private Properties
@@ -65,19 +65,16 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     private func setUpViews() {
         bottomToolBar.isHidden = false
         //Hide Report Match if the player is the user
-        if currentPlayer.userId == userPlayer.userId {
+        if opponent.userId == me.userId {
             bottomToolBar.isHidden = true
         }
         
-        if let userPlay = userPlayer {
-            userPlayerImage.moa.url = userPlay.photoUrl
-            userPlayerNameLabel.text = userPlay.name
-        }
+        userPlayerImage.moa.url = me.photoUrl
+        userPlayerNameLabel.text = me.name
 
-        if let currentPlay = currentPlayer {
-            currentPlayerImage.moa.url = currentPlay.photoUrl
-            currentPlayerNameLabel.text = currentPlay.name
-        }
+
+        currentPlayerImage.moa.url = opponent.photoUrl
+        currentPlayerNameLabel.text = opponent.name
     }
     
     private func setUpPickers(_ pickers: [UIPickerView]) {
