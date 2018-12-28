@@ -17,8 +17,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     //MARK: Public Properties
     var currentPlayer: Player!
     var opponentPlayer: Player!
-    var matches: [Match]!
-
     var delegate: ReportMatchViewControllerDelegate!
     
     //MARK: Private Properties
@@ -30,14 +28,16 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     private var picker4 = UIPickerView()
     private var picker5 = UIPickerView()
     private var picker6 = UIPickerView()
+    private var newMatch: Match!
+
     
     //MARK: Outlets
-    @IBOutlet private weak var match1LoserScoreTextField: UITextField!
-    @IBOutlet private weak var match1WinnerScoreTextField: UITextField!
-    @IBOutlet private weak var match2LoserScoreTextField: UITextField!
-    @IBOutlet private weak var match2WinnerScoreTextField: UITextField!
-    @IBOutlet private weak var match3LoserScoreTextField: UITextField!
-    @IBOutlet private weak var match3WinnerScoreTextField: UITextField!
+    @IBOutlet private weak var set1LoserScoreTextField: UITextField!
+    @IBOutlet private weak var set1WinnerScoreTextField: UITextField!
+    @IBOutlet private weak var set2LoserScoreTextField: UITextField!
+    @IBOutlet private weak var set2WinnerScoreTextField: UITextField!
+    @IBOutlet private weak var set3LoserScoreTextField: UITextField!
+    @IBOutlet private weak var set3WinnerScoreTextField: UITextField!
     
     @IBOutlet private weak var opponentImage: UIImageView!
     @IBOutlet private weak var currentPlayerImage: UIImageView!
@@ -77,12 +77,12 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
             picker.dataSource = self
         }
         
-        match1LoserScoreTextField.inputView = picker1
-        match1WinnerScoreTextField.inputView = picker2
-        match2LoserScoreTextField.inputView = picker3
-        match2WinnerScoreTextField.inputView = picker4
-        match3LoserScoreTextField.inputView = picker5
-        match3WinnerScoreTextField.inputView = picker6
+        set1LoserScoreTextField.inputView = picker1
+        set1WinnerScoreTextField.inputView = picker2
+        set2LoserScoreTextField.inputView = picker3
+        set2WinnerScoreTextField.inputView = picker4
+        set3LoserScoreTextField.inputView = picker5
+        set3WinnerScoreTextField.inputView = picker6
     }
         
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -100,26 +100,27 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == picker1 {
             scores[0] = possibleScores[row]
-            match1LoserScoreTextField.text = String(scores[0])
+            set1LoserScoreTextField.text = String(scores[0])
         } else if pickerView == picker2 {
             scores[1] = possibleScores[row]
-            match1WinnerScoreTextField.text = String(scores[1])
+            set1WinnerScoreTextField.text = String(scores[1])
         } else if pickerView == picker3 {
             scores[2] = possibleScores[row]
-            match2LoserScoreTextField.text = String(scores[2])
+            set2LoserScoreTextField.text = String(scores[2])
         } else if pickerView == picker4 {
             scores[3] = possibleScores[row]
-            match2WinnerScoreTextField.text = String(scores[3])
+            set2WinnerScoreTextField.text = String(scores[3])
         } else if pickerView == picker5 {
             scores[4] = possibleScores[row]
-            match3LoserScoreTextField.text = String(scores[4])
+            set3LoserScoreTextField.text = String(scores[4])
         } else if pickerView == picker6 {
             scores[5] = possibleScores[row]
-            match3WinnerScoreTextField.text = String(scores[5])
+            set3WinnerScoreTextField.text = String(scores[5])
         }
    }
     
     @IBAction func reportPressed(_ sender: Any) {
+        print("registered")
         let outcome = checkMatchOutcome(scores)
         let message = generateMessage(outcome, scores)
         
@@ -149,6 +150,7 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
+        print("registered")
         self.dismiss(animated: true)
     }
 

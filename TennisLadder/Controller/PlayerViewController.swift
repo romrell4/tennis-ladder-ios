@@ -25,26 +25,24 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         loadViews()
-        
-        if let userId = Int(player.userId) {
-            Endpoints.getMatches(player.ladderId, userId).response { (response: Response<[Match]>) in
-                switch response {
-                case .success(let matches):
-                    self.matches = matches
-                    self.matchTableView.reloadData()
-                case .failure(let error):
-                    print(error)
-                }
+
+        Endpoints.getMatches(player.ladderId, player.userId).response { (response: Response<[Match]>) in
+            switch response {
+            case .success(let matches):
+                self.matches = matches
+                self.matchTableView.reloadData()
+            case .failure(let error):
+                self.displayError(error)
             }
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.matchTableView.reloadData()
     }
     
     private func loadViews() {
-        playerImage.moa.url = player.photoUrl
+//        playerImage.moa.url = player.photoUrl
         currentRankingLabel.text = "#\(String(player.ranking))"
         recordLabel.text = String("\(player.wins) - \(player.losses)")
     }
@@ -54,9 +52,10 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = matchTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = matchTableView.dequeueCell(at: indexPath)
         
         if let cell = cell as? MatchTableViewCell {
+            //Initialize the cell with the ladder at that index path
             cell.match = matches[indexPath.row]
         }
         

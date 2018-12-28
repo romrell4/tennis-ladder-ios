@@ -28,7 +28,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
                 self.players = players
                 self.tableView.reloadData()
             case .failure(let error):
-                print(error)
+                self.displayError(error)
             }
         }
     }
@@ -56,10 +56,11 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueCell(at: indexPath)
         
         if let cell = cell as? PlayerCell {
-            let player = players[indexPath.row]
+            //Initialize the cell with the ladder at that index path
+            cell.player = players[indexPath.row]
         }
         
         return cell
