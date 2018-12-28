@@ -649,7 +649,6 @@
                         <viewLayoutGuide key="safeArea" id="dcw-J0-Fs3"/>
                     </view>
                     <connections>
-                        <outlet property="bottomToolBar" destination="ftb-Qu-tdG" id="MNX-cV-v0L"/>
                         <outlet property="meImageView" destination="ftz-SQ-4Wv" id="0w8-wq-SfL"/>
                         <outlet property="meNameLabel" destination="Abd-Xg-fs2" id="mup-Qo-10a"/>
                         <outlet property="opponentImageView" destination="QHS-e7-63p" id="CMZ-Ea-9yV"/>
@@ -660,7 +659,6 @@
                         <outlet property="set2WinnerScoreTextField" destination="SdX-bJ-b8i" id="Ep5-fD-IUL"/>
                         <outlet property="set3LoserScoreTextField" destination="te1-jv-l4N" id="raL-TS-jgA"/>
                         <outlet property="set3WinnerScoreTextField" destination="Yw4-g7-bos" id="QUr-HV-0j5"/>
-                        <outlet property="userPlayerNameLabel" destination="Abd-Xg-fs2" id="mup-Qo-10a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5V-UR-8xb" userLabel="First Responder" sceneMemberID="firstResponder"/>

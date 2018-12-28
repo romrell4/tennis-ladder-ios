@@ -21,7 +21,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     //MARK: Private Properties
     private var possibleScores = Array(0...7)
-    private var scores = [0, 0, 0, 0, 0, 0, 0]
     private var picker1 = UIPickerView()
     private var picker2 = UIPickerView()
     private var picker3 = UIPickerView()
@@ -43,8 +42,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     @IBOutlet private weak var meNameLabel: UILabel!
     @IBOutlet private weak var opponentNameLabel: UILabel!
-    
-    @IBOutlet private weak var bottomToolBar: UIToolbar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,12 +73,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     private func setUpViews() {
-        bottomToolBar.isHidden = false
-        //Hide Report Match if the player is the user
-        if opponent.userId == me.userId {
-            bottomToolBar.isHidden = true
-        }
-        
         meImageView.moa.url = me.photoUrl
         meNameLabel.text = me.name
 
@@ -116,33 +107,28 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let text = String(possibleScores[row])
+        
         switch pickerView {
             case picker1:
-                scores[0] = possibleScores[row]
-                set1LoserScoreTextField.text = String(scores[0])
+                set1LoserScoreTextField.text = text
             case picker2:
-                scores[1] = possibleScores[row]
-                set1WinnerScoreTextField.text = String(scores[1])
+                set1WinnerScoreTextField.text = text
             case picker3:
-                scores[2] = possibleScores[row]
-                set2LoserScoreTextField.text = String(scores[2])
+                set2LoserScoreTextField.text = text
             case picker4:
-                scores[3] = possibleScores[row]
-                set2WinnerScoreTextField.text = String(scores[3])
+                set2WinnerScoreTextField.text = text
             case picker5:
-                scores[4] = possibleScores[row]
-                set3LoserScoreTextField.text = String(scores[4])
+                set3LoserScoreTextField.text = text
             case picker6:
-                scores[5] = possibleScores[row]
-                set3WinnerScoreTextField.text = String(scores[5])
+                set3WinnerScoreTextField.text = text
             default:
                 fatalError("Invalid picker selected.")
         }
    }
 
     @IBAction func reportMatchPressed(_ sender: Any) {
-        let outcome = checkMatchOutcome(scores)
-        let message = generateMessage(outcome, scores)
+        let message = generateMessage()
         
         let reportConfirmAlert = UIAlertController(title: "Confirm", message: message, preferredStyle: UIAlertController.Style.alert)
         
@@ -159,36 +145,24 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBAction func cancelPressed(_ sender: Any) {
         self.dismiss(animated: true)
     }
-
-    private func checkMatchOutcome(_ scores: [Int]) -> Bool {
-        var userWin = 0;
+    
+    private func generateMessage() -> String {
+        let result = checkMatchOutcome()
+    
+        let score = "\(set1WinnerScoreTextField.textNN)-\(set1LoserScoreTextField.textNN), \(set2WinnerScoreTextField.textNN)-\(set2LoserScoreTextField.textNN)\(set3WinnerScoreTextField.text != "0" || set2LoserScoreTextField.text != "0" ? ", \(set3WinnerScoreTextField.textNN)-\(set3LoserScoreTextField.textNN)" : "")"
         
-        if scores[0] > scores[1] {
-            userWin += 1;
-        }
-        if scores[2] > scores[3] {
-            userWin += 1;
-        }
-        if scores[5] > scores[4] {
-            userWin += 1;
-        }
-        
-        return userWin > 1
+        return "You have reported that you \(result ? "won" : "lost") this match:\n\n\(score)\n\nIs this correct?"
     }
     
-    private func generateMessage(_ result: Bool, _ scores: [Int]) -> String {
-        var message = ""
-        var score = ""
-        let outcome = result ? "won" : "lost"
-    
-        if scores[5] == 0 && scores[4] == 0 {
-            score = String("\(scores[0])-\(scores[1]), \(scores[2])-\(scores[3])")
-        } else {
-            score = String("\(scores[0])-\(scores[1]), \(scores[2])-\(scores[3]), \(scores[4])-\(scores[5])")
-        }
-        
-        message = "You have reported that you " + outcome + " this match: \n\n" + score + "\n\n" + "Is this correct?"
-        
-        return message
+    private func checkMatchOutcome() -> Bool {
+        let playedThirdSet = set3WinnerScoreTextField.text != "0" || set3LoserScoreTextField.text != "0"
+        let lastSetScores = playedThirdSet ? [set3WinnerScoreTextField.textNN, set3LoserScoreTextField.textNN] : [set2WinnerScoreTextField.textNN, set2LoserScoreTextField.textNN]
+        return Int(lastSetScores[0]) ?? 0 > Int(lastSetScores[1]) ?? 0
+    }
+}
+
+extension UITextField {
+    fileprivate var textNN: String {
+        return text ?? ""
     }
 }
