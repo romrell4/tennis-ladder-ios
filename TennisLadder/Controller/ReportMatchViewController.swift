@@ -28,9 +28,8 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     private var picker4 = UIPickerView()
     private var picker5 = UIPickerView()
     private var picker6 = UIPickerView()
-    private var newMatch: Match!
+    private var newMatch: Match?
 
-    
     //MARK: Outlets
     @IBOutlet private weak var set1LoserScoreTextField: UITextField!
     @IBOutlet private weak var set1WinnerScoreTextField: UITextField!
@@ -49,7 +48,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpViews()
         
         let pickers = [picker1, picker2, picker3, picker4, picker5, picker6]
@@ -61,7 +59,6 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @objc private func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
@@ -153,16 +150,15 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
             //                 loserSet3Score: self.scores[5])
             
             //            self.delegate.passNewMatch(match: newMatch)
-            self.presentingViewController?.dismiss(animated: true)
+            self.dismiss(animated: true)
         })
         
-        reportConfirmAlert.addAction(UIAlertAction(title: "No", style: .cancel) { (_) in })
+        reportConfirmAlert.addAction(UIAlertAction(title: "No", style: .cancel))
         
         present(reportConfirmAlert, animated: true)
     }
     
     @IBAction func cancelPressed(_ sender: Any) {
-        print("registered")
         self.dismiss(animated: true)
     }
 
@@ -182,7 +178,7 @@ class ReportMatchViewController: UIViewController, UIPickerViewDelegate, UIPicke
         return userWin > 1
     }
     
-    private func generateMessage(_ result: Bool, _ scores: [Int]) ->String {
+    private func generateMessage(_ result: Bool, _ scores: [Int]) -> String {
         var message = ""
         var score = ""
         let outcome = result ? "won" : "lost"
