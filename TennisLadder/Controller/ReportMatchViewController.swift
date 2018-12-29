@@ -57,26 +57,15 @@ class ReportMatchViewController: UIViewController {
     }
 
     @IBAction func reportMatchPressed(_ sender: Any) {
-        let message = generateMessage()
+        let match = getMatch()
+        let message = generateMessage(match: match)
         
         let reportConfirmAlert = UIAlertController(title: "Confirm", message: message, preferredStyle: UIAlertController.Style.alert)
         
         reportConfirmAlert.addAction(UIAlertAction(title: "Yes", style: .default) { (_) in
 //            self.delegate.passNewMatch(match: self.newMatch)
             
-            //TODO: Fill in newMatch with proper values
-            let newMatch = Match(matchId: nil,
-                ladderId: self.me.ladderId,
-                matchDate: nil,
-                winner: self.me,
-                loser: self.opponent,
-                winnerSet1Score: 0,
-                loserSet1Score: 0,
-                winnerSet2Score: 0,
-                loserSet2Score: 0,
-                winnerSet3Score: nil,
-                loserSet3Score: nil)
-            Endpoints.reportMatch(newMatch.ladderId, newMatch).responseSingle { (response: Response<Match>) in
+            Endpoints.reportMatch(match.ladderId, match).responseSingle { (response: Response<Match>) in
                 switch response {
                     case .success(let match):
                         //TODO: Unwind Segue
@@ -97,7 +86,7 @@ class ReportMatchViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    private func generateMessage() -> String {
+    private func generateMessage(match: Match) -> String {
         let list: [(UITextField, UITextField)] = [
             (set1WinnerScoreTextField, set1LoserScoreTextField),
             (set2WinnerScoreTextField, set2LoserScoreTextField),
@@ -108,11 +97,26 @@ class ReportMatchViewController: UIViewController {
         let playedSets = list.map { ($0.0.text ?? "", $0.1.text ?? "") }
             .filter { $0.0 != "" && $0.1 != "" }
         
+        //TODO: Move this logic into the match object
         let lastSet = playedSets.last ?? ("", "")
         
-        let matchScore = playedSets.map { "\($0.0)-\($0.1)" }
-            .joined(separator: ", ")
+        return "You have reported that you \(Int(lastSet.0) ?? 0 > Int(lastSet.1) ?? 0 ? "won" : "lost") this match:\n\n\(match.scoreDisplay)\n\nIs this correct?"
+    }
+    
+    private func getMatch() -> Match {
+        //TODO: Fill in newMatch with proper values
+        let newMatch = Match(matchId: nil,
+                             ladderId: self.me.ladderId,
+                             matchDate: nil,
+                             winner: self.me,
+                             loser: self.opponent,
+                             winnerSet1Score: 0,
+                             loserSet1Score: 0,
+                             winnerSet2Score: 0,
+                             loserSet2Score: 0,
+                             winnerSet3Score: nil,
+                             loserSet3Score: nil)
         
-        return "You have reported that you \(Int(lastSet.0) ?? 0 > Int(lastSet.1) ?? 0 ? "won" : "lost") this match:\n\n\(matchScore)\n\nIs this correct?"
+        return newMatch
     }
 }

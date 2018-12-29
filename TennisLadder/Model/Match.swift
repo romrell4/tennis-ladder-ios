@@ -20,4 +20,16 @@ struct Match: Codable {
 	var loserSet2Score: Int
 	var winnerSet3Score: Int?
 	var loserSet3Score: Int?
+    
+    var scoreDisplay: String {
+        let sets = [
+            (winnerSet1Score, loserSet1Score),
+            (winnerSet2Score, loserSet2Score),
+            (winnerSet3Score, loserSet3Score)
+        ]
+        
+        return sets.filter { $0.0 != nil && $0.1 != nil }
+            .map { "\($0.0 ?? 0)-\($0.1 ?? 0)" }
+            .joined(separator: ", ")
+    }
 }
