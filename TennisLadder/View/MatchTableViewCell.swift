@@ -10,14 +10,12 @@ import UIKit
 
 class MatchTableViewCell: UITableViewCell {
     @IBOutlet private weak var matchLabel: UILabel!
-    @IBOutlet private weak var recordLabel: UILabel!
+    @IBOutlet private weak var setsLabel: UILabel!
     
     var match: Match! {
         didSet {
-            
-            //TODO: Rename recordLabel
-            matchLabel.text = "\(match.matchId)"
-            recordLabel.text = match.scoreDisplay
+            matchLabel.text = "Match \(match.matchId)"
+            setsLabel.text = match.scoreDisplay
         }
     }
 }

@@ -19,7 +19,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     //MARK: Outlets
     @IBOutlet private weak var playerImage: UIImageView!
     @IBOutlet private weak var currentRankingLabel: UILabel!
-    @IBOutlet private weak var recordLabel: UILabel!
+    @IBOutlet private weak var setsLabel: UILabel!
     @IBOutlet private weak var matchTableView: UITableView!
     
     override func viewDidLoad() {
@@ -48,7 +48,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     private func loadViews() {
         playerImage.moa.url = player.photoUrl
         currentRankingLabel.text = "#\(String(player.ranking))"
-        recordLabel.text = String("\(player.wins) - \(player.losses)")
+        setsLabel.text = String("\(player.wins) - \(player.losses)")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

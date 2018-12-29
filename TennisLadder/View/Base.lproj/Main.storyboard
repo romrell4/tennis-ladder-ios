@@ -357,7 +357,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="matchLabel" destination="n50-vR-RIE" id="ZBr-pC-7pR"/>
-                                            <outlet property="recordLabel" destination="YKV-mI-Ifb" id="jFz-Qm-lcS"/>
+                                            <outlet property="setsLabel" destination="YKV-mI-Ifb" id="jFz-Qm-lcS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -404,7 +404,7 @@
                         <outlet property="currentRankingLabel" destination="T38-mF-xdy" id="wUU-nA-a0x"/>
                         <outlet property="matchTableView" destination="cs1-PK-uKF" id="6MH-Bf-K0u"/>
                         <outlet property="playerImage" destination="ELg-uw-b8n" id="Bim-Z7-coJ"/>
-                        <outlet property="recordLabel" destination="6aO-OG-WYK" id="fKp-XX-9M9"/>
+                        <outlet property="setsLabel" destination="6aO-OG-WYK" id="fKp-XX-9M9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ff-IP-eOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,7 +676,7 @@
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DWy-ad-bzb"/>
+        <segue reference="vdg-dd-gvY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.93333333330000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
