@@ -29,9 +29,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
             case .success(let players):
                 self.players = players
                 
-                self.me = players.first { player in
-                    return player.userId == Auth.auth().currentUser?.uid
-                }
+                self.me = players.first { $0.userId == Auth.auth().currentUser?.uid }
                 
                 self.tableView.reloadData()
             case .failure(let error):
