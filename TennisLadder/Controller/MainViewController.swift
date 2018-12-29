@@ -10,7 +10,7 @@
 import UIKit
 import FirebaseUI
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FUIAuthDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	//MARK: Private properties
     private var ladders = [Ladder]()
 	
@@ -23,8 +23,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		//Make the extra empty rows disappear
-		tableView.tableFooterView = UIView()
+		tableView.hideEmptyCells()
 		
 		//Listen for login updates
 		updateLoginStatus()

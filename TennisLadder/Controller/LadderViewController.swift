@@ -23,6 +23,9 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		title = ladder.name
+		tableView.hideEmptyCells()
         
         Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
             switch response {

@@ -98,6 +98,10 @@ extension UITableView {
 			self.deselectRow(at: row, animated: true)
 		}
 	}
+	
+	func hideEmptyCells() {
+		tableFooterView = UIView()
+	}
 }
 
 extension UIViewController {
