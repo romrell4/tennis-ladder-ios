@@ -21,7 +21,6 @@ class ReportMatchViewController: UIViewController {
     
     //MARK: Private Properties
     private var possibleScores = Array(0...7)
-    private var newMatch: Match!
 
     //MARK: Outlets
     @IBOutlet private weak var set1LoserScoreTextField: UITextField!
@@ -39,18 +38,6 @@ class ReportMatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        newMatch = Match(matchId: nil,
-              ladderId: self.me.ladderId,
-              matchDate: nil,
-              winner: self.me,
-              loser: self.opponent,
-              winnerSet1Score: 0,
-              loserSet1Score: 0,
-              winnerSet2Score: 0,
-              loserSet2Score: 0,
-              winnerSet3Score: nil,
-              loserSet3Score: nil)
         
         setUpViews()
         
@@ -78,6 +65,28 @@ class ReportMatchViewController: UIViewController {
         
         reportConfirmAlert.addAction(UIAlertAction(title: "Yes", style: .default) { (_) in
 //            self.delegate.passNewMatch(match: self.newMatch)
+            
+            //TODO: Fill in newMatch with proper values
+            let newMatch = Match(matchId: nil,
+                ladderId: self.me.ladderId,
+                matchDate: nil,
+                winner: self.me,
+                loser: self.opponent,
+                winnerSet1Score: 0,
+                loserSet1Score: 0,
+                winnerSet2Score: 0,
+                loserSet2Score: 0,
+                winnerSet3Score: nil,
+                loserSet3Score: nil)
+            Endpoints.reportMatch(newMatch.ladderId, newMatch).responseSingle { (response: Response<Match>) in
+                switch response {
+                    case .success(let match):
+                        //TODO: Unwind Segue
+                        print(match)
+                    case .failure(let error):
+                        self.displayError(error)
+                }
+            }
             self.dismiss(animated: true)
         })
         

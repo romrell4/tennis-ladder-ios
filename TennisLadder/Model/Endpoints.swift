@@ -55,6 +55,12 @@ enum Endpoints: URLRequestConvertible {
 			callback(response.result.toResponse())
 		}
 	}
+    
+    func responseSingle<T: Decodable>(_ callback: @escaping (Response<T>) -> Void) {
+        Alamofire.request(self).responseObject { (response: DataResponse<T>) in
+            callback(response.result.toResponse())
+        }
+    }
 }
 
 enum Response<T> {
