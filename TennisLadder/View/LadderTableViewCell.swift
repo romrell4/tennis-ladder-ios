@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let DATE_FORMATTTER = DateFormatter.defaultDateFormat("d/M/yyyy")
+private let DATE_FORMATTTER = DateFormatter.defaultDateFormat("M/d/yyyy")
 
 class LadderTableViewCell: UITableViewCell {
     @IBOutlet weak var ladderText: UILabel!
