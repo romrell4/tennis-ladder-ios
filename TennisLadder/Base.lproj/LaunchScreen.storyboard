@@ -50,21 +50,6 @@
             </objects>
             <point key="canvasLocation" x="-450.39999999999998" y="326.98650674662673"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="GnV-9Q-B4K">
-            <objects>
-                <viewController id="s7O-3k-Cok" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R06-YE-Ltk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="FXM-eR-dEG"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iEE-py-ZTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1350" y="375"/>
-        </scene>
     </scenes>
     <resources>
         <image name="AppIconVector" width="1024" height="1024"/>
