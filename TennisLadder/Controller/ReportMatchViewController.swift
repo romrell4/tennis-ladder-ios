@@ -19,9 +19,6 @@ class ReportMatchViewController: UIViewController {
     var opponent: Player!
     var delegate: ReportMatchViewControllerDelegate!
     
-    //MARK: Private Properties
-    private var possibleScores = Array(0...7)
-
     //MARK: Outlets
     @IBOutlet private weak var set1LoserScoreTextField: UITextField!
     @IBOutlet private weak var set1WinnerScoreTextField: UITextField!
