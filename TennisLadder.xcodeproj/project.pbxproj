@@ -23,7 +23,6 @@
 		0CD92EFE21C18C8100480763 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EFD21C18C8100480763 /* Extensions.swift */; };
 		0CD92F0021C1921500480763 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EFF21C1921500480763 /* Player.swift */; };
 		0CD92F0221C19A2200480763 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92F0121C19A2200480763 /* PlayerCell.swift */; };
-		9581D24EE7956145AF4F4F60 /* Pods_TennisLadder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5877F652E3692A7AD7ECEB0A /* Pods_TennisLadder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +45,6 @@
 		0CD92EFF21C1921500480763 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0CD92F0121C19A2200480763 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		4F9180E292F5EBAC27967091 /* Pods-TennisLadder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisLadder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder.debug.xcconfig"; sourceTree = "<group>"; };
-		5877F652E3692A7AD7ECEB0A /* Pods_TennisLadder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisLadder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E4BB323CF0F78FCE102409 /* Pods-TennisLadder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisLadder.release.xcconfig"; path = "Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +53,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9581D24EE7956145AF4F4F60 /* Pods_TennisLadder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +65,6 @@
 				0CD92EBF21C15F8500480763 /* TennisLadder */,
 				0CD92EBE21C15F8500480763 /* Products */,
 				A4FCBE9759D24AC95D403A16 /* Pods */,
-				280E58EC012540CB009D9B4F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,14 +130,6 @@
 				0CD92EFD21C18C8100480763 /* Extensions.swift */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		280E58EC012540CB009D9B4F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5877F652E3692A7AD7ECEB0A /* Pods_TennisLadder.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A4FCBE9759D24AC95D403A16 /* Pods */ = {
