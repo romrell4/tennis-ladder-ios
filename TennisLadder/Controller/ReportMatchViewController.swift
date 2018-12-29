@@ -39,6 +39,7 @@ class ReportMatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO: Auto select first textfield and have numpad pop up
         setUpViews()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -107,23 +108,14 @@ class ReportMatchViewController: UIViewController {
         ]
         
         //Turn textfields into match string
-        let matchScore = list.map { ($0.0.textNN, $0.1.textNN) }
-            .filter { $0.0 != "0" && $0.1 != "0" }
-            .map { "\($0.0)-\($0.1)" }
+        let playedSets = list.map { ($0.0.text ?? "", $0.1.text ?? "") }
+            .filter { $0.0 != "" && $0.1 != "" }
+        
+        let lastSet = playedSets.last ?? ("", "")
+        
+        let matchScore = playedSets.map { "\($0.0)-\($0.1)" }
             .joined(separator: ", ")
         
-        return "You have reported that you \(checkMatchOutcome() ? "won" : "lost") this match:\n\n\(matchScore)\n\nIs this correct?"
-    }
-    
-    private func checkMatchOutcome() -> Bool {
-        let playedThirdSet = set3WinnerScoreTextField.text != "0" || set3LoserScoreTextField.text != "0"
-        let lastSetScores = playedThirdSet ? [set3WinnerScoreTextField.textNN, set3LoserScoreTextField.textNN] : [set2WinnerScoreTextField.textNN, set2LoserScoreTextField.textNN]
-        return Int(lastSetScores[0]) ?? 0 > Int(lastSetScores[1]) ?? 0
-    }
-}
-
-extension UITextField {
-    fileprivate var textNN: String {
-        return text ?? ""
+        return "You have reported that you \(Int(lastSet.0) ?? 0 > Int(lastSet.1) ?? 0 ? "won" : "lost") this match:\n\n\(matchScore)\n\nIs this correct?"
     }
 }
