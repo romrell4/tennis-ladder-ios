@@ -42,7 +42,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func loadViews() {
-//        playerImage.moa.url = player.photoUrl
+        playerImage.moa.url = player.photoUrl
         currentRankingLabel.text = "#\(String(player.ranking))"
         recordLabel.text = String("\(player.wins) - \(player.losses)")
     }
