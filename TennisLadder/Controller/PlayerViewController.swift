@@ -24,6 +24,10 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		title = player.name
+		matchTableView.hideEmptyCells()
+		
         loadViews()
 
         Endpoints.getMatches(player.ladderId, player.userId).response { (response: Response<[Match]>) in
