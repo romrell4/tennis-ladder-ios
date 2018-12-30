@@ -44,6 +44,12 @@ class ReportMatchViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //First text field is automatically selected - In the viewDidAppear because the textview isn't drawn by the time it's the first responsder
+        set1LoserScoreTextField.becomeFirstResponder()
+    }
+    
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }

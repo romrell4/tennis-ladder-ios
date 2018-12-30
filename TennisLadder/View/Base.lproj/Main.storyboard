@@ -50,7 +50,7 @@
                                 <rect key="frame" x="0.0" y="24" width="375" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="84" id="zca-j3-9p9" customClass="LadderTableViewCell" customModule="TennisLadder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="84" id="zca-j3-9p9" customClass="LadderTableViewCell" customModule="TennisLadder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zca-j3-9p9" id="vWw-WW-xLs">
@@ -158,7 +158,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="507"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="89" id="oKJ-nd-DFY" customClass="PlayerCell" customModule="TennisLadder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="89" id="oKJ-nd-DFY" customClass="PlayerCell" customModule="TennisLadder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oKJ-nd-DFY" id="gac-Ry-nrF">
@@ -323,7 +323,7 @@
                                 <rect key="frame" x="0.0" y="264" width="375" height="243"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="45" id="1PZ-E1-gHf" customClass="MatchTableViewCell" customModule="TennisLadder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="45" id="1PZ-E1-gHf" customClass="MatchTableViewCell" customModule="TennisLadder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1PZ-E1-gHf" id="BjS-Mc-hoA">
@@ -357,7 +357,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="matchLabel" destination="n50-vR-RIE" id="ZBr-pC-7pR"/>
-                                            <outlet property="setsLabel" destination="YKV-mI-Ifb" id="jFz-Qm-lcS"/>
+                                            <outlet property="recordLabel" destination="YKV-mI-Ifb" id="jFz-Qm-lcS"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -404,7 +404,7 @@
                         <outlet property="currentRankingLabel" destination="T38-mF-xdy" id="wUU-nA-a0x"/>
                         <outlet property="matchTableView" destination="cs1-PK-uKF" id="6MH-Bf-K0u"/>
                         <outlet property="playerImage" destination="ELg-uw-b8n" id="Bim-Z7-coJ"/>
-                        <outlet property="setsLabel" destination="6aO-OG-WYK" id="fKp-XX-9M9"/>
+                        <outlet property="recordLabel" destination="6aO-OG-WYK" id="fKp-XX-9M9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ff-IP-eOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -676,7 +676,7 @@
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vdg-dd-gvY"/>
+        <segue reference="DWy-ad-bzb"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.93333333330000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

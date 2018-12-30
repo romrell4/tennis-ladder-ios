@@ -17,7 +17,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	//MARK: Private properties
     private var me: Player?
     private var players = [Player]()
-	
+    
 	//MARK: Outlets
     @IBOutlet private var tableView: UITableView!
     
@@ -39,6 +39,36 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
                 self.displayError(error)
             }
         }
+        
+        addRefreshControl()
+    }
+    
+    private func addRefreshControl() {
+        let swipeRefreshControl = UIRefreshControl()
+        swipeRefreshControl.attributedTitle = NSAttributedString(string: "swipe up to refresh")
+        swipeRefreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = swipeRefreshControl
+        } else {
+            tableView.addSubview(swipeRefreshControl)
+        }
+    }
+    
+    @objc private func refreshTableView() {
+        Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
+            switch response {
+            case .success(let players):
+                self.players = players
+                
+                self.me = players.first { $0.userId == Auth.auth().currentUser?.uid }
+                
+                self.tableView.reloadData()
+            case .failure(let error):
+                self.displayError(error)
+            }
+        }
+        self.tableView.refreshControl?.endRefreshing()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
