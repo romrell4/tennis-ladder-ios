@@ -102,6 +102,32 @@ extension UITableView {
 	func hideEmptyCells() {
 		tableFooterView = UIView()
 	}
+	
+	func setEmptyMessage(_ message: String) {
+		if let dataSource = dataSource, dataSource.numberOfSections?(in: self) == 0 || dataSource.tableView(self, numberOfRowsInSection: 0) == 0 {
+			let view = UIView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
+			let messageLabel = UILabel()
+			messageLabel.translatesAutoresizingMaskIntoConstraints = false
+			messageLabel.text = message
+			messageLabel.textColor = .black
+			messageLabel.numberOfLines = 0
+			messageLabel.textAlignment = .center
+			messageLabel.font = UIFont.systemFont(ofSize: 17)
+			view.addSubview(messageLabel)
+			let padding: CGFloat = 8
+			NSLayoutConstraint.activate([
+				messageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
+				messageLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: padding),
+				messageLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -padding)
+			])
+			
+			self.backgroundView = view
+			self.separatorStyle = .none
+		} else {
+			self.backgroundView = nil
+			self.separatorStyle = .singleLine
+		}
+	}
 }
 
 extension UIViewController {

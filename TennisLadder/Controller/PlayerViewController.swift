@@ -34,6 +34,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             switch response {
             case .success(let matches):
                 self.matches = matches
+				self.matchTableView.setEmptyMessage("This player hasn't played any matches in this ladder yet. Please check back later.")
                 self.matchTableView.reloadData()
             case .failure(let error):
                 self.displayError(error)

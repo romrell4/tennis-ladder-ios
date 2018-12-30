@@ -37,6 +37,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			switch response {
 			case .success(let ladders):
 				self.ladders = ladders
+				self.tableView.setEmptyMessage("There are no available ladders right now. Please check back later.")
 				self.tableView.reloadData()
 			case .failure(let error):
 				self.displayError(error)
