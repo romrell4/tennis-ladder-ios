@@ -46,12 +46,12 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     private func addRefreshControl() {
         let swipeRefreshControl = UIRefreshControl()
         swipeRefreshControl.attributedTitle = NSAttributedString(string: "Refreshing...=")
-        swipeRefreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
+        swipeRefreshControl.addTarget(self, action: #selector(loadPlayers), for: .valueChanged)
         
         tableView.refreshControl = swipeRefreshControl
     }
     
-    @objc private func refreshTableView() {
+    @objc private func loadPlayers() {
         Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
             switch response {
             case .success(let players):
