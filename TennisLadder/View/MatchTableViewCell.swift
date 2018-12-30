@@ -9,13 +9,13 @@
 import UIKit
 
 class MatchTableViewCell: UITableViewCell {
-    @IBOutlet private weak var matchLabel: UILabel!
-    @IBOutlet private weak var setLabel: UILabel!
+    @IBOutlet private weak var opponentNameLabel: UILabel!
+    @IBOutlet private weak var scoreLabel: UILabel!
     
     var match: Match! {
         didSet {
-            matchLabel.text = "Match \(match.matchId)"
-            setLabel.text = match.scoreDisplay
+            opponentNameLabel.text = "Player \(match.matchId)"
+            scoreLabel.text = match.scoreDisplay
         }
     }
 }

@@ -358,6 +358,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="tQA-o4-GLE" secondAttribute="trailing" constant="16" id="lZR-lA-9xt"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="opponentNameLabel" destination="u9p-fr-tQh" id="feF-2u-PrH"/>
+                                            <outlet property="scoreLabel" destination="tQA-o4-GLE" id="TSs-Wx-0aq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
