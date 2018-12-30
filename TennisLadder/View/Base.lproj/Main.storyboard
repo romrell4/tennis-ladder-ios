@@ -357,7 +357,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="matchLabel" destination="n50-vR-RIE" id="ZBr-pC-7pR"/>
-                                            <outlet property="recordLabel" destination="YKV-mI-Ifb" id="jFz-Qm-lcS"/>
+                                            <outlet property="setLabel" destination="YKV-mI-Ifb" id="MK3-yk-xYA"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -678,7 +678,7 @@
         <image name="userIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DWy-ad-bzb"/>
+        <segue reference="vdg-dd-gvY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.93333333330000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>
