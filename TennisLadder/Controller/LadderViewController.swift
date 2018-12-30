@@ -53,6 +53,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     
     @objc private func loadPlayers() {
         Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
+            self.tableView.refreshControl?.endRefreshing()
+            
             switch response {
             case .success(let players):
                 self.players = players
@@ -64,7 +66,6 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
                 self.displayError(error)
             }
         }
-        self.tableView.refreshControl?.endRefreshing()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
