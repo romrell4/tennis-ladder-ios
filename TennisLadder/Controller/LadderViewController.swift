@@ -48,11 +48,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         swipeRefreshControl.attributedTitle = NSAttributedString(string: "swipe up to refresh")
         swipeRefreshControl.addTarget(self, action: #selector(refreshTableView), for: .valueChanged)
         
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = swipeRefreshControl
-        } else {
-            tableView.addSubview(swipeRefreshControl)
-        }
+        tableView.refreshControl = swipeRefreshControl
     }
     
     @objc private func refreshTableView() {
