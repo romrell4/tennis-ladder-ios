@@ -330,35 +330,34 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4wO-96-nrr">
-                                                    <rect key="frame" x="16" y="8" width="343" height="28.5"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n50-vR-RIE">
-                                                            <rect key="frame" x="0.0" y="0.0" width="171.5" height="28.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6-0, 0-6, 7-5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKV-mI-Ifb">
-                                                            <rect key="frame" x="171.5" y="0.0" width="171.5" height="28.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6-0, 0-6, 7-5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQA-o4-GLE">
+                                                    <rect key="frame" x="239" y="4" width="120" height="36.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="nv8-9q-PRo"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9p-fr-tQh">
+                                                    <rect key="frame" x="16" y="4" width="80" height="36.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="LIT-eY-eqM"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="4wO-96-nrr" secondAttribute="trailing" constant="16" id="Bkr-5E-QzI"/>
-                                                <constraint firstItem="4wO-96-nrr" firstAttribute="leading" secondItem="BjS-Mc-hoA" secondAttribute="leading" constant="16" id="VX6-4r-dfb"/>
-                                                <constraint firstItem="4wO-96-nrr" firstAttribute="top" secondItem="BjS-Mc-hoA" secondAttribute="top" constant="8" id="epN-G9-OQu"/>
-                                                <constraint firstAttribute="bottom" secondItem="4wO-96-nrr" secondAttribute="bottom" constant="8" id="vse-tM-E8H"/>
+                                                <constraint firstItem="u9p-fr-tQh" firstAttribute="top" secondItem="BjS-Mc-hoA" secondAttribute="top" constant="4" id="0eE-xD-ssL"/>
+                                                <constraint firstAttribute="bottom" secondItem="tQA-o4-GLE" secondAttribute="bottom" constant="4" id="2wi-na-sJO"/>
+                                                <constraint firstItem="u9p-fr-tQh" firstAttribute="leading" secondItem="BjS-Mc-hoA" secondAttribute="leading" constant="16" id="Bkj-ZT-ZN4"/>
+                                                <constraint firstItem="tQA-o4-GLE" firstAttribute="top" secondItem="BjS-Mc-hoA" secondAttribute="top" constant="4" id="CCM-pe-DDE"/>
+                                                <constraint firstAttribute="bottom" secondItem="u9p-fr-tQh" secondAttribute="bottom" constant="4" id="Zep-Lm-12p"/>
+                                                <constraint firstAttribute="trailing" secondItem="tQA-o4-GLE" secondAttribute="trailing" constant="16" id="lZR-lA-9xt"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="matchLabel" destination="n50-vR-RIE" id="ZBr-pC-7pR"/>
-                                            <outlet property="setLabel" destination="YKV-mI-Ifb" id="MK3-yk-xYA"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
