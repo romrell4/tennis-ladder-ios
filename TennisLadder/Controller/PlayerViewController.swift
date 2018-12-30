@@ -65,22 +65,5 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "matchReported",
-            let vc = segue.destination as? ReportMatchViewController {
-            
-            //TODO: Pass in correct Players
-            vc.me = player
-            vc.opponent = player
-            
-            vc.delegate = self
-        }
-    }
 }
 
-extension PlayerViewController: ReportMatchViewControllerDelegate {
-    func passNewMatch(match: Match) {
-        matches.append(match)
-    }
-}

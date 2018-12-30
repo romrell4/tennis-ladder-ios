@@ -9,15 +9,10 @@
 import UIKit
 import moa
 
-protocol ReportMatchViewControllerDelegate {
-    func passNewMatch(match: Match)
-}
-
 class ReportMatchViewController: UIViewController {
     //MARK: Public Properties
     var me: Player!
     var opponent: Player!
-    var delegate: ReportMatchViewControllerDelegate!
     
     //MARK: Outlets
     @IBOutlet private weak var set1LoserScoreTextField: UITextField!
@@ -36,7 +31,6 @@ class ReportMatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //TODO: Auto select first textfield and have numpad pop up
         setUpViews()
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -53,8 +47,9 @@ class ReportMatchViewController: UIViewController {
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+
     private func setUpViews() {
+        //TODO: Player objects still aren't being pass through properly. Find out why these are unwrapping nil
         meImageView.moa.url = me.photoUrl
         meNameLabel.text = me.name
 
@@ -63,19 +58,17 @@ class ReportMatchViewController: UIViewController {
     }
 
     @IBAction func reportMatchPressed(_ sender: Any) {
-        let match = getMatch()
+        var match = getMatch()
         let message = generateMessage(match: match)
         
         let reportConfirmAlert = UIAlertController(title: "Confirm", message: message, preferredStyle: UIAlertController.Style.alert)
         
         reportConfirmAlert.addAction(UIAlertAction(title: "Yes", style: .default) { (_) in
-//            self.delegate.passNewMatch(match: self.newMatch)
-            
             Endpoints.reportMatch(match.ladderId, match).responseSingle { (response: Response<Match>) in
                 switch response {
-                    case .success(let match):
-                        //TODO: Unwind Segue
-                        print(match)
+                    case .success(let matchSuccess):
+                        match = matchSuccess
+                        self.dismiss(animated: true)
                     case .failure(let error):
                         self.displayError(error)
                 }

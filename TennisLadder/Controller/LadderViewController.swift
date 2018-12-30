@@ -114,7 +114,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         
         players.forEach { player in
             alert.addAction(UIAlertAction(title: player.name, style: .default) { (_) in
-                self.performSegue(withIdentifier: "playerSelected", sender: player)
+                self.performSegue(withIdentifier: "matchReported", sender: player)
             })
         }
         
