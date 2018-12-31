@@ -574,14 +574,13 @@
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftb-Qu-tdG">
                                 <rect key="frame" x="0.0" y="559" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="MLN-HK-EJm"/>
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="die-CD-WP4"/>
-                                    <barButtonItem title="Report Match" id="fC9-uL-yXM">
-                                        <color key="tintColor" red="0.0" green="0.14807494060000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <barButtonItem title="Submit" id="fC9-uL-yXM">
+                                        <color key="tintColor" red="0.0" green="0.14901960784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="reportMatchPressed:" destination="IDX-Bh-4cb" id="WkQ-OW-bfW"/>
                                         </connections>
