@@ -58,11 +58,11 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = matchTableView.dequeueCell(at: indexPath)
-        
-        if let cell = cell as? MatchTableViewCell {
-            //Initialize the cell with the ladder at that index path
-            cell.match = matches[indexPath.row]
-        }
+		let match = matches[indexPath.row]
+		
+		cell.textLabel?.text = [match.winner, match.loser].first { $0.userId != player.userId }?.name
+		//TODO: Display from player's perspective
+		cell.detailTextLabel?.text = match.scoreDisplay
         
         return cell
     }
