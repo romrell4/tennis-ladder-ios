@@ -629,7 +629,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mjv-dq-MHu" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jy0-jT-Efc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="jy0-jT-Efc">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.36470588235294116" green="0.61960784313725492" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
