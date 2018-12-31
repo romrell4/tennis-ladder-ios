@@ -29,15 +29,13 @@ class ReportMatchViewController: UIViewController {
     @IBOutlet private weak var opponentNameLabel: UILabel!
 	
 	//MARK: Private Properties
-	private lazy var thirdSetFields = [meSet3TextField, opponentSet3TextField]
-	
-	private lazy var textFieldDict: [UITextField: UITextField?] = [
-		meSet1TextField: opponentSet1TextField,
-		opponentSet1TextField: meSet2TextField,
-		meSet2TextField: opponentSet2TextField,
-		opponentSet2TextField: meSet3TextField,
-		meSet3TextField: opponentSet3TextField,
-		opponentSet3TextField: nil
+	private lazy var textFieldDict: [UITextField: (UITextField?, Int)] = [
+		meSet1TextField: (opponentSet1TextField, 1),
+		opponentSet1TextField: (meSet2TextField, 1),
+		meSet2TextField: (opponentSet2TextField, 1),
+		opponentSet2TextField: (meSet3TextField, 1),
+		meSet3TextField: (opponentSet3TextField, 2),
+		opponentSet3TextField: (nil, 2)
 	]
 	
     override func viewDidLoad() {
@@ -63,18 +61,13 @@ class ReportMatchViewController: UIViewController {
     }
 	
 	@objc private func textFieldDidChange(textField: UITextField) {
-		if let temp = textFieldDict[textField], let nextTextField = temp {
-			var maxDigits = 1
-			if thirdSetFields.contains(textField) {
-				maxDigits = 2
-			}
-			if textField.text?.count == maxDigits {
-				nextTextField.becomeFirstResponder()
-			}
-		} else {
-			var maxDigits = 2
-			if textField.text?.count == maxDigits {
-				textField.resignFirstResponder()
+		if let info = textFieldDict[textField] {
+			if textField.text?.count == info.1 {
+				if let nextTextField = info.0 {
+					nextTextField.becomeFirstResponder()
+				} else {
+					textField.resignFirstResponder()
+				}
 			}
 		}
 	}
@@ -115,8 +108,7 @@ class ReportMatchViewController: UIViewController {
 		opponentNameLabel.text = opponent.name
 		
 		[meSet1TextField, opponentSet1TextField, meSet2TextField, opponentSet2TextField, meSet3TextField, opponentSet3TextField].forEach {
-			
-			$0?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+			$0?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)
 		}
 	}
     
