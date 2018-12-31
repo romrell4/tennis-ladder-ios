@@ -59,7 +59,7 @@ class ReportMatchViewController: UIViewController {
 
     @IBAction func reportMatchPressed(_ sender: Any) {
         let match = getMatch()
-        let message = generateMessage(match: match)
+        let message = "You have reported that you \(match.winner == me ? "won" : "lost") this match:\n\n\(match.scoreDisplay)\n\nIs this correct?"
         
         let reportConfirmAlert = UIAlertController(title: "Confirm", message: message, preferredStyle: UIAlertController.Style.alert)
         
@@ -72,7 +72,6 @@ class ReportMatchViewController: UIViewController {
                         self.displayError(error)
                 }
             }
-            self.dismiss(animated: true)
         })
         
         reportConfirmAlert.addAction(UIAlertAction(title: "No", style: .cancel))
@@ -84,37 +83,33 @@ class ReportMatchViewController: UIViewController {
         self.dismiss(animated: true)
     }
     
-    private func generateMessage(match: Match) -> String {
-        let list: [(UITextField, UITextField)] = [
-            (meSet1TextField, opponentSet1TextField),
-            (meSet2TextField, opponentSet2TextField),
-            (meSet3TextField, opponentSet3TextField)
-        ]
-        
-        //Turn textfields into match string
-        let playedSets = list.map { ($0.0.text ?? "", $0.1.text ?? "") }
-            .filter { $0.0 != "" && $0.1 != "" }
-        
-        //TODO: Move this logic into the match object
-        let lastSet = playedSets.last ?? ("", "")
-        
-        return "You have reported that you \(Int(lastSet.0) ?? 0 > Int(lastSet.1) ?? 0 ? "won" : "lost") this match:\n\n\(match.scoreDisplay)\n\nIs this correct?"
-    }
-    
     private func getMatch() -> Match {
-        //TODO: Fill in newMatch with proper values
-        let newMatch = Match(matchId: nil,
-                             ladderId: self.me.ladderId,
-                             matchDate: nil,
-                             winner: self.me,
-                             loser: self.opponent,
-                             winnerSet1Score: 0,
-                             loserSet1Score: 0,
-                             winnerSet2Score: 0,
-                             loserSet2Score: 0,
-                             winnerSet3Score: nil,
-                             loserSet3Score: nil)
-        
-        return newMatch
+		let playedThirdSet = !(meSet3TextField.text?.isEmpty ?? true) && !(opponentSet3TextField.text?.isEmpty ?? true)
+		let lastSetScore = playedThirdSet ? (meSet3TextField.toInt(), opponentSet3TextField.toInt()) : (meSet2TextField.toInt(), opponentSet2TextField.toInt())
+		let iWon = lastSetScore.0 > lastSetScore.1
+		
+		return Match(
+			matchId: nil,
+			ladderId: self.me.ladderId,
+			matchDate: nil,
+			winner: iWon ? me : opponent,
+			loser: iWon ? opponent : me,
+			winnerSet1Score: iWon ? meSet1TextField.toInt() : opponentSet1TextField.toInt(),
+			loserSet1Score: iWon ? opponentSet1TextField.toInt() : meSet1TextField.toInt(),
+			winnerSet2Score: iWon ? meSet2TextField.toInt() : opponentSet2TextField.toInt(),
+			loserSet2Score: iWon ? opponentSet2TextField.toInt() : meSet2TextField.toInt(),
+			winnerSet3Score: playedThirdSet ? (iWon ? meSet3TextField.toInt() : opponentSet3TextField.toInt()) : nil,
+			loserSet3Score: playedThirdSet ? (iWon ? opponentSet3TextField.toInt() : meSet3TextField.toInt()) : nil
+		)
     }
+}
+
+extension UITextField {
+	func toInt() -> Int {
+		if let text = self.text {
+			return Int(text) ?? 0
+		}
+		
+		return 0
+	}
 }
