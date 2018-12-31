@@ -390,11 +390,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8VQ-kG-M4z">
-                                <rect key="frame" x="0.0" y="8" width="375" height="543"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8VQ-kG-M4z">
+                                <rect key="frame" x="8" y="8" width="359" height="315"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-Rd-UPt">
-                                        <rect key="frame" x="52" y="0.0" width="271" height="132"/>
+                                        <rect key="frame" x="44" y="0.0" width="271" height="132"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cFp-F5-WqY">
                                                 <rect key="frame" x="0.0" y="0.0" width="115.5" height="132"/>
@@ -437,18 +437,18 @@
                                             <constraint firstAttribute="height" constant="132" id="hWx-mg-FJS"/>
                                         </constraints>
                                     </stackView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xq0-AE-Hrt">
-                                        <rect key="frame" x="0.0" y="140" width="375" height="64"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6i-ga-e1t">
+                                        <rect key="frame" x="0.0" y="140" width="359" height="67"/>
                                         <string key="text">Please report the scores from your perspective. For example, if you lost 6-0, 6-0, report 0-6, 0-6. If you did not play a third set (or tiebreak), leave the scores empty.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1o7-sA-Cyi">
-                                        <rect key="frame" x="77.5" y="212" width="220" height="331"/>
+                                        <rect key="frame" x="69.5" y="215" width="220" height="100"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Mko-S9-LJZ">
-                                                <rect key="frame" x="0.0" y="115.5" width="68" height="100"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="68" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HIc-Xh-tcB">
                                                         <rect key="frame" x="15.5" y="0.0" width="37.5" height="30"/>
@@ -488,7 +488,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="6ff-RL-Fs6">
-                                                <rect key="frame" x="76" y="115.5" width="68" height="100"/>
+                                                <rect key="frame" x="76" y="0.0" width="68" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUX-dj-JXy">
                                                         <rect key="frame" x="14" y="0.0" width="40" height="30"/>
@@ -528,7 +528,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="1a3-TA-3l4">
-                                                <rect key="frame" x="152" y="115.5" width="68" height="100"/>
+                                                <rect key="frame" x="152" y="0.0" width="68" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5v-OF-Vg4">
                                                         <rect key="frame" x="14" y="0.0" width="40.5" height="30"/>
@@ -591,11 +591,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="8VQ-kG-M4z" secondAttribute="trailing" id="DXc-nc-mYP"/>
+                            <constraint firstAttribute="trailing" secondItem="8VQ-kG-M4z" secondAttribute="trailing" constant="8" id="DXc-nc-mYP"/>
                             <constraint firstItem="ftb-Qu-tdG" firstAttribute="bottom" secondItem="dcw-J0-Fs3" secondAttribute="bottom" id="Ndb-wt-efI"/>
-                            <constraint firstItem="8VQ-kG-M4z" firstAttribute="leading" secondItem="dcw-J0-Fs3" secondAttribute="leading" id="dOu-eQ-eXY"/>
+                            <constraint firstItem="ftb-Qu-tdG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8VQ-kG-M4z" secondAttribute="bottom" constant="8" id="VOP-UW-Qal"/>
+                            <constraint firstItem="8VQ-kG-M4z" firstAttribute="leading" secondItem="dcw-J0-Fs3" secondAttribute="leading" constant="8" id="dOu-eQ-eXY"/>
                             <constraint firstItem="ftb-Qu-tdG" firstAttribute="leading" secondItem="dcw-J0-Fs3" secondAttribute="leading" id="fCn-g4-KL7"/>
-                            <constraint firstItem="ftb-Qu-tdG" firstAttribute="top" secondItem="8VQ-kG-M4z" secondAttribute="bottom" constant="8" id="pv0-Kg-XFp"/>
                             <constraint firstItem="ftb-Qu-tdG" firstAttribute="trailing" secondItem="dcw-J0-Fs3" secondAttribute="trailing" id="sYz-zG-aSS"/>
                             <constraint firstItem="8VQ-kG-M4z" firstAttribute="top" secondItem="dcw-J0-Fs3" secondAttribute="top" constant="8" id="y6j-Q6-IDE"/>
                         </constraints>
