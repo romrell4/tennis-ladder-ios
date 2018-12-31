@@ -593,7 +593,6 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8VQ-kG-M4z" secondAttribute="trailing" constant="8" id="DXc-nc-mYP"/>
                             <constraint firstItem="ftb-Qu-tdG" firstAttribute="bottom" secondItem="dcw-J0-Fs3" secondAttribute="bottom" id="Ndb-wt-efI"/>
-                            <constraint firstItem="ftb-Qu-tdG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8VQ-kG-M4z" secondAttribute="bottom" constant="8" id="VOP-UW-Qal"/>
                             <constraint firstItem="8VQ-kG-M4z" firstAttribute="leading" secondItem="dcw-J0-Fs3" secondAttribute="leading" constant="8" id="dOu-eQ-eXY"/>
                             <constraint firstItem="ftb-Qu-tdG" firstAttribute="leading" secondItem="dcw-J0-Fs3" secondAttribute="leading" id="fCn-g4-KL7"/>
                             <constraint firstItem="ftb-Qu-tdG" firstAttribute="trailing" secondItem="dcw-J0-Fs3" secondAttribute="trailing" id="sYz-zG-aSS"/>
