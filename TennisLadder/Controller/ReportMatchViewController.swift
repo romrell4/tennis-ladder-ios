@@ -43,18 +43,16 @@ class ReportMatchViewController: UIViewController {
         //First text field is automatically selected - In the viewDidAppear because the textview isn't drawn by the time it's the first responsder
         meSet1TextField.becomeFirstResponder()
     }
-    
+	
+	//MARK: Listeners
+	
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
-
-    private func setUpViews() {
-        meImageView.moa.url = me.photoUrl
-        meNameLabel.text = me.name
-
-        opponentImageView.moa.url = opponent.photoUrl
-        opponentNameLabel.text = opponent.name
-    }
+	
+	@IBAction func cancelPressed(_ sender: Any) {
+		self.dismiss(animated: true)
+	}
 
     @IBAction func reportMatchPressed(_ sender: Any) {
         let match = getMatch()
@@ -77,10 +75,16 @@ class ReportMatchViewController: UIViewController {
         
         present(reportConfirmAlert, animated: true)
     }
-    
-    @IBAction func cancelPressed(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
+	
+	//MARK: Private Functions
+	
+	private func setUpViews() {
+		meImageView.moa.url = me.photoUrl
+		meNameLabel.text = me.name
+		
+		opponentImageView.moa.url = opponent.photoUrl
+		opponentNameLabel.text = opponent.name
+	}
     
     private func getMatch() -> Match {
 		let playedThirdSet = !(meSet3TextField.text?.isEmpty ?? true) && !(opponentSet3TextField.text?.isEmpty ?? true)
