@@ -394,16 +394,16 @@
                                 <rect key="frame" x="8" y="8" width="359" height="315"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-Rd-UPt">
-                                        <rect key="frame" x="44" y="0.0" width="271" height="132"/>
+                                        <rect key="frame" x="50" y="0.0" width="259" height="132"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cFp-F5-WqY">
-                                                <rect key="frame" x="0.0" y="0.0" width="115.5" height="132"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="132"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ftz-SQ-4Wv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="104.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="104.5"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rafael Nadal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abd-Xg-fs2">
-                                                        <rect key="frame" x="0.0" y="114.5" width="115.5" height="17.5"/>
+                                                        <rect key="frame" x="0.0" y="114.5" width="109.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -414,13 +414,13 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U20-Kp-I8B">
-                                                <rect key="frame" x="155.5" y="0.0" width="115.5" height="132"/>
+                                                <rect key="frame" x="149.5" y="0.0" width="109.5" height="132"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="QHS-e7-63p">
-                                                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="104.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="104.5"/>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roger Federrer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7an-bm-utQ">
-                                                        <rect key="frame" x="0.0" y="114.5" width="115.5" height="17.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roger Federer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7an-bm-utQ">
+                                                        <rect key="frame" x="0.0" y="114.5" width="109.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

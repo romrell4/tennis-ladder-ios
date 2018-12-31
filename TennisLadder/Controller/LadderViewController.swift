@@ -32,7 +32,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         
         addRefreshControl()
     }
-    
+	
     private func addRefreshControl() {
         let swipeRefreshControl = UIRefreshControl()
         swipeRefreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
@@ -102,9 +102,10 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func reportMatchTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Who did you play agaisnt?", message: nil, preferredStyle: .actionSheet)
-        
-        players.forEach { player in
+        let alert = UIAlertController(title: "Who did you play against?", message: nil, preferredStyle: .actionSheet)
+		
+		//Removing self from list of people to play against
+		players.filter { $0 != me }.forEach { player in
             alert.addAction(UIAlertAction(title: player.name, style: .default) { (_) in
                 self.performSegue(withIdentifier: "matchReported", sender: player)
             })
