@@ -108,7 +108,7 @@ class ReportMatchViewController: UIViewController {
 }
 
 extension UITextField {
-	func toInt() -> Int {
+	fileprivate func toInt() -> Int {
 		if let text = self.text {
 			return Int(text) ?? 0
 		}
