@@ -20,7 +20,7 @@ extension DateFormatter {
 }
 
 extension DataRequest {
-	@discardableResult func responseObject<T: Decodable>(queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<T>) -> Void ) -> Self {
+	@discardableResult func responseObject<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<T>) -> Void ) -> Self {
 		
 		let responseSerializer = DataResponseSerializer<T> { request, response, data, error in
 			if let error = error { return .failure(error) }
@@ -30,17 +30,17 @@ extension DataRequest {
 				return .failure(result.error!)
 			}
 			
-			guard let responseObject = try? self.decoder.decode(T.self, from: jsonData) else{
+			guard let responseObject = try? self.getDecoder(dateFormat: dateFormat).decode(T.self, from: jsonData) else{
 				return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
 			}
 			return .success(responseObject)
 		}
-		return response(queue: queue, responseSerializer: responseSerializer, completionHandler: completionHandler)
+		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
 	}
 	
-	@discardableResult func responseCollection<T: Decodable>(queue: DispatchQueue? = nil, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
+	@discardableResult func responseCollection<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
 		
-		let responseSerializer = DataResponseSerializer<[T]>{ request, response, data, error in
+		let responseSerializer = DataResponseSerializer<[T]> { request, response, data, error in
 			if let error = error { return .failure(error) }
 			
 			let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
@@ -48,7 +48,7 @@ extension DataRequest {
 				return .failure(result.error!)
 			}
 			
-			guard let responseArray = try? self.decoder.decode([T].self, from: jsonData) else {
+			guard let responseArray = try? self.getDecoder(dateFormat: dateFormat).decode([T].self, from: jsonData) else {
 				return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
 			}
 			
@@ -57,10 +57,12 @@ extension DataRequest {
 		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
 	}
 	
-	private var decoder: JSONDecoder {
+	private func getDecoder(dateFormat: String?) -> JSONDecoder {
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
-		decoder.dateDecodingStrategy = .formatted(DateFormatter.defaultDateFormat("yyyy-MM-dd"))
+		if let dateFormat = dateFormat {
+			decoder.dateDecodingStrategy = .formatted(DateFormatter.defaultDateFormat(dateFormat))
+		}
 		return decoder
 	}
 }
