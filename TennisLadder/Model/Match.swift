@@ -11,7 +11,8 @@ import Foundation
 struct Match: Codable {
 	let matchId: Int?
 	let ladderId: Int
-	let matchDate: Date?
+    //TODO: Change back to a Date
+	let matchDate: String?
 	let winner: Player
 	let loser: Player
 	var winnerSet1Score: Int

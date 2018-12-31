@@ -61,6 +61,7 @@ extension DataRequest {
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
 		decoder.dateDecodingStrategy = .formatted(DateFormatter.defaultDateFormat("yyyy-MM-dd"))
+        //TODO: Figure out how to decode date times differently than dates
 		return decoder
 	}
 }
