@@ -45,7 +45,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     
     private func addRefreshControl() {
         let swipeRefreshControl = UIRefreshControl()
-        swipeRefreshControl.attributedTitle = NSAttributedString(string: "Refreshing...=")
+        swipeRefreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
         swipeRefreshControl.addTarget(self, action: #selector(loadPlayers), for: .valueChanged)
         
         tableView.refreshControl = swipeRefreshControl
@@ -93,7 +93,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(at: indexPath)
         
-        if let cell = cell as? PlayerCell {
+        if let cell = cell as? PlayerTableViewCell {
             let player = players[indexPath.row]
             
             //Initialize the cell with the ladder at that index path

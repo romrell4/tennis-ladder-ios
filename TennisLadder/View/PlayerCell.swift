@@ -1,5 +1,5 @@
 //
-//  PlayerCell.swift
+//  PlayerTableViewCell.swift
 //  TennisLadder
 //
 //  Created by Z Tai on 12/12/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayerCell: UITableViewCell {
+class PlayerTableViewCell: UITableViewCell {
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var points: UILabel!
     @IBOutlet private weak var userImage: UIImageView!
