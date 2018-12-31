@@ -628,14 +628,14 @@
                     <connections>
                         <outlet property="meImageView" destination="ftz-SQ-4Wv" id="0w8-wq-SfL"/>
                         <outlet property="meNameLabel" destination="Abd-Xg-fs2" id="mup-Qo-10a"/>
+                        <outlet property="meSet1TextField" destination="HNo-mJ-Y7j" id="ysG-nZ-0nX"/>
+                        <outlet property="meSet2TextField" destination="3mp-i2-3Ub" id="1Rn-Jg-vBo"/>
+                        <outlet property="meSet3TextField" destination="te1-jv-l4N" id="raL-TS-jgA"/>
                         <outlet property="opponentImageView" destination="QHS-e7-63p" id="CMZ-Ea-9yV"/>
                         <outlet property="opponentNameLabel" destination="7an-bm-utQ" id="1TS-Ji-hnQ"/>
-                        <outlet property="set1LoserScoreTextField" destination="HNo-mJ-Y7j" id="ysG-nZ-0nX"/>
-                        <outlet property="set1WinnerScoreTextField" destination="ke0-sk-Ppz" id="oqf-58-E5b"/>
-                        <outlet property="set2LoserScoreTextField" destination="3mp-i2-3Ub" id="1Rn-Jg-vBo"/>
-                        <outlet property="set2WinnerScoreTextField" destination="SdX-bJ-b8i" id="Ep5-fD-IUL"/>
-                        <outlet property="set3LoserScoreTextField" destination="te1-jv-l4N" id="raL-TS-jgA"/>
-                        <outlet property="set3WinnerScoreTextField" destination="Yw4-g7-bos" id="QUr-HV-0j5"/>
+                        <outlet property="opponentSet1TextField" destination="ke0-sk-Ppz" id="oqf-58-E5b"/>
+                        <outlet property="opponentSet2TextField" destination="SdX-bJ-b8i" id="Ep5-fD-IUL"/>
+                        <outlet property="opponentSet3TextField" destination="Yw4-g7-bos" id="QUr-HV-0j5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5V-UR-8xb" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -15,12 +15,12 @@ class ReportMatchViewController: UIViewController {
     var opponent: Player!
     
     //MARK: Outlets
-    @IBOutlet private weak var set1LoserScoreTextField: UITextField!
-    @IBOutlet private weak var set1WinnerScoreTextField: UITextField!
-    @IBOutlet private weak var set2LoserScoreTextField: UITextField!
-    @IBOutlet private weak var set2WinnerScoreTextField: UITextField!
-    @IBOutlet private weak var set3LoserScoreTextField: UITextField!
-    @IBOutlet private weak var set3WinnerScoreTextField: UITextField!
+    @IBOutlet private weak var meSet1TextField: UITextField!
+    @IBOutlet private weak var opponentSet1TextField: UITextField!
+    @IBOutlet private weak var meSet2TextField: UITextField!
+    @IBOutlet private weak var opponentSet2TextField: UITextField!
+    @IBOutlet private weak var meSet3TextField: UITextField!
+    @IBOutlet private weak var opponentSet3TextField: UITextField!
     
     @IBOutlet private weak var meImageView: UIImageView!
     @IBOutlet private weak var opponentImageView: UIImageView!
@@ -41,7 +41,7 @@ class ReportMatchViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //First text field is automatically selected - In the viewDidAppear because the textview isn't drawn by the time it's the first responsder
-        set1LoserScoreTextField.becomeFirstResponder()
+        meSet1TextField.becomeFirstResponder()
     }
     
     @objc private func dismissKeyboard() {
@@ -86,9 +86,9 @@ class ReportMatchViewController: UIViewController {
     
     private func generateMessage(match: Match) -> String {
         let list: [(UITextField, UITextField)] = [
-            (set1WinnerScoreTextField, set1LoserScoreTextField),
-            (set2WinnerScoreTextField, set2LoserScoreTextField),
-            (set3WinnerScoreTextField, set3LoserScoreTextField)
+            (meSet1TextField, opponentSet1TextField),
+            (meSet2TextField, opponentSet2TextField),
+            (meSet3TextField, opponentSet3TextField)
         ]
         
         //Turn textfields into match string
