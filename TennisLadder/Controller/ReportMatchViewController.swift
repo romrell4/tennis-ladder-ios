@@ -49,7 +49,6 @@ class ReportMatchViewController: UIViewController {
     }
 
     private func setUpViews() {
-        //TODO: Player objects still aren't being pass through properly. Find out why these are unwrapping nil
         meImageView.moa.url = me.photoUrl
         meNameLabel.text = me.name
 
