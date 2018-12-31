@@ -27,20 +27,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		title = ladder.name
 		tableView.hideEmptyCells()
         
-        Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
-            switch response {
-            case .success(let players):
-                self.players = players
-				
-				self.tableView.setEmptyMessage("There are no players in this ladder yet. Please check back later.")
-                
-                self.me = players.first { $0.userId == Auth.auth().currentUser?.uid }
-                
-                self.tableView.reloadData()
-            case .failure(let error):
-                self.displayError(error)
-            }
-        }
+        loadPlayers()
         
         addRefreshControl()
     }
@@ -60,6 +47,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
             switch response {
             case .success(let players):
                 self.players = players
+				
+				self.tableView.setEmptyMessage("There are no players in this ladder yet. Please check back later.")
                 
                 self.me = players.first { $0.userId == Auth.auth().currentUser?.uid }
                 
