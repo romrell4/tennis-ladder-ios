@@ -19,8 +19,9 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     private var players = [Player]()
     
 	//MARK: Outlets
-    @IBOutlet private var tableView: UITableView!
-    
+    @IBOutlet private weak var tableView: UITableView!
+	@IBOutlet private weak var toolbar: UIToolbar!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -51,6 +52,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 				self.tableView.setEmptyMessage("There are no players in this ladder yet. Please check back later.")
                 
                 self.me = players.first { $0.userId == Auth.auth().currentUser?.uid }
+				
+				self.toolbar.isHidden = self.me == nil
                 
                 self.tableView.reloadData()
             case .failure(let error):

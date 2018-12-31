@@ -210,7 +210,7 @@
                                     <outlet property="delegate" destination="S9k-L7-jyX" id="Fq3-ba-EuH"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCU-Cj-9Ez">
+                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCU-Cj-9Ez">
                                 <rect key="frame" x="0.0" y="507" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="K0B-rA-8tm"/>
@@ -218,7 +218,8 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mUG-Bx-o3E"/>
-                                    <barButtonItem title="Report A Match" id="KFd-iA-RKa">
+                                    <barButtonItem title="Report a Match" id="KFd-iA-RKa">
+                                        <color key="tintColor" red="0.0" green="0.14901960780000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="reportMatchTapped:" destination="S9k-L7-jyX" id="HTa-ZD-2ws"/>
                                         </connections>
@@ -241,6 +242,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="XiY-Or-Otp" id="HfP-oC-ZXf"/>
+                        <outlet property="toolbar" destination="LCU-Cj-9Ez" id="jOd-es-1sN"/>
                         <segue destination="mjv-dq-MHu" kind="presentation" identifier="matchReported" id="DWy-ad-bzb"/>
                     </connections>
                 </viewController>
@@ -385,11 +387,11 @@
             <objects>
                 <viewController id="IDX-Bh-4cb" customClass="ReportMatchViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1w-tS-fdq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8VQ-kG-M4z">
-                                <rect key="frame" x="0.0" y="72" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="8" width="375" height="543"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-Rd-UPt">
                                         <rect key="frame" x="52" y="0.0" width="271" height="132"/>
@@ -571,7 +573,7 @@
                                 </subviews>
                             </stackView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftb-Qu-tdG">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="559" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="MLN-HK-EJm"/>
