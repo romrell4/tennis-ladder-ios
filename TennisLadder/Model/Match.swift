@@ -9,15 +9,27 @@
 import Foundation
 
 struct Match: Codable {
-	let matchId: Int
+	let matchId: Int?
 	let ladderId: Int
-	let matchDate: Date
+	let matchDate: Date?
 	let winner: Player
 	let loser: Player
-	let winnerSet1Score: Int
-	let loserSet1Score: Int
-	let winnerSet2Score: Int
-	let loserSet2Score: Int
-	let winnerSet3Score: Int?
-	let loserSet3Score: Int?
+	var winnerSet1Score: Int
+	var loserSet1Score: Int
+	var winnerSet2Score: Int
+	var loserSet2Score: Int
+	var winnerSet3Score: Int?
+	var loserSet3Score: Int?
+    
+    var scoreDisplay: String {
+        let sets = [
+            (winnerSet1Score, loserSet1Score),
+            (winnerSet2Score, loserSet2Score),
+            (winnerSet3Score, loserSet3Score)
+        ]
+        
+        return sets.filter { $0.0 != nil && $0.1 != nil }
+            .map { "\($0.0 ?? 0)-\($0.1 ?? 0)" }
+            .joined(separator: ", ")
+    }
 }

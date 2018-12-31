@@ -9,40 +9,44 @@
 /* Begin PBXBuildFile section */
 		0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */; };
 		0C3CCEA021CCA0F3005CBE57 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9F21CCA0F3005CBE57 /* Match.swift */; };
-		0CAA465121D13EB300232B68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0CAA465021D13EB300232B68 /* GoogleService-Info.plist */; };
+		0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */; };
+		0C5E77A121D6762A00E6BAC9 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */; };
+		0C5E77A321D6762A00E6BAC9 /* LadderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */; };
 		0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EC021C15F8500480763 /* AppDelegate.swift */; };
-		0CD92EC321C15F8500480763 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EC221C15F8500480763 /* PlayerViewController.swift */; };
 		0CD92EC621C15F8500480763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD92EC421C15F8500480763 /* Main.storyboard */; };
 		0CD92ECB21C15F8600480763 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD92ECA21C15F8600480763 /* Assets.xcassets */; };
 		0CD92ECE21C15F8600480763 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD92ECC21C15F8600480763 /* LaunchScreen.storyboard */; };
 		0CD92EF521C160B000480763 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EF421C160B000480763 /* MainViewController.swift */; };
-		0CD92EF721C160CC00480763 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EF621C160CC00480763 /* DetailViewController.swift */; };
 		0CD92EF921C16F0500480763 /* Ladder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EF821C16F0500480763 /* Ladder.swift */; };
 		0CD92EFB21C1727500480763 /* LadderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EFA21C1727500480763 /* LadderTableViewCell.swift */; };
 		0CD92EFE21C18C8100480763 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EFD21C18C8100480763 /* Extensions.swift */; };
 		0CD92F0021C1921500480763 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EFF21C1921500480763 /* Player.swift */; };
 		0CD92F0221C19A2200480763 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92F0121C19A2200480763 /* PlayerCell.swift */; };
+		7F12B61E21D83E4000B9019C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F12B61D21D83E4000B9019C /* GoogleService-Info.plist */; };
+		BAB87F969B2F836BA1BFEB7F /* Pods_TennisLadder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A83618983DD274FE9A2D8A1B /* Pods_TennisLadder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		0C3CCE9F21CCA0F3005CBE57 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
-		0CAA465021D13EB300232B68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMatchViewController.swift; sourceTree = "<group>"; };
+		0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LadderViewController.swift; sourceTree = "<group>"; };
 		0CD92EBD21C15F8500480763 /* TennisLadder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisLadder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD92EC021C15F8500480763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0CD92EC221C15F8500480763 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		0CD92EC521C15F8500480763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CD92ECA21C15F8600480763 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CD92ECD21C15F8600480763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CD92ECF21C15F8600480763 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CD92EF421C160B000480763 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		0CD92EF621C160CC00480763 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0CD92EF821C16F0500480763 /* Ladder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ladder.swift; sourceTree = "<group>"; };
 		0CD92EFA21C1727500480763 /* LadderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LadderTableViewCell.swift; sourceTree = "<group>"; };
 		0CD92EFD21C18C8100480763 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0CD92EFF21C1921500480763 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0CD92F0121C19A2200480763 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		4F9180E292F5EBAC27967091 /* Pods-TennisLadder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisLadder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder.debug.xcconfig"; sourceTree = "<group>"; };
+		7F12B61D21D83E4000B9019C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A83618983DD274FE9A2D8A1B /* Pods_TennisLadder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisLadder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E4BB323CF0F78FCE102409 /* Pods-TennisLadder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisLadder.release.xcconfig"; path = "Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAB87F969B2F836BA1BFEB7F /* Pods_TennisLadder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +68,7 @@
 				0CD92EBF21C15F8500480763 /* TennisLadder */,
 				0CD92EBE21C15F8500480763 /* Products */,
 				A4FCBE9759D24AC95D403A16 /* Pods */,
+				1472E700A6F3942EADABB29E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,8 +89,8 @@
 				0CD92EF221C15FD100480763 /* View */,
 				0CD92ECA21C15F8600480763 /* Assets.xcassets */,
 				0CD92ECC21C15F8600480763 /* LaunchScreen.storyboard */,
+				7F12B61D21D83E4000B9019C /* GoogleService-Info.plist */,
 				0CD92ECF21C15F8600480763 /* Info.plist */,
-				0CAA465021D13EB300232B68 /* GoogleService-Info.plist */,
 			);
 			path = TennisLadder;
 			sourceTree = "<group>";
@@ -115,8 +121,9 @@
 			children = (
 				0CD92EC021C15F8500480763 /* AppDelegate.swift */,
 				0CD92EF421C160B000480763 /* MainViewController.swift */,
-				0CD92EC221C15F8500480763 /* PlayerViewController.swift */,
-				0CD92EF621C160CC00480763 /* DetailViewController.swift */,
+				0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */,
+				0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */,
+				0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -127,6 +134,14 @@
 				0CD92EFD21C18C8100480763 /* Extensions.swift */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		1472E700A6F3942EADABB29E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A83618983DD274FE9A2D8A1B /* Pods_TennisLadder.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A4FCBE9759D24AC95D403A16 /* Pods */ = {
@@ -200,7 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CD92ECE21C15F8600480763 /* LaunchScreen.storyboard in Resources */,
-				0CAA465121D13EB300232B68 /* GoogleService-Info.plist in Resources */,
+				7F12B61E21D83E4000B9019C /* GoogleService-Info.plist in Resources */,
 				0CD92ECB21C15F8600480763 /* Assets.xcassets in Resources */,
 				0CD92EC621C15F8500480763 /* Main.storyboard in Resources */,
 			);
@@ -284,16 +299,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0CD92EC321C15F8500480763 /* PlayerViewController.swift in Sources */,
-				0CD92EF721C160CC00480763 /* DetailViewController.swift in Sources */,
+				0C5E77A321D6762A00E6BAC9 /* LadderViewController.swift in Sources */,
 				0CD92EFE21C18C8100480763 /* Extensions.swift in Sources */,
 				0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */,
 				0CD92F0221C19A2200480763 /* PlayerCell.swift in Sources */,
 				0CD92EFB21C1727500480763 /* LadderTableViewCell.swift in Sources */,
 				0CD92EF921C16F0500480763 /* Ladder.swift in Sources */,
+				0C5E77A121D6762A00E6BAC9 /* PlayerViewController.swift in Sources */,
 				0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */,
 				0CD92F0021C1921500480763 /* Player.swift in Sources */,
 				0CD92EF521C160B000480763 /* MainViewController.swift in Sources */,
+				0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */,
 				0C3CCEA021CCA0F3005CBE57 /* Match.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9JN5J3VZ9;
 				INFOPLIST_FILE = TennisLadder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,6 +480,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9JN5J3VZ9;
 				INFOPLIST_FILE = TennisLadder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

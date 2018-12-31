@@ -1,4 +1,5 @@
 //
+//  MainViewController.swift
 //  HomeViewController.swift
 //  TennisLadder
 //
@@ -6,25 +7,23 @@
 //  Copyright © 2018 Z Tai. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import FirebaseUI
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FUIAuthDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	//MARK: Private properties
     private var ladders = [Ladder]()
 	
 	//MARK: Outlets
 	@IBOutlet private weak var statusButton: UIBarButtonItem!
 	@IBOutlet private weak var statusLabel: UILabel!
-    @IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
-	
+    @IBOutlet private var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		//Make the extra empty rows disappear
-		tableView.tableFooterView = UIView()
+		tableView.hideEmptyCells()
 		
 		//Listen for login updates
 		updateLoginStatus()
@@ -38,6 +37,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			switch response {
 			case .success(let ladders):
 				self.ladders = ladders
+				self.tableView.setEmptyMessage("There are no available ladders right now. Please check back later.")
 				self.tableView.reloadData()
 			case .failure(let error):
 				self.displayError(error)
@@ -50,7 +50,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "player", let vc = segue.destination as? PlayerViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+        if segue.identifier == "ladderSelected", let vc = segue.destination as? LadderViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
 			//Pass the ladder they click on to the next view controller
 			vc.ladder = ladders[indexPath.row]
         }

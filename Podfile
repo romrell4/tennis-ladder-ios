@@ -7,8 +7,8 @@ target 'TennisLadder' do
 
   # Pods for TennisLadder
   pod 'Alamofire', '~> 4.8.0'
+  pod 'moa', '~> 10.0'
   pod 'Firebase/Core'
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Google'
-  pod 'moa', '~> 10.0'
 end

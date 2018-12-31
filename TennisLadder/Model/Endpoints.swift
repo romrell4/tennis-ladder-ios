@@ -14,7 +14,7 @@ enum Endpoints: URLRequestConvertible {
 	
 	case getLadders()
 	case getPlayers(Int)
-	case getMatches(Int, Int)
+	case getMatches(Int, String)
 	case reportMatch(Int, Match)
 	
 	private var method: HTTPMethod {
@@ -40,6 +40,14 @@ enum Endpoints: URLRequestConvertible {
 		}
 	}
 	
+	private var dateFormat: String? {
+		switch self {
+		case .getLadders: return "yyyy-MM-dd"
+		case .getMatches: return "yyyy-MM-dd'T'HH:mm:ss"
+		default: return nil
+		}
+	}
+	
 	func asURLRequest() throws -> URLRequest {
 		var url = try Endpoints.BASE_URL.asURL()
 		url.appendPathComponent(path)
@@ -51,10 +59,16 @@ enum Endpoints: URLRequestConvertible {
 	}
 	
 	func response<T: Decodable>(_ callback: @escaping (Response<[T]>) -> Void) {
-		Alamofire.request(self).responseCollection { (response: DataResponse<[T]>) in
+		Alamofire.request(self).responseCollection(dateFormat: dateFormat) { (response: DataResponse<[T]>) in
 			callback(response.result.toResponse())
 		}
 	}
+    
+    func responseSingle<T: Decodable>(_ callback: @escaping (Response<T>) -> Void) {
+		Alamofire.request(self).responseObject(dateFormat: dateFormat) { (response: DataResponse<T>) in
+            callback(response.result.toResponse())
+        }
+    }
 }
 
 enum Response<T> {
