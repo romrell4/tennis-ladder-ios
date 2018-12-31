@@ -27,7 +27,19 @@ class ReportMatchViewController: UIViewController {
     
     @IBOutlet private weak var meNameLabel: UILabel!
     @IBOutlet private weak var opponentNameLabel: UILabel!
-    
+	
+	//MARK: Private Properties
+	private lazy var thirdSetFields = [meSet3TextField, opponentSet3TextField]
+	
+	private lazy var textFieldDict: [UITextField: UITextField?] = [
+		meSet1TextField: opponentSet1TextField,
+		opponentSet1TextField: meSet2TextField,
+		meSet2TextField: opponentSet2TextField,
+		opponentSet2TextField: meSet3TextField,
+		meSet3TextField: opponentSet3TextField,
+		opponentSet3TextField: nil
+	]
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +61,23 @@ class ReportMatchViewController: UIViewController {
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
+	
+	@objc private func textFieldDidChange(textField: UITextField) {
+		if let temp = textFieldDict[textField], let nextTextField = temp {
+			var maxDigits = 1
+			if thirdSetFields.contains(textField) {
+				maxDigits = 2
+			}
+			if textField.text?.count == maxDigits {
+				nextTextField.becomeFirstResponder()
+			}
+		} else {
+			var maxDigits = 2
+			if textField.text?.count == maxDigits {
+				textField.resignFirstResponder()
+			}
+		}
+	}
 	
 	@IBAction func cancelPressed(_ sender: Any) {
 		self.dismiss(animated: true)
@@ -84,6 +113,11 @@ class ReportMatchViewController: UIViewController {
 		
 		opponentImageView.moa.url = opponent.photoUrl
 		opponentNameLabel.text = opponent.name
+		
+		[meSet1TextField, opponentSet1TextField, meSet2TextField, opponentSet2TextField, meSet3TextField, opponentSet3TextField].forEach {
+			
+			$0?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: UIControl.Event.editingChanged)
+		}
 	}
     
     private func getMatch() -> Match {
