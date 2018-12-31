@@ -61,7 +61,6 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 		let match = matches[indexPath.row]
 		
 		cell.textLabel?.text = [match.winner, match.loser].first { $0.userId != player.userId }?.name
-		//TODO: Display from player's perspective
 		cell.detailTextLabel?.text = match.scoreDisplay
         
         return cell
