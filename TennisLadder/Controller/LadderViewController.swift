@@ -93,7 +93,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(at: indexPath)
         
-        if let cell = cell as? PlayerCell {
+        if let cell = cell as? PlayerTableViewCell {
             let player = players[indexPath.row]
             
             //Initialize the cell with the ladder at that index path
