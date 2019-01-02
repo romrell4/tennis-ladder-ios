@@ -20,7 +20,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet private weak var playerImage: UIImageView!
     @IBOutlet private weak var currentRankingLabel: UILabel!
     @IBOutlet private weak var recordLabel: UILabel!
-    @IBOutlet private weak var matchTableView: UITableView!
+	@IBOutlet private weak var spinner: UIActivityIndicatorView!
+	@IBOutlet private weak var matchTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         loadViews()
 
         Endpoints.getMatches(player.ladderId, player.userId).response { (response: Response<[Match]>) in
+			self.spinner.stopAnimating()
+			
             switch response {
             case .success(let matches):
                 self.matches = matches
@@ -40,10 +43,6 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
                 self.displayError(error)
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.matchTableView.reloadData()
     }
     
     private func loadViews() {

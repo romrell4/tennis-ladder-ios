@@ -21,7 +21,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	//MARK: Outlets
     @IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var toolbar: UIToolbar!
-	@IBOutlet weak var spinner: UIActivityIndicatorView!
+	@IBOutlet private weak var spinner: UIActivityIndicatorView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()

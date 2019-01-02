@@ -365,9 +365,15 @@
                                     <outlet property="delegate" destination="Q6L-4W-ixA" id="2yu-b1-6bV"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5ZE-Wn-5ZH">
+                                <rect key="frame" x="169" y="256" width="37" height="37"/>
+                                <color key="color" name="Primary"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="5ZE-Wn-5ZH" firstAttribute="centerX" secondItem="svv-ao-YxB" secondAttribute="centerX" id="0sH-B5-Vqp"/>
+                            <constraint firstItem="5ZE-Wn-5ZH" firstAttribute="top" secondItem="cs1-PK-uKF" secondAttribute="top" id="LkN-aQ-Jm6"/>
                             <constraint firstItem="Lbj-fg-kob" firstAttribute="trailing" secondItem="uFj-pa-U8p" secondAttribute="trailing" id="MM3-NE-jQk"/>
                             <constraint firstItem="uFj-pa-U8p" firstAttribute="leading" secondItem="Lbj-fg-kob" secondAttribute="leading" id="UF9-vM-QYu"/>
                             <constraint firstItem="cs1-PK-uKF" firstAttribute="trailing" secondItem="Lbj-fg-kob" secondAttribute="trailing" id="eob-CE-1os"/>
@@ -386,6 +392,7 @@
                         <outlet property="matchTableView" destination="cs1-PK-uKF" id="6MH-Bf-K0u"/>
                         <outlet property="playerImage" destination="ELg-uw-b8n" id="Bim-Z7-coJ"/>
                         <outlet property="recordLabel" destination="6aO-OG-WYK" id="fKp-XX-9M9"/>
+                        <outlet property="spinner" destination="5ZE-Wn-5ZH" id="g0A-rk-zfS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ff-IP-eOR" userLabel="First Responder" sceneMemberID="firstResponder"/>
