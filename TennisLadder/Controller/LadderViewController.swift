@@ -100,6 +100,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
+	
+	//MARK: Listeners
     
     @IBAction func reportMatchTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Who did you play against?", message: nil, preferredStyle: .actionSheet)

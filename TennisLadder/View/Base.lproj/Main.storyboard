@@ -240,6 +240,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wsD-sJ-nkc"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0zw-11-wlY">
+                        <barButtonItem key="rightBarButtonItem" title="Rules" id="EKc-xc-9w7"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="XiY-Or-Otp" id="HfP-oC-ZXf"/>
                         <outlet property="toolbar" destination="LCU-Cj-9Ez" id="jOd-es-1sN"/>
