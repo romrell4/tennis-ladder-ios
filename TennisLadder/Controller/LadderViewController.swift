@@ -59,7 +59,9 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
                 
                 self.tableView.reloadData()
             case .failure(let error):
-                self.displayError(error)
+				self.displayError(error) { (_) in
+					self.popBack()
+				}
             }
         }
     }
@@ -105,7 +107,11 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	
 	//MARK: Listeners
     
-    @IBAction func reportMatchTapped(_ sender: Any) {
+	@IBAction func rulesTapped(_ sender: Any) {
+		presentSafariViewController(urlString: "https://romrell4.github.io/tennis-ladder-ws/docs/rules.html")
+	}
+	
+	@IBAction func reportMatchTapped(_ sender: Any) {
         let alert = UIAlertController(title: "Who did you play against?", message: nil, preferredStyle: .actionSheet)
 		
 		//Removing self from list of people to play against

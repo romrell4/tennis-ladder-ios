@@ -88,7 +88,7 @@ class ReportMatchViewController: UIViewController {
                     case .success:
                         self.dismiss(animated: true)
                     case .failure(let error):
-                        self.displayError(error)
+						self.displayError(error)
                 }
             }
         })

@@ -40,7 +40,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 				self.matchTableView.setEmptyMessage("This player hasn't played any matches in this ladder yet. Please check back later.")
                 self.matchTableView.reloadData()
             case .failure(let error):
-                self.displayError(error)
+				self.displayError(error)
             }
         }
     }

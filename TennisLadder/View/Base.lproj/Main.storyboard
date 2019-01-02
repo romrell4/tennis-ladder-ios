@@ -248,7 +248,11 @@
                         <viewLayoutGuide key="safeArea" id="wsD-sJ-nkc"/>
                     </view>
                     <navigationItem key="navigationItem" id="0zw-11-wlY">
-                        <barButtonItem key="rightBarButtonItem" title="Rules" id="EKc-xc-9w7"/>
+                        <barButtonItem key="rightBarButtonItem" title="Rules" id="EKc-xc-9w7">
+                            <connections>
+                                <action selector="rulesTapped:" destination="S9k-L7-jyX" id="iwi-UZ-XZk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="spinner" destination="39n-Hv-vum" id="JzM-Rx-CEn"/>

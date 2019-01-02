@@ -9,6 +9,7 @@
 
 import UIKit
 import Alamofire
+import SafariServices
 
 extension DateFormatter {
     static func defaultDateFormat(_ format: String) -> DateFormatter {
@@ -137,9 +138,32 @@ extension UITableView {
 }
 
 extension UIViewController {
-	func displayError(_ error: Error) {
-		let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "OK", style: .default))
+	func displayError(_ error: Error, alertHandler: ((UIAlertAction?) -> Void)? = nil) {
+		displayAlert(title: "Error", message: error.localizedDescription, alertHandler: alertHandler)
+	}
+	
+	func displayAlert(title: String, message: String, alertHandler: ((UIAlertAction?) -> Void)? = nil) {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: alertHandler))
 		self.present(alert, animated: true)
+	}
+	
+	func popBack() {
+		navigationController?.popViewController(animated: true)
+	}
+	
+	func presentSafariViewController(urlString: String, delegate: SFSafariViewControllerDelegate? = nil) {
+		if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+			let svc = SFSafariViewController(url: url)
+			svc.delegate = delegate
+			svc.preferredBarTintColor = .primary
+			svc.preferredControlTintColor = .white
+			
+			self.present(svc, animated: true)
+		} else {
+			displayAlert(title: "Unable to Load Web Page", message: "The app was unable to load this webpage. Please ensure that Safari is installed on your device.", alertHandler: { (_) in
+				self.popBack()
+			})
+		}
 	}
 }
