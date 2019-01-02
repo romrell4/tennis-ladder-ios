@@ -211,6 +211,10 @@
                                     <outlet property="delegate" destination="S9k-L7-jyX" id="Fq3-ba-EuH"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="39n-Hv-vum">
+                                <rect key="frame" x="169" y="257" width="37" height="37"/>
+                                <color key="color" name="Primary"/>
+                            </activityIndicatorView>
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCU-Cj-9Ez">
                                 <rect key="frame" x="0.0" y="507" width="375" height="44"/>
                                 <constraints>
@@ -232,6 +236,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LCU-Cj-9Ez" firstAttribute="top" secondItem="XiY-Or-Otp" secondAttribute="bottom" id="32z-zh-Fsl"/>
+                            <constraint firstItem="39n-Hv-vum" firstAttribute="centerX" secondItem="AuY-um-ykN" secondAttribute="centerX" id="LAM-un-jbK"/>
+                            <constraint firstItem="39n-Hv-vum" firstAttribute="centerY" secondItem="AuY-um-ykN" secondAttribute="centerY" id="RBe-1z-ogF"/>
                             <constraint firstItem="LCU-Cj-9Ez" firstAttribute="leading" secondItem="wsD-sJ-nkc" secondAttribute="leading" id="Vsb-k1-O46"/>
                             <constraint firstItem="XiY-Or-Otp" firstAttribute="leading" secondItem="wsD-sJ-nkc" secondAttribute="leading" id="clN-BR-Won"/>
                             <constraint firstItem="XiY-Or-Otp" firstAttribute="trailing" secondItem="wsD-sJ-nkc" secondAttribute="trailing" id="cyv-yp-vXt"/>
@@ -245,6 +251,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Rules" id="EKc-xc-9w7"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="spinner" destination="39n-Hv-vum" id="JzM-Rx-CEn"/>
                         <outlet property="tableView" destination="XiY-Or-Otp" id="HfP-oC-ZXf"/>
                         <outlet property="toolbar" destination="LCU-Cj-9Ez" id="jOd-es-1sN"/>
                         <segue destination="mjv-dq-MHu" kind="presentation" identifier="matchReported" id="DWy-ad-bzb"/>

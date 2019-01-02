@@ -21,6 +21,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	//MARK: Outlets
     @IBOutlet private weak var tableView: UITableView!
 	@IBOutlet private weak var toolbar: UIToolbar!
+	@IBOutlet weak var spinner: UIActivityIndicatorView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     
     @objc private func loadPlayers() {
         Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
+			self.spinner.stopAnimating()
             self.tableView.refreshControl?.endRefreshing()
             
             switch response {
