@@ -88,6 +88,10 @@ extension UIColor {
     static var meRowColor: UIColor {
         return UIColor(red: 1, green: 249/255, blue: 195/255, alpha: 1)
     }
+	
+	static var primary: UIColor {
+		return UIColor(named: "Primary")!
+	}
 }
 
 extension UITableView {
