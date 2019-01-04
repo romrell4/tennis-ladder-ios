@@ -34,6 +34,12 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         addRefreshControl()
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		tableView.deselectSelectedRow()
+	}
+	
     private func addRefreshControl() {
         let swipeRefreshControl = UIRefreshControl()
         swipeRefreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
