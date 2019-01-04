@@ -27,7 +27,7 @@ enum Endpoints: URLRequestConvertible {
 	private func getBody() throws -> [String: Any]? {
 		switch self {
 		case .getLadders, .getPlayers, .getMatches: return nil
-		case .reportMatch(_, let match): return try JSONSerialization.jsonObject(with: try JSONEncoder().encode(match)) as? [String: Any]
+		case .reportMatch(_, let match): return try JSONSerialization.jsonObject(with: try JSONEncoder(dateFormat: dateFormat).encode(match)) as? [String: Any]
 		}
 	}
 	

@@ -31,7 +31,7 @@ extension DataRequest {
 				return .failure(result.error!)
 			}
 			
-			guard let responseObject = try? self.getDecoder(dateFormat: dateFormat).decode(T.self, from: jsonData) else{
+			guard let responseObject = try? JSONDecoder(dateFormat: dateFormat).decode(T.self, from: jsonData) else {
 				return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
 			}
 			return .success(responseObject)
@@ -45,11 +45,11 @@ extension DataRequest {
 			if let error = error { return .failure(error) }
 			
 			let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
-			guard case let .success(jsonData) = result else{
+			guard case let .success(jsonData) = result else {
 				return .failure(result.error!)
 			}
 			
-			guard let responseArray = try? self.getDecoder(dateFormat: dateFormat).decode([T].self, from: jsonData) else {
+			guard let responseArray = try? JSONDecoder(dateFormat: dateFormat).decode([T].self, from: jsonData) else {
 				return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
 			}
 			
@@ -57,14 +57,25 @@ extension DataRequest {
 		}
 		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
 	}
-	
-	private func getDecoder(dateFormat: String?) -> JSONDecoder {
-		let decoder = JSONDecoder()
-		decoder.keyDecodingStrategy = .convertFromSnakeCase
+}
+
+extension JSONDecoder {
+	convenience init(dateFormat: String?) {
+		self.init()
+		keyDecodingStrategy = .convertFromSnakeCase
 		if let dateFormat = dateFormat {
-			decoder.dateDecodingStrategy = .formatted(DateFormatter.defaultDateFormat(dateFormat))
+			dateDecodingStrategy = .formatted(DateFormatter.defaultDateFormat(dateFormat))
 		}
-		return decoder
+	}
+}
+
+extension JSONEncoder {
+	convenience init(dateFormat: String?) {
+		self.init()
+		keyEncodingStrategy = .convertToSnakeCase
+		if let dateFormat = dateFormat {
+			dateEncodingStrategy = .formatted(DateFormatter.defaultDateFormat(dateFormat))
+		}
 	}
 }
 
