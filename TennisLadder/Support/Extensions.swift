@@ -139,6 +139,7 @@ extension UITableView {
 
 extension UIViewController {
 	func displayError(_ error: Error, alertHandler: ((UIAlertAction?) -> Void)? = nil) {
+		print(error)
 		displayAlert(title: "Error", message: error.localizedDescription, alertHandler: alertHandler)
 	}
 	
