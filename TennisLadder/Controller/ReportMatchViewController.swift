@@ -86,7 +86,9 @@ class ReportMatchViewController: UIViewController {
             Endpoints.reportMatch(match.ladderId, match).responseSingle { (response: Response<Match>) in
                 switch response {
                     case .success:
-                        self.dismiss(animated: true)
+						self.displayAlert(title: "Success", message: "Thank you. Your match has been reported.", alertHandler: { (_) in
+							self.dismiss(animated: true)
+						})
                     case .failure(let error):
 						self.displayError(error)
                 }
