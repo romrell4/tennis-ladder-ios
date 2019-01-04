@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import FirebaseAuth
 import Alamofire
 
 enum Endpoints: URLRequestConvertible {
 	static let BASE_URL = "https://lxlwvoenil.execute-api.us-west-2.amazonaws.com/prod"
+	static var TOKEN: String?
 	
 	case getLadders()
 	case getPlayers(Int)
@@ -52,23 +54,53 @@ enum Endpoints: URLRequestConvertible {
 		var url = try Endpoints.BASE_URL.asURL()
 		url.appendPathComponent(path)
 		
-		//TODO: Add X-Firebase-Token
+		var urlRequest = try URLRequest(url: url, method: method)
+		if let token = Endpoints.TOKEN {
+			urlRequest.addValue(token, forHTTPHeaderField: "X-Firebase-Token")
+		}
 		
-		let urlRequest = try URLRequest(url: url, method: method)
 		return try JSONEncoding.default.encode(urlRequest, with: getBody())
 	}
 	
 	func response<T: Decodable>(_ callback: @escaping (Response<[T]>) -> Void) {
-		Alamofire.request(self).responseCollection(dateFormat: dateFormat) { (response: DataResponse<[T]>) in
-			callback(response.result.toResponse())
+		authenticate {
+			Alamofire.request(self).response(dateFormat: self.dateFormat) { (response: DataResponse<[T]>) in
+				callback(response.result.toResponse())
+			}
+		}
+	}
+	
+	func response<T: Decodable>(_ callback: @escaping (Response<T>) -> Void) {
+		authenticate {
+			Alamofire.request(self).response(dateFormat: self.dateFormat) { (response: DataResponse<T>) in
+				callback(response.result.toResponse())
+			}
 		}
 	}
     
-    func responseSingle<T: Decodable>(_ callback: @escaping (Response<T>) -> Void) {
-		Alamofire.request(self).responseObject(dateFormat: dateFormat) { (response: DataResponse<T>) in
-            callback(response.result.toResponse())
-        }
+    func response(_ callback: @escaping (Response<Void>) -> Void) {
+		authenticate {
+			Alamofire.request(self).response { (response: DefaultDataResponse) in
+				if 200...299 ~= response.response?.statusCode ?? 500 {
+					callback(Response.success(Void()))
+				} else {
+					callback(Response.failure(response.error ?? NSError()))
+				}
+			}
+		}
     }
+	
+	private func authenticate(then makeRequest: @escaping (() -> Void)) {
+		if let user = Auth.auth().currentUser {
+			user.getIDToken(completion: { (token, _) in
+				Endpoints.TOKEN = token
+				makeRequest()
+				Endpoints.TOKEN = nil
+			})
+		} else {
+			makeRequest()
+		}
+	}
 }
 
 enum Response<T> {

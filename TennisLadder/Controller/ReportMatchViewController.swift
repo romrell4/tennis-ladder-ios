@@ -83,7 +83,7 @@ class ReportMatchViewController: UIViewController {
         let reportConfirmAlert = UIAlertController(title: "Confirm", message: message, preferredStyle: UIAlertController.Style.alert)
         
         reportConfirmAlert.addAction(UIAlertAction(title: "Yes", style: .default) { (_) in
-            Endpoints.reportMatch(match.ladderId, match).responseSingle { (response: Response<Match>) in
+            Endpoints.reportMatch(match.ladderId, match).response { (response: Response<Match>) in
                 switch response {
                     case .success:
 						self.displayAlert(title: "Success", message: "Thank you. Your match has been reported.", alertHandler: { (_) in

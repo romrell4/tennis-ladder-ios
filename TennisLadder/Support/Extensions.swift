@@ -21,9 +21,11 @@ extension DateFormatter {
 }
 
 extension DataRequest {
-	@discardableResult func responseObject<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<T>) -> Void ) -> Self {
-		
+	@discardableResult func response<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<T>) -> Void ) -> Self {
 		let responseSerializer = DataResponseSerializer<T> { request, response, data, error in
+			if let request = request, let url = request.url?.absoluteString, let data = request.httpBody, let body = String(data: data, encoding: .utf8) { print(url); print(body) }
+			if let response = response { print(response) }
+			if let data = data, let body = String(data: data, encoding: .utf8) { print(body) }
 			if let error = error { return .failure(error) }
 			
 			let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
@@ -39,9 +41,11 @@ extension DataRequest {
 		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
 	}
 	
-	@discardableResult func responseCollection<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
-		
+	@discardableResult func response<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
 		let responseSerializer = DataResponseSerializer<[T]> { request, response, data, error in
+			if let request = request, let url = request.url?.absoluteString, let data = request.httpBody, let body = String(data: data, encoding: .utf8) { print(url); print(body) }
+			if let response = response { print(response) }
+			if let data = data, let body = String(data: data, encoding: .utf8) { print(body) }
 			if let error = error { return .failure(error) }
 			
 			let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
