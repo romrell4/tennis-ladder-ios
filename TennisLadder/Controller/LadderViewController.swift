@@ -29,13 +29,14 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		title = ladder.name
 		tableView.hideEmptyCells()
         
-        loadPlayers()
-        
         addRefreshControl()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		//TODO: Use unwind segue?
+		loadPlayers()
 		
 		tableView.deselectSelectedRow()
 	}
