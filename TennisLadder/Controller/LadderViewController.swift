@@ -39,13 +39,12 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		title = ladder.name
 		tableView.hideEmptyCells()
 		tableView.refreshControl = UIRefreshControl(title: "Refreshing...", target: self, action: #selector(loadPlayers))
+		
+		loadPlayers()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
-		//TODO: Use unwind segue?
-		loadPlayers()
 		
 		tableView.deselectSelectedRow()
 	}
@@ -90,6 +89,10 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     }
 	
 	//MARK: Listeners
+	
+	@IBAction func unwind(_ segue: UIStoryboardSegue) {
+		loadPlayers()
+	}
 	
 	@objc private func loadPlayers() {
 		Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in

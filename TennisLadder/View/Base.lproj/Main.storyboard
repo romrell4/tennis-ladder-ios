@@ -645,9 +645,11 @@
                         <outlet property="opponentSet1TextField" destination="ke0-sk-Ppz" id="oqf-58-E5b"/>
                         <outlet property="opponentSet2TextField" destination="e3D-we-KUu" id="85t-fK-10n"/>
                         <outlet property="opponentSet3TextField" destination="DpD-N9-1Dm" id="0Ce-dA-Me7"/>
+                        <segue destination="ivN-Ky-wI8" kind="unwind" identifier="unwind" unwindAction="unwind:" id="3Kx-Gq-q13"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5V-UR-8xb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ivN-Ky-wI8" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="745" y="901"/>
         </scene>

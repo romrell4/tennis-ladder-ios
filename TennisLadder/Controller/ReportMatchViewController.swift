@@ -87,7 +87,7 @@ class ReportMatchViewController: UIViewController {
                 switch response {
                     case .success:
 						self.displayAlert(title: "Success", message: "Thank you. Your match has been reported.", alertHandler: { (_) in
-							self.dismiss(animated: true)
+							self.performSegue(withIdentifier: "unwind", sender: self)
 						})
                     case .failure(let error):
 						self.displayError(error)
