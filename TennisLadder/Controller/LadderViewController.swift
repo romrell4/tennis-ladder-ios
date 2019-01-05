@@ -114,7 +114,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	//MARK: Listeners
     
 	@IBAction func rulesTapped(_ sender: Any) {
-		presentSafariViewController(urlString: "https://romrell4.github.io/tennis-ladder-ws/docs/rules.html")
+		presentSafariViewController(urlString: "https://romrell4.github.io/tennis-ladder-ws/rules.html")
 	}
 	
 	@IBAction func reportMatchTapped(_ sender: Any) {
