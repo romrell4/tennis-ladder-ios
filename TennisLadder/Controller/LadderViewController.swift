@@ -15,8 +15,18 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	var ladder: Ladder!
 	
 	//MARK: Private properties
-    private var me: Player?
-    private var players = [Player]()
+	private var players = [Player]() {
+		didSet {
+			self.tableView.setEmptyMessage("There are no players in this ladder yet. Please check back later.")
+			self.me = players.first { $0.userId == Auth.auth().currentUser?.uid }
+			self.tableView.reloadData()
+		}
+	}
+	private var me: Player? {
+		didSet {
+			self.toolbar.isHidden = self.me == nil
+		}
+	}
     
 	//MARK: Outlets
     @IBOutlet private weak var tableView: UITableView!
@@ -28,8 +38,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		
 		title = ladder.name
 		tableView.hideEmptyCells()
-        
-        addRefreshControl()
+		tableView.refreshControl = UIRefreshControl(title: "Refreshing...", target: self, action: #selector(loadPlayers))
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -40,38 +49,6 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		
 		tableView.deselectSelectedRow()
 	}
-	
-    private func addRefreshControl() {
-        let swipeRefreshControl = UIRefreshControl()
-        swipeRefreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
-        swipeRefreshControl.addTarget(self, action: #selector(loadPlayers), for: .valueChanged)
-        
-        tableView.refreshControl = swipeRefreshControl
-    }
-    
-    @objc private func loadPlayers() {
-        Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
-			self.spinner.stopAnimating()
-            self.tableView.refreshControl?.endRefreshing()
-            
-            switch response {
-            case .success(let players):
-                self.players = players
-				
-				self.tableView.setEmptyMessage("There are no players in this ladder yet. Please check back later.")
-                
-                self.me = players.first { $0.userId == Auth.auth().currentUser?.uid }
-				
-				self.toolbar.isHidden = self.me == nil
-                
-                self.tableView.reloadData()
-            case .failure(let error):
-				self.displayError(error) { (_) in
-					self.popBack()
-				}
-            }
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "playerSelected",
@@ -113,6 +90,22 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     }
 	
 	//MARK: Listeners
+	
+	@objc private func loadPlayers() {
+		Endpoints.getPlayers(ladder.ladderId).response { (response: Response<[Player]>) in
+			self.spinner.stopAnimating()
+			self.tableView.refreshControl?.endRefreshing()
+			
+			switch response {
+			case .success(let players):
+				self.players = players
+			case .failure(let error):
+				self.displayError(error) { (_) in
+					self.popBack()
+				}
+			}
+		}
+	}
     
 	@IBAction func rulesTapped(_ sender: Any) {
 		presentSafariViewController(urlString: "https://romrell4.github.io/tennis-ladder-ws/rules.html")

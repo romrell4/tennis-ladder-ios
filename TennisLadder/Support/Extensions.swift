@@ -117,6 +117,14 @@ extension UIColor {
 	}
 }
 
+extension UIRefreshControl {
+	convenience init(title: String, target: Any, action: Selector) {
+		self.init()
+		attributedTitle = NSAttributedString(string: title)
+		addTarget(target, action: action, for: .valueChanged)
+	}
+}
+
 extension UITableView {
 	func dequeueCell(at indexPath: IndexPath) -> UITableViewCell {
 		return dequeueReusableCell(withIdentifier: "cell", for: indexPath)
