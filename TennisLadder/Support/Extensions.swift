@@ -23,9 +23,10 @@ extension DateFormatter {
 extension DataRequest {
 	@discardableResult func response<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<T>) -> Void ) -> Self {
 		let responseSerializer = DataResponseSerializer<T> { request, response, data, error in
-			if let request = request, let url = request.url?.absoluteString, let data = request.httpBody, let body = String(data: data, encoding: .utf8) { print(url); print(body) }
-			if let response = response { print(response) }
-			if let data = data, let body = String(data: data, encoding: .utf8) { print(body) }
+			if DEBUG_MODE {
+				self.log(request: request, response: response, data: data, error: error)
+			}
+			
 			if let error = error { return .failure(error) }
 			
 			let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
@@ -43,9 +44,10 @@ extension DataRequest {
 	
 	@discardableResult func response<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
 		let responseSerializer = DataResponseSerializer<[T]> { request, response, data, error in
-			if let request = request, let url = request.url?.absoluteString, let data = request.httpBody, let body = String(data: data, encoding: .utf8) { print(url); print(body) }
-			if let response = response { print(response) }
-			if let data = data, let body = String(data: data, encoding: .utf8) { print(body) }
+			if DEBUG_MODE {
+				self.log(request: request, response: response, data: data, error: error)
+			}
+			
 			if let error = error { return .failure(error) }
 			
 			let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
@@ -60,6 +62,11 @@ extension DataRequest {
 			return .success(responseArray)
 		}
 		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
+	}
+	
+	private func log(request: URLRequest?, response: URLResponse?, data: Data?, error: Error?) {
+		if let request = request, let url = request.url?.absoluteString, let data = request.httpBody, let body = String(data: data, encoding: .utf8) { print("\n\nRequest: \(url)\n\(body)") }
+		if let response = response, let data = data, let body = String(data: data, encoding: .utf8) { print("\n\nResponse: \(response)\n\(body)") }
 	}
 }
 

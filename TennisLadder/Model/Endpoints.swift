@@ -94,6 +94,9 @@ enum Endpoints: URLRequestConvertible {
 		if let user = Auth.auth().currentUser {
 			user.getIDToken(completion: { (token, _) in
 				Endpoints.TOKEN = token
+				if DEBUG_MODE {
+					print("Token: \(token ?? "")")
+				}
 				makeRequest()
 				Endpoints.TOKEN = nil
 			})

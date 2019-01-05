@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FirebaseUI
 
+let DEBUG_MODE = false
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
