@@ -10,6 +10,10 @@ import UIKit
 import FirebaseAuth
 import moa
 
+enum ButtonState {
+	case reportMatch, requestInvite, login
+}
+
 class LadderViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 	//MARK: Public properties
 	var ladder: Ladder!
@@ -17,20 +21,31 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	//MARK: Private properties
 	private var players = [Player]() {
 		didSet {
-			self.tableView.setEmptyMessage("There are no players in this ladder yet. Please check back later.")
-			self.me = players.first { $0.userId == Auth.auth().currentUser?.uid }
-			self.tableView.reloadData()
+			tableView.setEmptyMessage("There are no players in this ladder yet. Please check back later.")
+			me = players.first { $0.userId == Auth.auth().currentUser?.uid }
+			buttonState = me != nil ? .reportMatch : (Auth.auth().currentUser != nil ? .requestInvite : .login)
+			tableView.reloadData()
 		}
 	}
-	private var me: Player? {
+	private var me: Player?
+	private var buttonState: ButtonState? {
 		didSet {
-			self.toolbar.isHidden = self.me == nil
+			if let buttonState = buttonState {
+				switch buttonState {
+				case .reportMatch:
+					bottomButton.title = "Report a Match"
+				case .requestInvite:
+					bottomButton.title = "Request an Invite to This Ladder"
+				case .login:
+					bottomButton.title = "Login to Report a Match"
+				}
+			}
 		}
 	}
     
 	//MARK: Outlets
     @IBOutlet private weak var tableView: UITableView!
-	@IBOutlet private weak var toolbar: UIToolbar!
+	@IBOutlet private weak var bottomButton: UIBarButtonItem!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
 	
     override func viewDidLoad() {
@@ -114,18 +129,29 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		presentSafariViewController(urlString: "https://romrell4.github.io/tennis-ladder-ws/rules.html")
 	}
 	
-	@IBAction func reportMatchTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Who did you play against?", message: nil, preferredStyle: .actionSheet)
-		
-		//Removing self from list of people to play against
-		players.filter { $0 != me }.forEach { player in
-            alert.addAction(UIAlertAction(title: player.name, style: .default) { (_) in
-                self.performSegue(withIdentifier: "matchReported", sender: player)
-            })
-        }
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alert, animated: true)
+	@IBAction func bottomButtonTapped(_ sender: Any) {
+		if let buttonState = buttonState {
+			switch buttonState {
+			case .reportMatch:
+				let alert = UIAlertController(title: "Who did you play against?", message: nil, preferredStyle: .actionSheet)
+				
+				//Removing self from list of people to play against
+				players.filter { $0 != me }.forEach { player in
+					alert.addAction(UIAlertAction(title: player.name, style: .default) { (_) in
+						self.performSegue(withIdentifier: "matchReported", sender: player)
+					})
+				}
+				
+				alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+				present(alert, animated: true)
+			case .requestInvite:
+				//TODO: Somehow request to be invited to the ladder
+				break
+			case .login:
+				//TODO: Login the user in
+				break
+			}
+		}
     }
 }
 

@@ -215,7 +215,7 @@
                                 <rect key="frame" x="169" y="257" width="37" height="37"/>
                                 <color key="color" name="Primary"/>
                             </activityIndicatorView>
-                            <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCU-Cj-9Ez">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCU-Cj-9Ez">
                                 <rect key="frame" x="0.0" y="507" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="K0B-rA-8tm"/>
@@ -223,10 +223,10 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="mUG-Bx-o3E"/>
-                                    <barButtonItem title="Report a Match" id="KFd-iA-RKa">
+                                    <barButtonItem title="Loading..." id="KFd-iA-RKa">
                                         <color key="tintColor" red="0.0" green="0.14901960780000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <action selector="reportMatchTapped:" destination="S9k-L7-jyX" id="HTa-ZD-2ws"/>
+                                            <action selector="bottomButtonTapped:" destination="S9k-L7-jyX" id="Ley-Xv-a8H"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="z30-dU-XyU"/>
@@ -255,9 +255,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomButton" destination="KFd-iA-RKa" id="qex-bL-y46"/>
                         <outlet property="spinner" destination="39n-Hv-vum" id="JzM-Rx-CEn"/>
                         <outlet property="tableView" destination="XiY-Or-Otp" id="HfP-oC-ZXf"/>
-                        <outlet property="toolbar" destination="LCU-Cj-9Ez" id="jOd-es-1sN"/>
                         <segue destination="mjv-dq-MHu" kind="presentation" identifier="matchReported" id="DWy-ad-bzb"/>
                     </connections>
                 </viewController>
