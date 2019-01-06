@@ -49,6 +49,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         playerImage.moa.url = player.photoUrl
         currentRankingLabel.text = "#\(String(player.ranking))"
         recordLabel.text = String("\(player.wins) - \(player.losses)")
+		
+		//TODO: Add toolbar with button to allow a player to challenge
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
