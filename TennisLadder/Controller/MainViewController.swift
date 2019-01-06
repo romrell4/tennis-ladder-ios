@@ -41,12 +41,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		
 		tableView.hideEmptyCells()
 		
-		//Set up the login stuff
-		if let user = Auth.auth().currentUser {
-			buttonState = .loggedIn(user: user)
-		} else {
-			buttonState = .loggedOut
-		}
+		setupLoginState()
 		
 		//Make a request to get the ladders and reload the UI when the response comes back
 		Endpoints.getLadders().response { (response: Response<[Ladder]>) in
@@ -100,6 +95,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			presentLoginViewController {
 				self.buttonState = .loggedIn(user: $0)
 			}
+		}
+	}
+	
+	//MARK: Private Functions
+	
+	private func setupLoginState() {
+		let updateState = { (user: User?) in
+			if let user = user {
+				self.buttonState = .loggedIn(user: user)
+			} else {
+				self.buttonState = .loggedOut
+			}
+		}
+		
+		//Update state right now (initial setup)
+		updateState(Auth.auth().currentUser)
+		
+		//Add a listener to rerun the closure whenever the state changes
+		Auth.auth().addStateDidChangeListener { (_, user) in
+			updateState(user)
 		}
 	}
 }
