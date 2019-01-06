@@ -22,12 +22,12 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	private var players = [Player]() {
 		didSet {
 			tableView.setEmptyMessage("There are no players in this ladder yet. Please check back later.")
-			me = players.first { $0.userId == Auth.auth().currentUser?.uid }
-			buttonState = me != nil ? .reportMatch : (Auth.auth().currentUser != nil ? .requestInvite : .login)
-			tableView.reloadData()
+			updateState()
 		}
 	}
-	private var me: Player?
+	private var me: Player? {
+		return players.filter { $0.userId == Auth.auth().currentUser?.uid }.first
+	}
 	private var buttonState: ButtonState? {
 		didSet {
 			if let buttonState = buttonState {
@@ -148,11 +148,24 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 				//TODO: Somehow request to be invited to the ladder
 				break
 			case .login:
-				//TODO: Login the user in
-				
-				break
+				presentLoginViewController { (user) in
+					self.updateState()
+				}
 			}
 		}
     }
+	
+	private func updateState() {
+		if me != nil {
+			buttonState = .reportMatch
+		} else if Auth.auth().currentUser != nil {
+			buttonState = .requestInvite
+		} else {
+			buttonState = .login
+		}
+		
+		//Reload the table (so that the cell background color gets reloaded)
+		tableView.reloadData()
+	}
 }
 
