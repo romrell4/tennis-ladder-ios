@@ -9,12 +9,18 @@
 import Foundation
 
 struct Player: Codable, Equatable {
-	let userId: String
+	let user: PlayerUser
 	let ladderId: Int
-    let name: String
-	let photoUrl: String?
 	let score: Int
     let ranking: Int
     let wins: Int
     let losses: Int
+}
+
+struct PlayerUser: Codable, Equatable {
+	let userId: String
+	let name: String
+	let email: String
+	let phoneNumber: String?
+	let photoUrl: String?
 }

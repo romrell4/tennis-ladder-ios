@@ -103,11 +103,11 @@ class ReportMatchViewController: UIViewController {
 	//MARK: Private Functions
 	
 	private func setUpViews() {
-		meImageView.moa.url = me.photoUrl
-		meNameLabel.text = me.name
+		meImageView.moa.url = me.user.photoUrl
+		meNameLabel.text = me.user.name
 		
-		opponentImageView.moa.url = opponent.photoUrl
-		opponentNameLabel.text = opponent.name
+		opponentImageView.moa.url = opponent.user.photoUrl
+		opponentNameLabel.text = opponent.user.name
 		
 		[meSet1TextField, opponentSet1TextField, meSet2TextField, opponentSet2TextField, meSet3TextField, opponentSet3TextField].forEach {
 			$0?.addTarget(self, action: #selector(textFieldDidChange(textField:)), for: .editingChanged)

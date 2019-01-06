@@ -26,12 +26,12 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		title = player.name
+		title = player.user.name
 		matchTableView.hideEmptyCells()
 		
         loadViews()
 
-        Endpoints.getMatches(player.ladderId, player.userId).response { (response: Response<[Match]>) in
+        Endpoints.getMatches(player.ladderId, player.user.userId).response { (response: Response<[Match]>) in
 			self.spinner.stopAnimating()
 			
             switch response {
@@ -46,7 +46,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     private func loadViews() {
-        playerImage.moa.url = player.photoUrl
+        playerImage.moa.url = player.user.photoUrl
         currentRankingLabel.text = "#\(String(player.ranking))"
         recordLabel.text = String("\(player.wins) - \(player.losses)")
 		
@@ -61,7 +61,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = matchTableView.dequeueCell(at: indexPath)
 		let match = matches[indexPath.row]
 		
-		cell.textLabel?.text = [match.winner, match.loser].first { $0.userId != player.userId }?.name
+		cell.textLabel?.text = [match.winner, match.loser].first { $0 != player }?.user.name
 		cell.detailTextLabel?.text = match.scoreDisplay
         
         return cell

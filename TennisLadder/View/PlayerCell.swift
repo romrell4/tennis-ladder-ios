@@ -15,9 +15,9 @@ class PlayerTableViewCell: UITableViewCell {
 
     var player: Player! {
         didSet {
-            name.text = player.name
+            name.text = player.user.name
             points.text = String(player.score)
-            userImage.moa.url = player.photoUrl
+            userImage.moa.url = player.user.photoUrl
         }
     }
 }

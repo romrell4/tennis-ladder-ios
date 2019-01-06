@@ -26,7 +26,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		}
 	}
 	private var me: Player? {
-		return players.filter { $0.userId == Auth.auth().currentUser?.uid }.first
+		return players.filter { $0.user.userId == Auth.auth().currentUser?.uid }.first
 	}
 	private var buttonState: ButtonState? {
 		didSet {
@@ -137,7 +137,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 				
 				//Removing self from list of people to play against
 				players.filter { $0 != me }.forEach { player in
-					alert.addAction(UIAlertAction(title: player.name, style: .default) { (_) in
+					alert.addAction(UIAlertAction(title: player.user.name, style: .default) { (_) in
 						self.performSegue(withIdentifier: "matchReported", sender: player)
 					})
 				}
