@@ -92,9 +92,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			try? Auth.auth().signOut()
 			buttonState = .loggedOut
 		} else {
-			presentLoginViewController {
-				self.buttonState = .loggedIn(user: $0)
-			}
+			presentLoginViewController()
 		}
 	}
 	

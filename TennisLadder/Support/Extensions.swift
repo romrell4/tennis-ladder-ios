@@ -184,12 +184,15 @@ extension UIViewController {
 		navigationController?.popViewController(animated: true)
 	}
 	
-	func presentLoginViewController(loggedInListener: @escaping (User) -> Void) {
-		Auth.auth().addStateDidChangeListener { (_, user) in
-			if let user = user {
-				loggedInListener(user)
+	func presentLoginViewController(loggedInListener: ((User) -> Void)? = nil) {
+		if let listener = loggedInListener {
+			Auth.auth().addStateDidChangeListener { (_, user) in
+				if let user = user {
+					listener(user)
+				}
 			}
 		}
+		
 		guard let authUI = FUIAuth.defaultAuthUI() else { return }
 		authUI.providers = [
 			FUIGoogleAuth()
