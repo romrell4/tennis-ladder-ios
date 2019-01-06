@@ -9,6 +9,7 @@
 
 import UIKit
 import Alamofire
+import FirebaseUI
 import SafariServices
 
 extension DateFormatter {
@@ -181,6 +182,19 @@ extension UIViewController {
 	
 	func popBack() {
 		navigationController?.popViewController(animated: true)
+	}
+	
+	func presentLoginViewController(listener: @escaping (User) -> Void) {
+		Auth.auth().addStateDidChangeListener { (_, user) in
+			if let user = user {
+				listener(user)
+			}
+		}
+		guard let authUI = FUIAuth.defaultAuthUI() else { return }
+		authUI.providers = [
+			FUIGoogleAuth()
+		]
+		present(authUI.authViewController(), animated: true)
 	}
 	
 	func presentSafariViewController(urlString: String, delegate: SFSafariViewControllerDelegate? = nil) {

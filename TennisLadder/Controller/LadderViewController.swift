@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import moa
 
-enum ButtonState {
+private enum ButtonState {
 	case reportMatch, requestInvite, login
 }
 
@@ -149,6 +149,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 				break
 			case .login:
 				//TODO: Login the user in
+				
 				break
 			}
 		}

@@ -10,25 +10,42 @@
 import UIKit
 import FirebaseUI
 
+private enum ButtonState {
+	case loggedIn(user: User), loggedOut
+}
+
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	//MARK: Private properties
     private var ladders = [Ladder]()
+	private var buttonState: ButtonState = .loggedOut {
+		didSet {
+			switch buttonState {
+			case .loggedIn(let user):
+				statusButton.title = "Log Out"
+				statusLabel.text = "Logged in as \(user.displayName ?? "Anonymous")"
+			default:
+				statusButton.title = "Log In"
+				statusLabel.text = "Not logged in"
+			}
+		}
+	}
 	
 	//MARK: Outlets
 	@IBOutlet private weak var statusButton: UIBarButtonItem!
 	@IBOutlet private weak var statusLabel: UILabel!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
-    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		tableView.hideEmptyCells()
 		
-		//Listen for login updates
-		updateLoginStatus()
-		Auth.auth().addStateDidChangeListener { (auth, user) in
-			self.updateLoginStatus()
+		//Set up the login stuff
+		if let user = Auth.auth().currentUser {
+			buttonState = .loggedIn(user: user)
+		} else {
+			buttonState = .loggedOut
 		}
 		
 		//Make a request to get the ladders and reload the UI when the response comes back
@@ -78,24 +95,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	@IBAction func settingsTapped(_ sender: Any) {
 		if Auth.auth().currentUser != nil {
 			try? Auth.auth().signOut()
+			buttonState = .loggedOut
 		} else {
-			guard let authUI = FUIAuth.defaultAuthUI() else { return }
-			authUI.providers = [
-				FUIGoogleAuth()
-			]
-			present(authUI.authViewController(), animated: true)
-		}
-	}
-	
-	//MARK: Private functions
-	
-	private func updateLoginStatus() {
-		if let user = Auth.auth().currentUser {
-			self.statusButton.title = "Log Out"
-			self.statusLabel.text = "Logged in as \(user.displayName ?? "Anonymous")"
-		} else {
-			self.statusButton.title = "Log In"
-			self.statusLabel.text = "Not logged in"
+			presentLoginViewController {
+				self.buttonState = .loggedIn(user: $0)
+			}
 		}
 	}
 }
