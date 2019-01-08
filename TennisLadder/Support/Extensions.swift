@@ -66,8 +66,18 @@ extension DataRequest {
 	}
 	
 	private func log(request: URLRequest?, response: URLResponse?, data: Data?, error: Error?) {
-		if let request = request, let url = request.url?.absoluteString, let data = request.httpBody, let body = String(data: data, encoding: .utf8) { print("\n\nRequest: \(url)\n\(body)") }
-		if let response = response, let data = data, let body = String(data: data, encoding: .utf8) { print("\n\nResponse: \(response)\n\(body)") }
+		if let request = request, let url = request.url?.absoluteString, let method = request.httpMethod {
+			print("\nRequest: \(method) - \(url)")
+			if let data = request.httpBody, let body = String(data: data, encoding: .utf8) {
+				print(body)
+			}
+		}
+		if let response = response as? HTTPURLResponse {
+			print("Response: \(response.statusCode)")
+			if let data = data, let body = String(data: data, encoding: .utf8) {
+				print(body)
+			}
+		}
 	}
 }
 
