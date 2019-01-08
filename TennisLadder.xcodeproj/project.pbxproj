@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3AFFF321E53AB800360F8F /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3AFFF221E53AB800360F8F /* ServerError.swift */; };
 		0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */; };
 		0C3CCEA021CCA0F3005CBE57 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3CCE9F21CCA0F3005CBE57 /* Match.swift */; };
 		0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C3AFFF221E53AB800360F8F /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		0C3CCE9F21CCA0F3005CBE57 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMatchViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				0CD92EF821C16F0500480763 /* Ladder.swift */,
 				0CD92EFF21C1921500480763 /* Player.swift */,
 				0C3CCE9F21CCA0F3005CBE57 /* Match.swift */,
+				0C3AFFF221E53AB800360F8F /* ServerError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				0C5E77A121D6762A00E6BAC9 /* PlayerViewController.swift in Sources */,
 				0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */,
 				0CD92F0021C1921500480763 /* Player.swift in Sources */,
+				0C3AFFF321E53AB800360F8F /* ServerError.swift in Sources */,
 				0CD92EF521C160B000480763 /* MainViewController.swift in Sources */,
 				0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */,
 				0C3CCEA021CCA0F3005CBE57 /* Match.swift in Sources */,

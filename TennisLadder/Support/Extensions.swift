@@ -21,66 +21,6 @@ extension DateFormatter {
     }
 }
 
-extension DataRequest {
-	@discardableResult func response<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<T>) -> Void ) -> Self {
-		let responseSerializer = DataResponseSerializer<T> { request, response, data, error in
-			if DEBUG_MODE {
-				self.log(request: request, response: response, data: data, error: error)
-			}
-			
-			if let error = error { return .failure(error) }
-			
-			let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
-			guard case let .success(jsonData) = result else {
-				return .failure(result.error!)
-			}
-			
-			guard let responseObject = try? JSONDecoder(dateFormat: dateFormat).decode(T.self, from: jsonData) else {
-				return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
-			}
-			return .success(responseObject)
-		}
-		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
-	}
-	
-	@discardableResult func response<T: Decodable>(dateFormat: String? = nil, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
-		let responseSerializer = DataResponseSerializer<[T]> { request, response, data, error in
-			if DEBUG_MODE {
-				self.log(request: request, response: response, data: data, error: error)
-			}
-			
-			if let error = error { return .failure(error) }
-			
-			let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
-			guard case let .success(jsonData) = result else {
-				return .failure(result.error!)
-			}
-			
-			guard let responseArray = try? JSONDecoder(dateFormat: dateFormat).decode([T].self, from: jsonData) else {
-				return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
-			}
-			
-			return .success(responseArray)
-		}
-		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
-	}
-	
-	private func log(request: URLRequest?, response: URLResponse?, data: Data?, error: Error?) {
-		if let request = request, let url = request.url?.absoluteString, let method = request.httpMethod {
-			print("\nRequest: \(method) - \(url)")
-			if let data = request.httpBody, let body = String(data: data, encoding: .utf8) {
-				print(body)
-			}
-		}
-		if let response = response as? HTTPURLResponse {
-			print("Response: \(response.statusCode)")
-			if let data = data, let body = String(data: data, encoding: .utf8) {
-				print(body)
-			}
-		}
-	}
-}
-
 extension JSONDecoder {
 	convenience init(dateFormat: String?) {
 		self.init()
@@ -180,8 +120,8 @@ extension UITableView {
 
 extension UIViewController {
 	func displayError(_ error: Error, alertHandler: ((UIAlertAction?) -> Void)? = nil) {
-		print(error)
-		displayAlert(title: "Error", message: error.localizedDescription, alertHandler: alertHandler)
+		//If the error is a ServerError, display the readable error. Otherwise, just use the description
+		displayAlert(title: "Error", message: (error as? ServerError)?.error ?? error.localizedDescription, alertHandler: alertHandler)
 	}
 	
 	func displayAlert(title: String, message: String, alertHandler: ((UIAlertAction?) -> Void)? = nil) {

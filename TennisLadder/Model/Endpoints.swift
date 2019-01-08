@@ -73,7 +73,7 @@ enum Endpoints: URLRequestConvertible {
 	
 	func response<T: Decodable>(_ callback: @escaping (Response<[T]>) -> Void) {
 		authenticate {
-			Alamofire.request(self).response(dateFormat: self.dateFormat) { (response: DataResponse<[T]>) in
+			Alamofire.request(self).response(jsonDecoder: JSONDecoder(dateFormat: self.dateFormat)) { (response: DataResponse<[T]>) in
 				callback(response.result.toResponse())
 			}
 		}
@@ -81,7 +81,7 @@ enum Endpoints: URLRequestConvertible {
 	
 	func response<T: Decodable>(_ callback: @escaping (Response<T>) -> Void) {
 		authenticate {
-			Alamofire.request(self).response(dateFormat: self.dateFormat) { (response: DataResponse<T>) in
+			Alamofire.request(self).response(jsonDecoder: JSONDecoder(dateFormat: self.dateFormat)) { (response: DataResponse<T>) in
 				callback(response.result.toResponse())
 			}
 		}
@@ -118,4 +118,76 @@ enum Endpoints: URLRequestConvertible {
 enum Response<T> {
 	case success(T)
 	case failure(Error)
+}
+
+private extension DataRequest {
+	@discardableResult func response<T: Decodable>(jsonDecoder: JSONDecoder, completionHandler: @escaping (DataResponse<T>) -> Void ) -> Self {
+		let responseSerializer = DataResponseSerializer<T> { request, response, data, error in
+			do {
+				let jsonData = try self.getSuccessData(request: request, response: response, data: data, error: error)
+			
+				guard let result = try? jsonDecoder.decode(T.self, from: jsonData) else {
+					guard let serverError = try? jsonDecoder.decode(ServerError.self, from: jsonData) else {
+						return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
+					}
+					return .failure(serverError)
+				}
+
+				return .success(result)
+			} catch {
+				return .failure(error)
+			}
+		}
+		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
+	}
+	
+	@discardableResult func response<T: Decodable>(jsonDecoder: JSONDecoder, completionHandler: @escaping (DataResponse<[T]>) -> Void) -> Self {
+		let responseSerializer = DataResponseSerializer<[T]> { request, response, data, error in
+			do {
+				let jsonData = try self.getSuccessData(request: request, response: response, data: data, error: error)
+				guard let result = try? jsonDecoder.decode([T].self, from: jsonData) else {
+					guard let serverError = try? jsonDecoder.decode(ServerError.self, from: jsonData) else {
+						return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
+					}
+					return .failure(serverError)
+				}
+				
+				return .success(result)
+			} catch {
+				return .failure(error)
+			}
+		}
+		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
+	}
+	
+	private func getSuccessData(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> Data {
+		if DEBUG_MODE {
+			self.log(request: request, response: response, data: data, error: error)
+		}
+		
+		if let error = error {
+			throw error
+		}
+		
+		let result = DataRequest.serializeResponseData(response: response, data: data, error: error)
+		guard case let .success(jsonData) = result else {
+			throw result.error!
+		}
+		return jsonData
+	}
+	
+	private func log(request: URLRequest?, response: URLResponse?, data: Data?, error: Error?) {
+		if let request = request, let url = request.url?.absoluteString, let method = request.httpMethod {
+			print("\nRequest: \(method) - \(url)")
+			if let data = request.httpBody, let body = String(data: data, encoding: .utf8) {
+				print(body)
+			}
+		}
+		if let response = response as? HTTPURLResponse {
+			print("Response: \(response.statusCode)")
+			if let data = data, let body = String(data: data, encoding: .utf8) {
+				print(body)
+			}
+		}
+	}
 }
