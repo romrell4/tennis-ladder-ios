@@ -11,34 +11,42 @@ import FirebaseAuth
 import Alamofire
 
 enum Endpoints: URLRequestConvertible {
-	static let BASE_URL = "https://lxlwvoenil.execute-api.us-west-2.amazonaws.com/prod"
+	static let BASE_URL = "https://lxlwvoenil.execute-api.us-west-2.amazonaws.com/prod/"
 	static var TOKEN: String?
 	
 	case getLadders()
 	case getPlayers(Int)
 	case getMatches(Int, String)
 	case reportMatch(Int, Match)
+	case addUserToLadder(Int, String)
 	
 	private var method: HTTPMethod {
 		switch self {
 		case .getLadders, .getPlayers, .getMatches: return .get
-		case .reportMatch: return .post
+		case .reportMatch, .addUserToLadder: return .post
 		}
 	}
 	
 	private func getBody() throws -> [String: Any]? {
 		switch self {
-		case .getLadders, .getPlayers, .getMatches: return nil
+		case .getLadders, .getPlayers, .getMatches, .addUserToLadder: return nil
 		case .reportMatch(_, let match): return try JSONSerialization.jsonObject(with: try JSONEncoder(dateFormat: dateFormat).encode(match)) as? [String: Any]
 		}
 	}
 	
-	private var path: String {
+	private var path: [String] {
 		switch self {
-		case .getLadders: return "ladders"
-		case .getPlayers(let ladderId): return "ladders/\(ladderId)/players"
-		case .getMatches(let ladderId, let userId): return "ladders/\(ladderId)/players/\(userId)/matches"
-		case .reportMatch(let ladderId, _): return "ladders/\(ladderId)/matches"
+		case .getLadders: return ["ladders"]
+		case .getPlayers(let ladderId), .addUserToLadder(let ladderId, _): return ["ladders", String(ladderId), "players"]
+		case .getMatches(let ladderId, let userId): return ["ladders", String(ladderId), "players", userId, "matches"]
+		case .reportMatch(let ladderId, _): return ["ladders", String(ladderId), "matches"]
+		}
+	}
+	
+	private var queryParams: [(String, String)]? {
+		switch self {
+		case .addUserToLadder(_, let code): return [("code", code)]
+		default: return nil
 		}
 	}
 	
@@ -51,10 +59,11 @@ enum Endpoints: URLRequestConvertible {
 	}
 	
 	func asURLRequest() throws -> URLRequest {
-		var url = try Endpoints.BASE_URL.asURL()
-		url.appendPathComponent(path)
+		let urlString = Endpoints.BASE_URL + path.joined(separator: "/")
+		var urlComps = URLComponents(string: urlString)!
+		urlComps.queryItems = queryParams?.map { URLQueryItem(name: $0.0, value: $0.1) }
 		
-		var urlRequest = try URLRequest(url: url, method: method)
+		var urlRequest = try URLRequest(url: urlComps.asURL(), method: method)
 		if let token = Endpoints.TOKEN {
 			urlRequest.addValue(token, forHTTPHeaderField: "X-Firebase-Token")
 		}

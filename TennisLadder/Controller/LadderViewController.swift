@@ -145,7 +145,28 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 				alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 				present(alert, animated: true)
 			case .requestInvite:
-				//TODO: Somehow request to be invited to the ladder
+				//Present a challenge for the ladder's code
+				let alert = UIAlertController(title: "Ladder Invite Request", message: "Please provide the entry code for this ladder:", preferredStyle: .alert)
+				alert.addTextField()
+				alert.addAction(UIAlertAction(title: "Go", style: .default, handler: { (_) in
+					guard let code = alert.textFields?.first?.text else { return }
+					
+					//Dismiss the code dialog, and make the request
+					self.spinner.startAnimating()
+					Endpoints.addUserToLadder(self.ladder.ladderId, code).response { (response: Response<[Player]>) in
+						self.spinner.stopAnimating()
+						
+						switch response {
+						case .success(let players):
+							self.displayAlert(title: "Success!", message: "You have successfully been added to this ladder.")
+							self.players = players
+						case .failure(let error):
+							self.displayError(error)
+						}
+					}
+				}))
+				alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+				present(alert, animated: true)
 				break
 			case .login:
 				presentLoginViewController { (user) in
