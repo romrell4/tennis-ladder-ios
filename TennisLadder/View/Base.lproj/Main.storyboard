@@ -377,7 +377,11 @@
                                 <rect key="frame" x="0.0" y="507" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tbg-dZ-gC8"/>
-                                    <barButtonItem title="Challenge" id="ASG-rJ-NdN"/>
+                                    <barButtonItem title="Challenge" id="ASG-rJ-NdN">
+                                        <connections>
+                                            <action selector="challengeTapped:" destination="Q6L-4W-ixA" id="e9G-2z-DZd"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tf7-mh-nlr"/>
                                 </items>
                                 <color key="tintColor" name="Accent"/>

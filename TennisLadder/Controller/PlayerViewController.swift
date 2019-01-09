@@ -44,14 +44,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
-    
-    private func loadViews() {
-        playerImage.moa.url = player.user.photoUrl
-        currentRankingLabel.text = "#\(String(player.ranking))"
-        recordLabel.text = String("\(player.wins) - \(player.losses)")
-		
-		//TODO: Add toolbar with button to allow a player to challenge
-    }
+	
+	//MARK: UITableViewDataSource/Delegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matches.count
@@ -66,5 +60,19 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
+	
+	//MARK: Listeners
+	
+	@IBAction func challengeTapped(_ sender: Any) {
+		//TODO: allow a player to challenge
+	}
+	
+	//MARK: Private Functions
+	
+	private func loadViews() {
+		playerImage.moa.url = player.user.photoUrl
+		currentRankingLabel.text = "#\(String(player.ranking))"
+		recordLabel.text = String("\(player.wins) - \(player.losses)")
+	}
 }
 
