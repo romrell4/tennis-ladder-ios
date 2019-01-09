@@ -8,8 +8,9 @@
 
 import UIKit
 import moa
+import MessageUI
 
-class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate {
     //MARK: Public Properties
     var player: Player!
 	var me: Player?
@@ -63,19 +64,55 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
 	
+	//MARK: MFMessageComposeViewControllerDelegate
+	
+	func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+		controller.dismiss(animated: true)
+	}
+	
 	//MARK: Listeners
 	
 	@IBAction func challengeTapped(_ sender: Any) {
 		//TODO: allow a player to challenge
-		let contactOptions: [(String, String?)] = [
-			("Email", player.user.email),
-			("Phone", player.user.phoneNumber)
+		let contactOptions: [(String, String?, (String?) -> Void)] = [
+			("Email", player.user.email, { email in
+				if let email = email {
+					let mailUrlPrefixes = [
+						("Mail", "mailto:"),
+						("Gmail", "googlegmail:///co"),
+						("Outlook", "ms-outlook://compose")
+					]
+					let subject = "Tennis Ladder Challenge".replacingOccurrences(of: " ", with: "%20")
+					
+					let alert = UIAlertController(title: "Which mail app would you like to use?", message: nil, preferredStyle: .actionSheet)
+					
+					mailUrlPrefixes.forEach {
+						if let url = URL(string: "\($0.1)?to=\(email)&subject=\(subject)"), UIApplication.shared.canOpenURL(url) {
+							alert.addAction(UIAlertAction(title: $0.0, style: .default) { _ in
+								UIApplication.shared.open(url)
+							})
+						}
+					}
+					alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+					self.present(alert, animated: true)
+				}
+			}),
+			("Phone", player.user.phoneNumber, { phoneNumber in
+				if let phoneNumber = phoneNumber {
+					let vc = MFMessageComposeViewController()
+					vc.messageComposeDelegate = self
+					vc.recipients = [phoneNumber]
+					if MFMessageComposeViewController.canSendText() {
+						self.present(vc, animated: true)
+					}
+				}
+			})
 		].filter { $0.1 != nil }
 		
 		let alert = UIAlertController(title: "Contact player via:", message: nil, preferredStyle: .actionSheet)
 		contactOptions.forEach { (option) in
 			alert.addAction(UIAlertAction(title: option.0, style: .default) { _ in
-				
+				option.2(option.1)
 			})
 		}
 		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
