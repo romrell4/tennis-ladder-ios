@@ -12,6 +12,7 @@ import moa
 class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //MARK: Public Properties
     var player: Player!
+	var me: Player?
     
     //MARK: Private Properties
     private var matches = [Match]()
@@ -22,7 +23,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet private weak var recordLabel: UILabel!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
 	@IBOutlet private weak var matchTableView: UITableView!
-    
+	@IBOutlet private weak var toolbar: UIToolbar!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -65,6 +67,19 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 	
 	@IBAction func challengeTapped(_ sender: Any) {
 		//TODO: allow a player to challenge
+		let contactOptions: [(String, String?)] = [
+			("Email", player.user.email),
+			("Phone", player.user.phoneNumber)
+		].filter { $0.1 != nil }
+		
+		let alert = UIAlertController(title: "Contact player via:", message: nil, preferredStyle: .actionSheet)
+		contactOptions.forEach { (option) in
+			alert.addAction(UIAlertAction(title: option.0, style: .default) { _ in
+				
+			})
+		}
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+		present(alert, animated: true)
 	}
 	
 	//MARK: Private Functions
@@ -73,6 +88,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 		playerImage.moa.url = player.user.photoUrl
 		currentRankingLabel.text = "#\(String(player.ranking))"
 		recordLabel.text = String("\(player.wins) - \(player.losses)")
+		
+		toolbar.isHidden = me == nil || me == player
 	}
 }
 

@@ -413,6 +413,7 @@
                         <outlet property="playerImage" destination="ELg-uw-b8n" id="Bim-Z7-coJ"/>
                         <outlet property="recordLabel" destination="6aO-OG-WYK" id="fKp-XX-9M9"/>
                         <outlet property="spinner" destination="5ZE-Wn-5ZH" id="g0A-rk-zfS"/>
+                        <outlet property="toolbar" destination="zM0-Aq-UXQ" id="TaE-6T-u05"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ff-IP-eOR" userLabel="First Responder" sceneMemberID="firstResponder"/>

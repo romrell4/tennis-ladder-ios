@@ -69,8 +69,9 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
             let vc = segue.destination as? PlayerViewController,
             let cell = sender as? UITableViewCell,
             let indexPath = tableView.indexPath(for: cell) {
-            
+			
             vc.player = players[indexPath.row]
+			vc.me = me
         } else if segue.identifier == "matchReported",
             let navVc = segue.destination as? UINavigationController,
 			let vc = navVc.viewControllers.first as? ReportMatchViewController,
