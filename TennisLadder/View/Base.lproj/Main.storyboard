@@ -167,35 +167,34 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="tZK-KB-l38">
-                                                    <rect key="frame" x="15" y="10.5" width="75" height="75"/>
+                                                    <rect key="frame" x="8" y="8" width="72.5" height="72.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="75" id="Cie-HG-nYj"/>
-                                                        <constraint firstAttribute="height" constant="75" id="xAF-b8-Pqa"/>
+                                                        <constraint firstAttribute="width" secondItem="tZK-KB-l38" secondAttribute="height" multiplier="1:1" id="iBI-Gy-XD5"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="75" id="xAF-b8-Pqa"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albus Dumbledore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRb-jI-act">
-                                                    <rect key="frame" x="100" y="37.5" width="148" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <rect key="frame" x="88.5" y="34" width="141.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1F-Ns-Cni">
-                                                    <rect key="frame" x="331" y="37.5" width="29" height="20.5"/>
+                                                    <rect key="frame" x="331" y="34" width="29" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="tZK-KB-l38" firstAttribute="leading" secondItem="gac-Ry-nrF" secondAttribute="leading" constant="15" id="55q-DK-ie0"/>
-                                                <constraint firstItem="PRb-jI-act" firstAttribute="leading" secondItem="tZK-KB-l38" secondAttribute="trailing" constant="10" id="Gsa-gE-JBY"/>
-                                                <constraint firstItem="tZK-KB-l38" firstAttribute="centerY" secondItem="gac-Ry-nrF" secondAttribute="centerY" id="Hle-k5-uub"/>
+                                                <constraint firstItem="tZK-KB-l38" firstAttribute="leading" secondItem="gac-Ry-nrF" secondAttribute="leading" constant="8" id="55q-DK-ie0"/>
+                                                <constraint firstItem="PRb-jI-act" firstAttribute="leading" secondItem="tZK-KB-l38" secondAttribute="trailing" constant="8" id="Gsa-gE-JBY"/>
                                                 <constraint firstItem="G1F-Ns-Cni" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PRb-jI-act" secondAttribute="trailing" constant="8" id="Lvc-sJ-Iz4"/>
-                                                <constraint firstItem="tZK-KB-l38" firstAttribute="top" secondItem="gac-Ry-nrF" secondAttribute="top" constant="10" id="MOn-oU-nr9"/>
-                                                <constraint firstAttribute="bottom" secondItem="tZK-KB-l38" secondAttribute="bottom" constant="10" id="ZHi-tE-irZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="tZK-KB-l38" secondAttribute="bottom" constant="8" id="WBp-q6-JPv"/>
                                                 <constraint firstItem="G1F-Ns-Cni" firstAttribute="trailing" secondItem="gac-Ry-nrF" secondAttribute="trailingMargin" id="fCB-KW-dqS"/>
-                                                <constraint firstItem="PRb-jI-act" firstAttribute="centerY" secondItem="gac-Ry-nrF" secondAttribute="centerY" id="kwp-0p-dZG"/>
-                                                <constraint firstItem="G1F-Ns-Cni" firstAttribute="centerY" secondItem="gac-Ry-nrF" secondAttribute="centerY" id="oTA-lC-eBC"/>
+                                                <constraint firstItem="G1F-Ns-Cni" firstAttribute="centerY" secondItem="tZK-KB-l38" secondAttribute="centerY" id="rnw-XD-gx5"/>
+                                                <constraint firstItem="tZK-KB-l38" firstAttribute="top" secondItem="gac-Ry-nrF" secondAttribute="top" constant="8" id="uGO-ER-EVn"/>
+                                                <constraint firstItem="PRb-jI-act" firstAttribute="centerY" secondItem="tZK-KB-l38" secondAttribute="centerY" id="wxD-Na-iAh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

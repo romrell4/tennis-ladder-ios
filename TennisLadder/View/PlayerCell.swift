@@ -9,9 +9,9 @@
 import UIKit
 
 class PlayerTableViewCell: UITableViewCell {
+	@IBOutlet private weak var userImage: UIImageView!
     @IBOutlet private weak var name: UILabel!
     @IBOutlet private weak var points: UILabel!
-    @IBOutlet private weak var userImage: UIImageView!
 
     var player: Player! {
         didSet {
