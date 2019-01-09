@@ -73,7 +73,6 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 	//MARK: Listeners
 	
 	@IBAction func challengeTapped(_ sender: Any) {
-		//TODO: allow a player to challenge
 		let contactOptions: [(String, String?, (String?) -> Void)] = [
 			("Email", player.user.email, { email in
 				if let email = email {
