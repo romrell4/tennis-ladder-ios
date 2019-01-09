@@ -88,6 +88,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	//MARK: Listeners
 	
 	@IBAction func settingsTapped(_ sender: Any) {
+		//TODO: Add profile page
 		if Auth.auth().currentUser != nil {
 			try? Auth.auth().signOut()
 			buttonState = .loggedOut
