@@ -435,7 +435,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8VQ-kG-M4z">
-                                <rect key="frame" x="8" y="8" width="359" height="315"/>
+                                <rect key="frame" x="8" y="8" width="359" height="298.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-Rd-UPt">
                                         <rect key="frame" x="50" y="0.0" width="259" height="132"/>
@@ -481,15 +481,14 @@
                                             <constraint firstAttribute="height" constant="132" id="hWx-mg-FJS"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6i-ga-e1t">
-                                        <rect key="frame" x="0.0" y="140" width="359" height="67"/>
-                                        <string key="text">Please report the scores from your perspective. For example, if you lost 6-0, 6-0, report 0-6, 0-6. If you did not play a third set (or tiebreak), leave the scores empty.</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOTE: Only winners report matches! If you did not play a third set (or tiebreak), leave the scores empty." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6i-ga-e1t">
+                                        <rect key="frame" x="5.5" y="140" width="348.5" height="50.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1o7-sA-Cyi">
-                                        <rect key="frame" x="39.5" y="215" width="280" height="100"/>
+                                        <rect key="frame" x="39.5" y="198.5" width="280" height="100"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Mko-S9-LJZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="88" height="100"/>
