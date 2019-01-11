@@ -66,12 +66,17 @@ extension UIColor {
 	static var primary: UIColor {
 		return UIColor(named: "Primary")!
 	}
+	
+	static var tint: UIColor {
+		return UIColor(named: "Tint")!
+	}
 }
 
 extension UIRefreshControl {
 	convenience init(title: String, target: Any, action: Selector) {
 		self.init()
-		attributedTitle = NSAttributedString(string: title)
+		attributedTitle = NSAttributedString(string: title, attributes: [.foregroundColor: UIColor.tint])
+		tintColor = .tint
 		addTarget(target, action: action, for: .valueChanged)
 	}
 }
