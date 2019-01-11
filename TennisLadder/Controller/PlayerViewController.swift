@@ -9,8 +9,9 @@
 import UIKit
 import moa
 import MessageUI
+import ContactsUI
 
-class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate {
+class PlayerViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CNContactViewControllerDelegate {
     //MARK: Public Properties
     var player: Player!
 	var me: Player?
@@ -72,7 +73,39 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 		controller.dismiss(animated: true)
 	}
 	
+	//MARK:
+	
+	func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
+		viewController.dismiss(animated: true)
+	}
+	
 	//MARK: Listeners
+	
+	@IBAction func addTapped(_ sender: Any) {
+		var nameParts = player.user.name.split(separator: " ")
+		let lastName = String(nameParts.removeLast())
+		let givenName = nameParts.joined(separator: " ")
+		
+		let contact = CNMutableContact()
+		contact.givenName = givenName
+		contact.familyName = lastName
+		contact.imageData = playerImage.image?.pngData()
+		contact.emailAddresses = [CNLabeledValue(label: CNLabelHome, value: player.user.email as NSString)]
+		if let phoneNumber = player.user.phoneNumber {
+			contact.phoneNumbers = [CNLabeledValue(label: CNLabelPhoneNumberMobile, value: CNPhoneNumber(stringValue: phoneNumber))]
+		}
+		let vc = CNContactViewController(forUnknownContact: contact)
+		vc.delegate = self
+		vc.contactStore = CNContactStore()
+		
+		let navVc = UINavigationController(rootViewController: vc)
+		vc.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissContacts))
+		present(navVc, animated: true)
+	}
+	
+	@objc func dismissContacts() {
+		dismiss(animated: true)
+	}
 	
 	@IBAction func challengeTapped(_ sender: Any) {
 		let contactOptions: [(String, String?, (String?) -> Void)] = [

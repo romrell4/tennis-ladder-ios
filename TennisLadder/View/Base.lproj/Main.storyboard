@@ -406,6 +406,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lbj-fg-kob"/>
                     </view>
+                    <navigationItem key="navigationItem" id="UBN-lY-glz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="dp7-lq-oiO">
+                            <connections>
+                                <action selector="addTapped:" destination="Q6L-4W-ixA" id="D0T-3z-acB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="currentRankingLabel" destination="T38-mF-xdy" id="wUU-nA-a0x"/>
                         <outlet property="matchTableView" destination="cs1-PK-uKF" id="6MH-Bf-K0u"/>
