@@ -28,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C31651C21E9444F0067108A /* TennisLadder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TennisLadder.entitlements; sourceTree = "<group>"; };
 		0C3AFFF221E53AB800360F8F /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		0C3CCE9D21CAB3A1005CBE57 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		0C3CCE9F21CCA0F3005CBE57 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		0CD92EBF21C15F8500480763 /* TennisLadder */ = {
 			isa = PBXGroup;
 			children = (
+				0C31651C21E9444F0067108A /* TennisLadder.entitlements */,
 				0CD92EFC21C18C6B00480763 /* Support */,
 				0CD92EF121C15FC600480763 /* Model */,
 				0CD92EF321C15FD600480763 /* Controller */,
@@ -191,6 +193,11 @@
 				TargetAttributes = {
 					0CD92EBC21C15F8500480763 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -461,6 +468,7 @@
 			baseConfigurationReference = 4F9180E292F5EBAC27967091 /* Pods-TennisLadder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TennisLadder/TennisLadder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9JN5J3VZ9;
 				INFOPLIST_FILE = TennisLadder/Info.plist;
@@ -481,6 +489,7 @@
 			baseConfigurationReference = D4E4BB323CF0F78FCE102409 /* Pods-TennisLadder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TennisLadder/TennisLadder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9JN5J3VZ9;
 				INFOPLIST_FILE = TennisLadder/Info.plist;
