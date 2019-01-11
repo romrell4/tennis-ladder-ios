@@ -40,21 +40,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
 		
 		tableView.hideEmptyCells()
+		tableView.refreshControl = UIRefreshControl(title: "Refreshing...", target: self, action: #selector(loadLadders))
 		
 		setupLoginState()
 		
-		//Make a request to get the ladders and reload the UI when the response comes back
-		Endpoints.getLadders().response { (response: Response<[Ladder]>) in
-			self.spinner.stopAnimating()
-			switch response {
-			case .success(let ladders):
-				self.ladders = ladders
-				self.tableView.setEmptyMessage("There are no available ladders right now. Please check back later.")
-				self.tableView.reloadData()
-			case .failure(let error):
-				self.displayError(error)
-			}
-		}
+		loadLadders()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +88,23 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
 	
 	//MARK: Private Functions
+	
+	@objc private func loadLadders() {
+		//Make a request to get the ladders and reload the UI when the response comes back
+		Endpoints.getLadders().response { (response: Response<[Ladder]>) in
+			self.spinner.stopAnimating()
+			self.tableView.refreshControl?.endRefreshing()
+			
+			switch response {
+			case .success(let ladders):
+				self.ladders = ladders
+				self.tableView.setEmptyMessage("There are no available ladders right now. Please check back later.")
+				self.tableView.reloadData()
+			case .failure(let error):
+				self.displayError(error)
+			}
+		}
+	}
 	
 	private func setupLoginState() {
 		let updateState = { (user: User?) in
