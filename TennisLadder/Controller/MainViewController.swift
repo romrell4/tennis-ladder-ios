@@ -40,7 +40,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
 		
 		tableView.hideEmptyCells()
-		tableView.refreshControl = UIRefreshControl(title: "Refreshing...", target: self, action: #selector(loadLadders))
 		
 		setupLoginState()
 		
