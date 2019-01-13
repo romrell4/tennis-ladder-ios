@@ -76,7 +76,7 @@ class ReportMatchViewController: UIViewController {
 		self.dismiss(animated: true)
 	}
 
-    @IBAction func reportMatchPressed(_ sender: Any) {
+    @IBAction func submitPressed(_ sender: Any) {
         let match = getMatch()
         let message = "You have reported that you \(match.winner == me ? "won" : "lost") this match:\n\n\(match.scoreDisplay)\n\nIs this correct?"
         

@@ -621,38 +621,24 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftb-Qu-tdG">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="MLN-HK-EJm"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="die-CD-WP4"/>
-                                    <barButtonItem title="Submit" id="fC9-uL-yXM">
-                                        <connections>
-                                            <action selector="reportMatchPressed:" destination="IDX-Bh-4cb" id="WkQ-OW-bfW"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Olz-br-ZA1"/>
-                                </items>
-                                <color key="tintColor" name="Accent"/>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8VQ-kG-M4z" secondAttribute="trailing" constant="8" id="DXc-nc-mYP"/>
-                            <constraint firstItem="ftb-Qu-tdG" firstAttribute="bottom" secondItem="dcw-J0-Fs3" secondAttribute="bottom" id="Ndb-wt-efI"/>
                             <constraint firstItem="8VQ-kG-M4z" firstAttribute="leading" secondItem="dcw-J0-Fs3" secondAttribute="leading" constant="8" id="dOu-eQ-eXY"/>
-                            <constraint firstItem="ftb-Qu-tdG" firstAttribute="leading" secondItem="dcw-J0-Fs3" secondAttribute="leading" id="fCn-g4-KL7"/>
-                            <constraint firstItem="ftb-Qu-tdG" firstAttribute="trailing" secondItem="dcw-J0-Fs3" secondAttribute="trailing" id="sYz-zG-aSS"/>
                             <constraint firstItem="8VQ-kG-M4z" firstAttribute="top" secondItem="dcw-J0-Fs3" secondAttribute="top" constant="8" id="y6j-Q6-IDE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dcw-J0-Fs3"/>
                     </view>
                     <navigationItem key="navigationItem" title="Report a Match" id="8aA-sw-bfs">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="KyT-eE-TKL">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KyT-eE-TKL">
                             <connections>
                                 <action selector="cancelPressed:" destination="IDX-Bh-4cb" id="SaL-me-GNk"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" style="done" id="iBo-bF-B6F">
+                            <connections>
+                                <action selector="submitPressed:" destination="IDX-Bh-4cb" id="Je4-r3-BnO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
