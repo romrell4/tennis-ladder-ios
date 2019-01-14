@@ -82,6 +82,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		let alert = UIAlertController(title: "Edit Value", message: "Enter new value for '\(rowData.title)':", preferredStyle: .alert)
 		alert.addTextField()
 		alert.addAction(UIAlertAction(title: "OK", style: .default) { (_) in
+			//TODO: Gotta save the value somehow so that when they tap save, it sends the new object across...
 			self.tableData[indexPath.row].value = alert.textFields?.first?.text
 			self.tableView.reloadData()
 		})
@@ -100,10 +101,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 				self.spinner.stopAnimating()
 				
 				switch response {
-				case .success:
-					self.displayAlert(title: "Success", message: "Profile successfully updated") { (_) in
-						self.dismiss(animated: true)
-					}
+				case .success(let user):
+					self.user = user
+					self.displayAlert(title: "Success", message: "Profile successfully updated")
 				case .failure(let error):
 					self.displayError(error)
 				}
