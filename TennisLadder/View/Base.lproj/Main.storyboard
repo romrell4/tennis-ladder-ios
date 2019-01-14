@@ -130,7 +130,7 @@
                         <viewLayoutGuide key="safeArea" id="X5V-Di-j0K"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tennis Ladder" id="rUM-Fw-uQK">
-                        <barButtonItem key="rightBarButtonItem" id="CTd-3s-dol">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="CTd-3s-dol">
                             <connections>
                                 <action selector="settingsTapped:" destination="HX2-na-rtR" id="vpZ-j3-0oQ"/>
                             </connections>
@@ -138,7 +138,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="spinner" destination="Qjv-C6-ynu" id="cGU-Zw-xI1"/>
-                        <outlet property="statusButton" destination="CTd-3s-dol" id="V6L-wI-K40"/>
                         <outlet property="statusLabel" destination="5Gn-I3-7JF" id="3X0-Hc-2eq"/>
                         <outlet property="tableView" destination="8Vu-8R-oyY" id="cZr-aR-2rX"/>
                     </connections>
