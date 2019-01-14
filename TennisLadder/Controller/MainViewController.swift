@@ -69,7 +69,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "ladderSelected", let vc = segue.destination as? LadderViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
 			//Pass the ladder they click on to the next view controller
 			vc.ladder = ladders[indexPath.row]
-        }
+		} else if segue.identifier == "profile", let navVc = segue.destination as? UINavigationController, let vc = navVc.viewControllers.first as? ProfileViewController {
+			vc.userId = Auth.auth().currentUser?.uid
+		}
     }
 	
 	//MARK: UITableViewDelegate/Datasource
@@ -94,9 +96,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	@IBAction func settingsTapped(_ sender: Any) {
 		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 		actionSheet.addAction(buttonState.getActionSheetAction(vc: self))
-		actionSheet.addAction(UIAlertAction(title: "Profile", style: .default) { (_) in
-			//TODO: Add profile page
-		})
+		
+		//Show the profile option if they're logged in
+		if case .loggedIn = buttonState {
+			actionSheet.addAction(UIAlertAction(title: "Profile", style: .default) { (_) in
+				self.performSegue(withIdentifier: "profile", sender: nil)
+			})
+		}
+		
 		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 		present(actionSheet, animated: true)
 	}
