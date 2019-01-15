@@ -53,7 +53,7 @@ enum Endpoints: URLRequestConvertible {
 	private var dateFormat: String? {
 		switch self {
 		case .getLadders: return "yyyy-MM-dd"
-		case .getMatches, .reportMatch: return "yyyy-MM-dd'T'HH:mm:ss"
+		case .getMatches, .reportMatch: return "yyyy-MM-dd'T'HH:mm:ssX"
 		default: return nil
 		}
 	}
