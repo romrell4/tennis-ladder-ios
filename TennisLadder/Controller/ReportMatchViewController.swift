@@ -77,8 +77,11 @@ class ReportMatchViewController: UIViewController {
 	}
 
     @IBAction func submitPressed(_ sender: Any) {
-        let match = getMatch()
-        let message = "You have reported that you \(match.winner == me ? "won" : "lost") this match:\n\n\(match.scoreDisplay)\n\nIs this correct?"
+		guard let match = getMatch() else {
+			self.displayAlert(title: "Invalid Match", message: "Only winners report matches. Please let \(opponent.user.name) know to report the set scores.")
+			return
+		}
+		let message = "You have reported that you won this match:\n\n\(match.scoreDisplay(forPlayer: me))\n\nIs this correct?"
         
         let reportConfirmAlert = UIAlertController(title: "Confirm", message: message, preferredStyle: UIAlertController.Style.alert)
         
@@ -114,23 +117,25 @@ class ReportMatchViewController: UIViewController {
 		}
 	}
     
-    private func getMatch() -> Match {
+    private func getMatch() -> Match? {
 		let playedThirdSet = !(meSet3TextField.text?.isEmpty ?? true) && !(opponentSet3TextField.text?.isEmpty ?? true)
 		let lastSetScore = playedThirdSet ? (meSet3TextField.toInt(), opponentSet3TextField.toInt()) : (meSet2TextField.toInt(), opponentSet2TextField.toInt())
-		let iWon = lastSetScore.0 > lastSetScore.1
+		if lastSetScore.0 <= lastSetScore.1 {
+			return nil
+		}
 		
 		return Match(
 			matchId: nil,
 			ladderId: self.me.ladderId,
 			matchDate: nil,
-			winner: iWon ? me : opponent,
-			loser: iWon ? opponent : me,
-			winnerSet1Score: iWon ? meSet1TextField.toInt() : opponentSet1TextField.toInt(),
-			loserSet1Score: iWon ? opponentSet1TextField.toInt() : meSet1TextField.toInt(),
-			winnerSet2Score: iWon ? meSet2TextField.toInt() : opponentSet2TextField.toInt(),
-			loserSet2Score: iWon ? opponentSet2TextField.toInt() : meSet2TextField.toInt(),
-			winnerSet3Score: playedThirdSet ? (iWon ? meSet3TextField.toInt() : opponentSet3TextField.toInt()) : nil,
-			loserSet3Score: playedThirdSet ? (iWon ? opponentSet3TextField.toInt() : meSet3TextField.toInt()) : nil
+			winner: me,
+			loser: opponent,
+			winnerSet1Score: meSet1TextField.toInt(),
+			loserSet1Score: opponentSet1TextField.toInt(),
+			winnerSet2Score: meSet2TextField.toInt(),
+			loserSet2Score: opponentSet2TextField.toInt(),
+			winnerSet3Score: playedThirdSet ? meSet3TextField.toInt() : nil,
+			loserSet3Score: playedThirdSet ? opponentSet3TextField.toInt() : nil
 		)
     }
 }
