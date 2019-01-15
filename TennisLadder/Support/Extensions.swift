@@ -67,17 +67,11 @@ extension String {
 }
 
 extension UIColor {
-    static var meRowColor: UIColor {
-        return UIColor(red: 1, green: 249/255, blue: 195/255, alpha: 1)
-    }
-	
-	static var primary: UIColor {
-		return UIColor(named: "Primary")!
-	}
-	
-	static var tint: UIColor {
-		return UIColor(named: "Tint")!
-	}
+	static var meRowColor: UIColor { return UIColor(named: "MeRowColor")! }
+	static var primary: UIColor { return UIColor(named: "Primary")! }
+	static var tint: UIColor { return UIColor(named: "Tint")! }
+	static var matchWinner: UIColor { return UIColor(named: "MatchWinner")! }
+	static var matchLoser: UIColor { return UIColor(named: "MatchLoser")! }
 }
 
 extension UIRefreshControl {

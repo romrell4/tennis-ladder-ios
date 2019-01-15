@@ -21,5 +21,6 @@ class MatchTableViewCell: UITableViewCell {
 		nameLabel.text = [match.winner, match.loser].first { $0 != player }?.user.name
 		dateLabel.text = DATE_FORMATTER.string(fromOptional: match.matchDate)
 		scoreLabel.text = match.scoreDisplay(forPlayer: player)
+		scoreLabel.textColor = (match.winner == player) ? .matchWinner : .matchLoser
 	}
 }
