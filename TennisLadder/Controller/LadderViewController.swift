@@ -35,7 +35,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 				case .reportMatch:
 					bottomButton.title = "Report a Match"
 				case .requestInvite:
-					bottomButton.title = "Request an Invite to This Ladder"
+					bottomButton.title = "Join This Ladder"
 				case .login:
 					bottomButton.title = "Login to Report a Match"
 				}

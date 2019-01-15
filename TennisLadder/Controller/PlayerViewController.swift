@@ -59,11 +59,10 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = matchTableView.dequeueCell(at: indexPath)
-		let match = matches[indexPath.row]
+		if let cell = cell as? MatchTableViewCell {
+			cell.setup(match: matches[indexPath.row], for: player)
+		}
 		
-		cell.textLabel?.text = [match.winner, match.loser].first { $0 != player }?.user.name
-		cell.detailTextLabel?.text = match.scoreDisplay
-        
         return cell
     }
 	

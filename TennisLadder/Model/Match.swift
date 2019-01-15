@@ -21,15 +21,15 @@ struct Match: Codable {
 	var winnerSet3Score: Int?
 	var loserSet3Score: Int?
     
-    var scoreDisplay: String {
+	func scoreDisplay(forPlayer player: Player) -> String {
         let sets = [
             (winnerSet1Score, loserSet1Score),
             (winnerSet2Score, loserSet2Score),
             (winnerSet3Score, loserSet3Score)
         ]
-        
-        return sets.filter { $0.0 != nil && $0.1 != nil }
-            .map { "\($0.0 ?? 0)-\($0.1 ?? 0)" }
-            .joined(separator: ", ")
+		
+		return sets.filter { $0.0 != nil && $0.1 != nil }
+			.map { player == winner ? "\($0.0!)-\($0.1!)" : "\($0.1!)-\($0.0!)" }
+			.joined(separator: ", ")
     }
 }
