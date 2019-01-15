@@ -19,6 +19,14 @@ extension DateFormatter {
         formatter.dateFormat = format
         return formatter
     }
+	
+	func string(fromOptional date: Date?) -> String? {
+		if let date = date {
+			return string(from: date)
+		} else {
+			return nil
+		}
+	}
 }
 
 extension JSONDecoder {

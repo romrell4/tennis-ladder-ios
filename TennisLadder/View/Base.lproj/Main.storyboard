@@ -338,29 +338,50 @@
                                 <rect key="frame" x="0.0" y="372" width="375" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="NGA-Qk-DpT" detailTextLabel="7Yf-2B-s8e" rowHeight="45" style="IBUITableViewCellStyleValue1" id="1PZ-E1-gHf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="45" id="1PZ-E1-gHf" customClass="MatchTableViewCell" customModule="TennisLadder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1PZ-E1-gHf" id="BjS-Mc-hoA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NGA-Qk-DpT">
-                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Yf-2B-s8e">
-                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jXG-FY-o7r">
+                                                    <rect key="frame" x="15" y="5" width="96.5" height="35"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Player Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huw-aA-B2i">
+                                                            <rect key="frame" x="0.0" y="0.0" width="96.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcW-97-WaG">
+                                                            <rect key="frame" x="0.0" y="20.5" width="26.5" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppd-35-rbM">
+                                                    <rect key="frame" x="315.5" y="12" width="44.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="jXG-FY-o7r" firstAttribute="centerY" secondItem="BjS-Mc-hoA" secondAttribute="centerY" id="4uq-re-YaB"/>
+                                                <constraint firstItem="ppd-35-rbM" firstAttribute="centerY" secondItem="BjS-Mc-hoA" secondAttribute="centerY" id="K3O-MD-NBr"/>
+                                                <constraint firstItem="ppd-35-rbM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jXG-FY-o7r" secondAttribute="trailing" constant="8" id="Rrx-5F-E8j"/>
+                                                <constraint firstItem="jXG-FY-o7r" firstAttribute="leading" secondItem="BjS-Mc-hoA" secondAttribute="leading" constant="15" id="f8B-FO-6Wn"/>
+                                                <constraint firstAttribute="trailing" secondItem="ppd-35-rbM" secondAttribute="trailing" constant="15" id="uda-cn-ZNh"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="CcW-97-WaG" id="qKh-6b-Tvs"/>
+                                            <outlet property="nameLabel" destination="huw-aA-B2i" id="nnG-9q-Fgn"/>
+                                            <outlet property="scoreLabel" destination="ppd-35-rbM" id="cCY-Bq-oJZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

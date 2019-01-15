@@ -13,6 +13,7 @@
 		0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */; };
 		0C5E77A121D6762A00E6BAC9 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */; };
 		0C5E77A321D6762A00E6BAC9 /* LadderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */; };
+		0CC4B20021ED5D57003B6FBB /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4B1FF21ED5D57003B6FBB /* MatchTableViewCell.swift */; };
 		0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92EC021C15F8500480763 /* AppDelegate.swift */; };
 		0CD92EC621C15F8500480763 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD92EC421C15F8500480763 /* Main.storyboard */; };
 		0CD92ECB21C15F8600480763 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD92ECA21C15F8600480763 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMatchViewController.swift; sourceTree = "<group>"; };
 		0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LadderViewController.swift; sourceTree = "<group>"; };
+		0CC4B1FF21ED5D57003B6FBB /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		0CD92EBD21C15F8500480763 /* TennisLadder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TennisLadder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD92EC021C15F8500480763 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD92EC521C15F8500480763 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				0CD92EC421C15F8500480763 /* Main.storyboard */,
 				0CD92EFA21C1727500480763 /* LadderTableViewCell.swift */,
 				0CD92F0121C19A2200480763 /* PlayerTableViewCell.swift */,
+				0CC4B1FF21ED5D57003B6FBB /* MatchTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				0CD92EFB21C1727500480763 /* LadderTableViewCell.swift in Sources */,
 				0CD92EF921C16F0500480763 /* Ladder.swift in Sources */,
 				0C5E77A121D6762A00E6BAC9 /* PlayerViewController.swift in Sources */,
+				0CC4B20021ED5D57003B6FBB /* MatchTableViewCell.swift in Sources */,
 				0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */,
 				0CD92F0021C1921500480763 /* Player.swift in Sources */,
 				0C3AFFF321E53AB800360F8F /* ServerError.swift in Sources */,
