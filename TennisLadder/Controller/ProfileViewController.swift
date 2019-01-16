@@ -48,6 +48,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		//TODO: Allow photo to be edited as well
+		
 		tableView.hideEmptyCells()
 		
 		Endpoints.getUser(userId).response { (response: Response<TLUser>) in
@@ -65,7 +67,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	//MARK: UITableViewDataSource/Delegate
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Tap to Edit Value"
+		return "Tap to Edit Values"
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
