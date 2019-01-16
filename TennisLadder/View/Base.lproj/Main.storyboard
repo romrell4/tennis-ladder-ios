@@ -750,7 +750,11 @@
                         <viewLayoutGuide key="safeArea" id="DDH-rC-oUV"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="EbK-Tx-P9J">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Jgb-Pm-bfL"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Jgb-Pm-bfL">
+                            <connections>
+                                <action selector="cancelTapped:" destination="gd8-QH-3wy" id="yvD-bY-Q8p"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="lV1-kW-ouY">
                             <connections>
                                 <action selector="saveTapped:" destination="gd8-QH-3wy" id="zad-WI-R7P"/>

@@ -19,9 +19,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 			if let user = user {
 				profileImage.moa.url = user.photoUrl
 				tableData = [
-					RowData(title: "Email", value: user.email, editable: false),
-					RowData(title: "Name", value: user.name, editable: true),
-					RowData(title: "Phone Number", value: user.phoneNumber, editable: true)
+					RowData(title: "Email", value: user.email, action: nil),
+					RowData(title: "Name", value: user.name, action: {
+						self.user?.name = $0
+					}),
+					RowData(title: "Phone Number", value: user.phoneNumber, action: {
+						self.user?.phoneNumber = $0
+					})
 				]
 				tableView.reloadData()
 			}
@@ -31,7 +35,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	private struct RowData {
 		let title: String
 		var value: String?
-		let editable: Bool
+		let action: ((String) -> Void)?
 	}
 	
 	//MARK: Outlets
@@ -77,7 +81,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-		return tableData[indexPath.row].editable ? indexPath : nil
+		return tableData[indexPath.row].action != nil ? indexPath : nil
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -86,9 +90,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		let alert = UIAlertController(title: "Edit Value", message: "Enter new value for '\(rowData.title)':", preferredStyle: .alert)
 		alert.addTextField()
 		alert.addAction(UIAlertAction(title: "OK", style: .default) { (_) in
-			//TODO: Gotta save the value somehow so that when they tap save, it sends the new object across...
-			self.tableData[indexPath.row].value = alert.textFields?.first?.text
-			self.tableView.reloadData()
+			if let newValue = alert.textFields?.first?.text {
+				rowData.action?(newValue)
+				self.tableData[indexPath.row].value = newValue
+				self.tableView.reloadData()
+			}
 		})
 		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in
 			self.tableView.deselectSelectedRow()
@@ -97,6 +103,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	//MARK: Listeners
+	
+	@IBAction func cancelTapped(_ sender: Any) {
+		dismiss(animated: true)
+	}
 	
 	@IBAction func saveTapped(_ sender: Any) {
 		if let user = user {
@@ -108,6 +118,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 				case .success(let user):
 					self.user = user
 					self.displayAlert(title: "Success", message: "Profile successfully updated")
+					self.dismiss(animated: true)
 				case .failure(let error):
 					self.displayError(error)
 				}

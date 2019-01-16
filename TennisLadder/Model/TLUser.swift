@@ -10,8 +10,8 @@ import Foundation
 
 struct TLUser: Codable, Equatable {
 	let userId: String
-	let name: String
-	let email: String
-	let phoneNumber: String?
-	let photoUrl: String?
+	var name: String
+	var email: String
+	var phoneNumber: String?
+	var photoUrl: String?
 }
