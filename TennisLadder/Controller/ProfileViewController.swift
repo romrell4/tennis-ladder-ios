@@ -48,8 +48,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		//TODO: Allow photo to be edited as well
-		
 		tableView.hideEmptyCells()
 		
 		Endpoints.getUser(userId).response { (response: Response<TLUser>) in
