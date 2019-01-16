@@ -76,7 +76,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		let cell = tableView.dequeueCell(at: indexPath)
 		cell.textLabel?.text = rowData.title
 		cell.detailTextLabel?.text = rowData.value ?? "Tap to set"
-		cell.detailTextLabel?.textColor = rowData.value != nil ? UIColor.black : UIColor.gray
+		cell.detailTextLabel?.textColor = rowData.value != nil ? .black : .gray
 		return cell
 	}
 	
