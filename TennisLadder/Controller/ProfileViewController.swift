@@ -19,7 +19,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 			if let user = user {
 				profileImage.moa.url = user.photoUrl
 				tableData = [
-					RowData(title: "Email", value: user.email, action: nil),
+					RowData(title: "Email", value: user.email, action: {
+						self.user?.email = $0
+					}),
 					RowData(title: "Name", value: user.name, action: {
 						self.user?.name = $0
 					}),
@@ -35,7 +37,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	private struct RowData {
 		let title: String
 		var value: String?
-		let action: ((String) -> Void)?
+		let action: ((String) -> Void)
 	}
 	
 	//MARK: Outlets
@@ -63,7 +65,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	//MARK: UITableViewDataSource/Delegate
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Tap Cells to Edit Values"
+		return "Tap to Edit Value"
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,10 +82,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		return cell
 	}
 	
-	func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-		return tableData[indexPath.row].action != nil ? indexPath : nil
-	}
-	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let rowData = tableData[indexPath.row]
 		
@@ -91,7 +89,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		alert.addTextField()
 		alert.addAction(UIAlertAction(title: "OK", style: .default) { (_) in
 			if let newValue = alert.textFields?.first?.text {
-				rowData.action?(newValue)
+				rowData.action(newValue)
 				self.tableData[indexPath.row].value = newValue
 				self.tableView.reloadData()
 			}
