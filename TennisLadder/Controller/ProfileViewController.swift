@@ -19,13 +19,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 			if let user = user {
 				profileImage.moa.url = user.photoUrl
 				tableData = [
-					RowData(title: "Email", value: user.email, action: {
+					RowData(label: "Email", value: user.email, action: {
 						self.user?.email = $0
 					}),
-					RowData(title: "Name", value: user.name, action: {
+					RowData(label: "Name", value: user.name, action: {
 						self.user?.name = $0
 					}),
-					RowData(title: "Phone Number", value: user.phoneNumber, action: {
+					RowData(label: "Phone Number", value: user.phoneNumber, action: {
 						self.user?.phoneNumber = $0
 					})
 				]
@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	private var tableData = [RowData]()
 	private struct RowData {
-		let title: String
+		let label: String
 		var value: String?
 		let action: ((String) -> Void)
 	}
@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		let rowData = tableData[indexPath.row]
 		
 		let cell = tableView.dequeueCell(at: indexPath)
-		cell.textLabel?.text = rowData.title
+		cell.textLabel?.text = rowData.label
 		cell.detailTextLabel?.text = rowData.value ?? "Tap to set"
 		cell.detailTextLabel?.textColor = rowData.value != nil ? .black : .gray
 		return cell
@@ -87,19 +87,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let rowData = tableData[indexPath.row]
 		
-		let alert = UIAlertController(title: "Edit Value", message: "Enter new value for '\(rowData.title)':", preferredStyle: .alert)
-		alert.addTextField()
-		alert.addAction(UIAlertAction(title: "OK", style: .default) { (_) in
-			if let newValue = alert.textFields?.first?.text {
-				rowData.action(newValue)
-				self.tableData[indexPath.row].value = newValue
-				self.tableView.reloadData()
-			}
-		})
-		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in
-			self.tableView.deselectSelectedRow()
-		})
-		present(alert, animated: true)
+		showEditDialog(label: rowData.label) {
+			rowData.action($0)
+			self.tableData[indexPath.row].value = $0
+			self.tableView.reloadData()
+		}
 	}
 	
 	//MARK: Listeners
@@ -117,12 +109,34 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 				switch response {
 				case .success(let user):
 					self.user = user
-					self.displayAlert(title: "Success", message: "Profile successfully updated")
-					self.dismiss(animated: true)
+					self.displayAlert(title: "Success", message: "Profile successfully updated") { (_) in
+						self.dismiss(animated: true)
+					}
 				case .failure(let error):
 					self.displayError(error)
 				}
 			}
 		}
+	}
+	
+	@IBAction func photoTapped(_ sender: Any) {
+		showEditDialog(label: "Photo URL") {
+			self.user?.photoUrl = $0
+			self.profileImage.moa.url = $0
+		}
+	}
+	
+	private func showEditDialog(label: String, action: @escaping (String) -> Void) {
+		let alert = UIAlertController(title: "Edit Value", message: "Enter new value for '\(label)':", preferredStyle: .alert)
+		alert.addTextField()
+		alert.addAction(UIAlertAction(title: "OK", style: .default) { (_) in
+			if let newValue = alert.textFields?.first?.text {
+				action(newValue)
+			}
+		})
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+			self.tableView.deselectSelectedRow()
+		})
+		present(alert, animated: true)
 	}
 }

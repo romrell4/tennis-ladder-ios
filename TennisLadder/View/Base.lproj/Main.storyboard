@@ -694,12 +694,16 @@
                                 <rect key="frame" x="169" y="315" width="37" height="37"/>
                                 <color key="color" name="Primary"/>
                             </activityIndicatorView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LCZ-RP-CyC">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LCZ-RP-CyC">
                                 <rect key="frame" x="137.5" y="80" width="100" height="100"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Huj-EE-scM"/>
                                     <constraint firstAttribute="height" constant="100" id="t7t-fp-E2O"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tHr-1G-ien" appends="YES" id="5a0-iH-8YI"/>
+                                </connections>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QJp-vW-9FG">
                                 <rect key="frame" x="0.0" y="196" width="375" height="471"/>
@@ -768,6 +772,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Frb-2U-V3U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tHr-1G-ien">
+                    <connections>
+                        <action selector="photoTapped:" destination="gd8-QH-3wy" id="2A1-0Z-vhD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-122" y="1727"/>
         </scene>
