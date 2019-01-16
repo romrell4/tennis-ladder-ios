@@ -136,8 +136,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 			case .reportMatch:
 				let alert = UIAlertController(title: "Who did you play against?", message: nil, preferredStyle: .actionSheet)
 				
-				//Removing self from list of people to play against
-				players.filter { $0 != me }.forEach { player in
+				//Removing self from list of people to play against, and order alphabetically
+				players.filter { $0 != me }.sorted { $0.user.name.lowercased() < $1.user.name.lowercased() }.forEach { player in
 					alert.addAction(UIAlertAction(title: player.user.name, style: .default) { (_) in
 						self.performSegue(withIdentifier: "matchReported", sender: player)
 					})
