@@ -19,8 +19,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 			if let user = user {
 				profileImage.moa.url = user.photoUrl
 				tableData = [
-					RowData(title: "Name", value: user.name, editable: false),
 					RowData(title: "Email", value: user.email, editable: false),
+					RowData(title: "Name", value: user.name, editable: true),
 					RowData(title: "Phone Number", value: user.phoneNumber, editable: true)
 				]
 				tableView.reloadData()
@@ -57,6 +57,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	//MARK: UITableViewDataSource/Delegate
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return "Tap Cells to Edit Values"
+	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return tableData.count
