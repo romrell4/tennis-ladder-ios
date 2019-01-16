@@ -33,8 +33,6 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 		title = player.user.name
 		matchTableView.hideEmptyCells()
 		
-		//TODO: Add "Add to Contacts" button
-		
         loadViews()
 
         Endpoints.getMatches(player.ladderId, player.user.userId).response { (response: Response<[Match]>) in
