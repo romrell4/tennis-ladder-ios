@@ -12,26 +12,41 @@ import FirebaseUI
 
 private enum ButtonState {
 	case loggedIn(user: User), loggedOut
+	
+	var statusText: String {
+		switch self {
+		case .loggedIn(let user):
+			return "Logged in as \(user.displayName ?? "Anonymous")"
+		default:
+			return "Not logged in"
+		}
+	}
+	
+	func getActionSheetAction(vc: MainViewController) -> UIAlertAction {
+		switch self {
+		case .loggedIn:
+			return UIAlertAction(title: "Log Out", style: .default) { (_) in
+				try? Auth.auth().signOut()
+				vc.buttonState = .loggedOut
+			}
+		case .loggedOut:
+			return UIAlertAction(title: "Log In", style: .default) { (_) in
+				vc.presentLoginViewController()
+			}
+		}
+	}
 }
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	//MARK: Private properties
     private var ladders = [Ladder]()
-	private var buttonState: ButtonState = .loggedOut {
+	fileprivate var buttonState: ButtonState = .loggedOut {
 		didSet {
-			switch buttonState {
-			case .loggedIn(let user):
-				statusButton.title = "Log Out"
-				statusLabel.text = "Logged in as \(user.displayName ?? "Anonymous")"
-			default:
-				statusButton.title = "Log In"
-				statusLabel.text = "Not logged in"
-			}
+			statusLabel.text = buttonState.statusText
 		}
 	}
 	
 	//MARK: Outlets
-	@IBOutlet private weak var statusButton: UIBarButtonItem!
 	@IBOutlet private weak var statusLabel: UILabel!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
     @IBOutlet private weak var tableView: UITableView!
@@ -54,7 +69,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if segue.identifier == "ladderSelected", let vc = segue.destination as? LadderViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
 			//Pass the ladder they click on to the next view controller
 			vc.ladder = ladders[indexPath.row]
-        }
+		} else if segue.identifier == "profile", let navVc = segue.destination as? UINavigationController, let vc = navVc.viewControllers.first as? ProfileViewController {
+			vc.userId = Auth.auth().currentUser?.uid
+		}
     }
 	
 	//MARK: UITableViewDelegate/Datasource
@@ -77,13 +94,18 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	//MARK: Listeners
 	
 	@IBAction func settingsTapped(_ sender: Any) {
-		//TODO: Add profile page
-		if Auth.auth().currentUser != nil {
-			try? Auth.auth().signOut()
-			buttonState = .loggedOut
-		} else {
-			presentLoginViewController()
+		let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+		actionSheet.addAction(buttonState.getActionSheetAction(vc: self))
+		
+		//Show the profile option if they're logged in
+		if case .loggedIn = buttonState {
+			actionSheet.addAction(UIAlertAction(title: "Profile", style: .default) { (_) in
+				self.performSegue(withIdentifier: "profile", sender: nil)
+			})
 		}
+		
+		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+		present(actionSheet, animated: true)
 	}
 	
 	//MARK: Private Functions

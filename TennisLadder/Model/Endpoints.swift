@@ -14,6 +14,8 @@ enum Endpoints: URLRequestConvertible {
 	static let BASE_URL = "https://lxlwvoenil.execute-api.us-west-2.amazonaws.com/prod/"
 	static var TOKEN: String?
 	
+	case getUser(String)
+	case updateUser(String, TLUser)
 	case getLadders()
 	case getPlayers(Int)
 	case getMatches(Int, String)
@@ -22,20 +24,23 @@ enum Endpoints: URLRequestConvertible {
 	
 	private var method: HTTPMethod {
 		switch self {
-		case .getLadders, .getPlayers, .getMatches: return .get
+		case .getUser, .getLadders, .getPlayers, .getMatches: return .get
+		case .updateUser: return .put
 		case .reportMatch, .addUserToLadder: return .post
 		}
 	}
 	
 	private func getBody() throws -> [String: Any]? {
 		switch self {
-		case .getLadders, .getPlayers, .getMatches, .addUserToLadder: return nil
+		case .getUser, .getLadders, .getPlayers, .getMatches, .addUserToLadder: return nil
+		case .updateUser(_, let user): return try JSONSerialization.jsonObject(with: try JSONEncoder(dateFormat: dateFormat).encode(user)) as? [String: Any]
 		case .reportMatch(_, let match): return try JSONSerialization.jsonObject(with: try JSONEncoder(dateFormat: dateFormat).encode(match)) as? [String: Any]
 		}
 	}
 	
 	private var path: [String] {
 		switch self {
+		case .getUser(let userId), .updateUser(let userId, _): return ["users", userId]
 		case .getLadders: return ["ladders"]
 		case .getPlayers(let ladderId), .addUserToLadder(let ladderId, _): return ["ladders", String(ladderId), "players"]
 		case .getMatches(let ladderId, let userId): return ["ladders", String(ladderId), "players", userId, "matches"]
