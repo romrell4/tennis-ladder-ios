@@ -14,4 +14,8 @@ struct TLUser: Codable, Equatable {
 	var email: String
 	var phoneNumber: String?
 	var photoUrl: String?
+	
+	static func ==(lhs: TLUser, rhs: TLUser) -> Bool {
+		return lhs.userId == rhs.userId
+	}
 }

@@ -15,4 +15,8 @@ struct Player: Codable, Equatable {
     let ranking: Int
     let wins: Int
     let losses: Int
+	
+	static func ==(lhs: Player, rhs: Player) -> Bool {
+		return lhs.user == rhs.user
+	}
 }
