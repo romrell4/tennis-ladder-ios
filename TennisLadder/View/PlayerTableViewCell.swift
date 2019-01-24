@@ -17,10 +17,9 @@ class PlayerTableViewCell: UITableViewCell {
         didSet {
             name.text = player.user.name
             points.text = String(player.score)
+			userImage.image = UIImage(named: "userIcon")
 			if let photoUrl = player.user.photoUrl {
 				userImage.moa.url = photoUrl
-			} else {
-				userImage.image = UIImage(named: "userIcon")
 			}
         }
     }
