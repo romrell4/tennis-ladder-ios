@@ -137,10 +137,20 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 				}),
 				RowData(label: "Phone Number", value: user.phoneNumber, action: {
 					//If the user tries to set an empty string, treat it as nil
-					self.user?.phoneNumber = $0.isEmpty ? nil : $0
+					self.user?.phoneNumber = $0.nonEmpty()
+				}),
+				RowData(label: "Availability", value: user.availabilityText, action: {
+					//If the user tries to set an empty string, treat it as nil
+					self.user?.availabilityText = $0.nonEmpty()
 				})
 			]
 			tableView.reloadData()
 		}
+	}
+}
+
+private extension String {
+	func nonEmpty() -> String? {
+		return self.isEmpty ? nil : self
 	}
 }
