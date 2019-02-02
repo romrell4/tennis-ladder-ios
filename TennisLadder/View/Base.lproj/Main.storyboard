@@ -83,7 +83,6 @@
                                         <connections>
                                             <outlet property="dateRange" destination="uc4-8J-UEg" id="n2d-Ms-bwS"/>
                                             <outlet property="ladderText" destination="xMV-Hc-KTC" id="JOU-GV-9qR"/>
-                                            <segue destination="S9k-L7-jyX" kind="show" identifier="ladderSelected" id="5m0-W7-otB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -141,6 +140,7 @@
                         <outlet property="statusLabel" destination="5Gn-I3-7JF" id="3X0-Hc-2eq"/>
                         <outlet property="tableView" destination="8Vu-8R-oyY" id="cZr-aR-2rX"/>
                         <segue destination="usk-00-JSJ" kind="show" identifier="profile" id="eCM-A9-NGf"/>
+                        <segue destination="S9k-L7-jyX" kind="show" identifier="ladderSelected" id="e6Y-yn-f4r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oJ3-Yn-gKW" userLabel="First Responder" sceneMemberID="firstResponder"/>

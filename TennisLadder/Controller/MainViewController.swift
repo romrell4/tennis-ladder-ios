@@ -38,8 +38,23 @@ private enum ButtonState {
 }
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+	//MARK: Public properties
+	var ladderIdToLaunch: Int? {
+		didSet {
+			if let ladder = ladders.first(where: { $0.ladderId == ladderIdToLaunch }) {
+				launchLadder(ladder)
+			}
+		}
+	}
+	
 	//MARK: Private properties
-    private var ladders = [Ladder]()
+	private var ladders = [Ladder]() {
+		didSet {
+			if let ladder = ladders.first(where: { $0.ladderId == ladderIdToLaunch }) {
+				launchLadder(ladder)
+			}
+		}
+	}
 	fileprivate var buttonState: ButtonState = .loggedOut {
 		didSet {
 			statusLabel.text = buttonState.statusText
@@ -66,9 +81,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ladderSelected", let vc = segue.destination as? LadderViewController, let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-			//Pass the ladder they click on to the next view controller
-			vc.ladder = ladders[indexPath.row]
+        if segue.identifier == "ladderSelected", let vc = segue.destination as? LadderViewController, let ladder = sender as? Ladder {
+			vc.ladder = ladder
 		} else if segue.identifier == "profile", let navVc = segue.destination as? UINavigationController, let vc = navVc.viewControllers.first as? ProfileViewController {
 			vc.userId = Auth.auth().currentUser?.uid
 		}
@@ -90,6 +104,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		launchLadder(ladders[indexPath.row])
+	}
 	
 	//MARK: Listeners
 	
@@ -143,5 +161,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		Auth.auth().addStateDidChangeListener { (_, user) in
 			updateState(user)
 		}
+	}
+	
+	private func launchLadder(_ ladder: Ladder) {
+		performSegue(withIdentifier: "ladderSelected", sender: ladder)
 	}
 }
