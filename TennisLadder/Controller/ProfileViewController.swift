@@ -16,21 +16,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	//MARK: Private Properties
 	private var user: TLUser? {
 		didSet {
-			if let user = user {
-				profileImage.moa.url = user.photoUrl
-				tableData = [
-					RowData(label: "Email", value: user.email, action: {
-						self.user?.email = $0
-					}),
-					RowData(label: "Name", value: user.name, action: {
-						self.user?.name = $0
-					}),
-					RowData(label: "Phone Number", value: user.phoneNumber, action: {
-						self.user?.phoneNumber = $0
-					})
-				]
-				tableView.reloadData()
-			}
+			profileImage.moa.url = user?.photoUrl
+			loadTableData()
 		}
 	}
 	private var tableData = [RowData]()
@@ -87,8 +74,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		
 		showEditDialog(label: rowData.label) {
 			rowData.action($0)
-			self.tableData[indexPath.row].value = $0
-			self.tableView.reloadData()
+			self.loadTableData()
 		}
 	}
 	
@@ -136,5 +122,23 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 			self.tableView.deselectSelectedRow()
 		})
 		present(alert, animated: true)
+	}
+	
+	private func loadTableData() {
+		if let user = user {
+			tableData = [
+				RowData(label: "Email", value: user.email, action: {
+					self.user?.email = $0
+				}),
+				RowData(label: "Name", value: user.name, action: {
+					self.user?.name = $0
+				}),
+				RowData(label: "Phone Number", value: user.phoneNumber, action: {
+					//If the user tries to set an empty string, treat it as nil
+					self.user?.phoneNumber = $0.isEmpty ? nil : $0
+				})
+			]
+			tableView.reloadData()
+		}
 	}
 }
