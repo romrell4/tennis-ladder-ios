@@ -110,6 +110,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		}
 	}
 	
+	//MARK: Private Functions
+	
 	private func showEditDialog(label: String, action: @escaping (String) -> Void) {
 		let alert = UIAlertController(title: "Edit Value", message: "Enter new value for '\(label)':", preferredStyle: .alert)
 		alert.addTextField()
