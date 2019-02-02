@@ -42,6 +42,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	var ladderIdToLaunch: Int? {
 		didSet {
 			if let ladder = ladders.first(where: { $0.ladderId == ladderIdToLaunch }) {
+				ladderIdToLaunch = nil
 				launchLadder(ladder)
 			}
 		}
@@ -51,6 +52,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	private var ladders = [Ladder]() {
 		didSet {
 			if let ladder = ladders.first(where: { $0.ladderId == ladderIdToLaunch }) {
+				ladderIdToLaunch = nil
 				launchLadder(ladder)
 			}
 		}
