@@ -167,6 +167,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 		
 		//If nobody is logged in, or if you're looking at yourself, remove a few buttons
 		if me == nil || me == player {
+			navigationItem.rightBarButtonItem = nil
 			toolbar.isHidden = true
 			viewProfileButton.removeFromSuperview()
 		}
