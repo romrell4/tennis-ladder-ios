@@ -11,9 +11,11 @@ import moa
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	//MARK: Public Properties
+	var myId: String!
 	var userId: String!
 	
 	//MARK: Private Properties
+	private var editable: Bool { return myId == userId }
 	private var user: TLUser? {
 		didSet {
 			profileImage.moa.url = user?.photoUrl
@@ -37,6 +39,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		
 		tableView.hideEmptyCells()
 		
+		//Remove the "Save" button if they aren't able to edit
+		if !editable {
+			navigationItem.rightBarButtonItem = nil
+		}
+		
 		Endpoints.getUser(userId).response { (response: Response<TLUser>) in
 			self.spinner.stopAnimating()
 			
@@ -52,7 +59,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	//MARK: UITableViewDataSource/Delegate
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Tap to Edit Values"
+		return editable ? "Tap to Edit Values" : nil
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,10 +70,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		let rowData = tableData[indexPath.row]
 		
 		let cell = tableView.dequeueCell(at: indexPath)
-		cell.textLabel?.text = rowData.label
-		cell.detailTextLabel?.text = rowData.value ?? "Tap to set"
-		cell.detailTextLabel?.textColor = rowData.value != nil ? .black : .gray
+		if let cell = cell as? ProfileInfoTableViewCell {
+			cell.setup(title: rowData.label, value: rowData.value, editable: editable)
+		}
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+		//Only allow them to tap cells if we are editable
+		return editable ? indexPath : nil
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -104,9 +116,12 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 	}
 	
 	@IBAction func photoTapped(_ sender: Any) {
-		showEditDialog(label: "Photo URL") {
-			self.user?.photoUrl = $0
-			self.profileImage.moa.url = $0
+		//Only let them edit the photo if we are editable
+		if editable {
+			showEditDialog(label: "Photo URL") {
+				self.user?.photoUrl = $0
+				self.profileImage.moa.url = $0
+			}
 		}
 	}
 	

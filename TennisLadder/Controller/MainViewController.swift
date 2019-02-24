@@ -70,7 +70,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 			//Pass the ladder they click on to the next view controller
 			vc.ladder = ladders[indexPath.row]
 		} else if segue.identifier == "profile", let navVc = segue.destination as? UINavigationController, let vc = navVc.viewControllers.first as? ProfileViewController {
-			vc.userId = Auth.auth().currentUser?.uid
+			//We are trying to look at our own profile. Put the same value in for myId and userId
+			vc.myId = Auth.auth().currentUser?.uid
+			vc.userId = vc.myId
 		}
     }
 	

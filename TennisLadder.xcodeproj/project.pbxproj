@@ -13,6 +13,7 @@
 		0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */; };
 		0C5E77A121D6762A00E6BAC9 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */; };
 		0C5E77A321D6762A00E6BAC9 /* LadderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */; };
+		0CACC7FB22222AF400D804E7 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CACC7FA22222AF400D804E7 /* ProfileInfoTableViewCell.swift */; };
 		0CC4B1F821EC1B95003B6FBB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4B1F721EC1B95003B6FBB /* ProfileViewController.swift */; };
 		0CC4B1FC21EC3ED4003B6FBB /* TLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4B1FB21EC3ED4003B6FBB /* TLUser.swift */; };
 		0CC4B20021ED5D57003B6FBB /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4B1FF21ED5D57003B6FBB /* MatchTableViewCell.swift */; };
@@ -38,6 +39,7 @@
 		0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMatchViewController.swift; sourceTree = "<group>"; };
 		0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LadderViewController.swift; sourceTree = "<group>"; };
+		0CACC7FA22222AF400D804E7 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		0CC4B1F721EC1B95003B6FBB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0CC4B1FB21EC3ED4003B6FBB /* TLUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLUser.swift; sourceTree = "<group>"; };
 		0CC4B1FF21ED5D57003B6FBB /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				0CD92EC421C15F8500480763 /* Main.storyboard */,
 				0CD92EFA21C1727500480763 /* LadderTableViewCell.swift */,
+				0CACC7FA22222AF400D804E7 /* ProfileInfoTableViewCell.swift */,
 				0CD92F0121C19A2200480763 /* PlayerTableViewCell.swift */,
 				0CC4B1FF21ED5D57003B6FBB /* MatchTableViewCell.swift */,
 			);
@@ -320,6 +323,7 @@
 			files = (
 				0C5E77A321D6762A00E6BAC9 /* LadderViewController.swift in Sources */,
 				0CD92EFE21C18C8100480763 /* Extensions.swift in Sources */,
+				0CACC7FB22222AF400D804E7 /* ProfileInfoTableViewCell.swift in Sources */,
 				0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */,
 				0CC4B1F821EC1B95003B6FBB /* ProfileViewController.swift in Sources */,
 				0CD92F0221C19A2200480763 /* PlayerTableViewCell.swift in Sources */,
