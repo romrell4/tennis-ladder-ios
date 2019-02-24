@@ -21,7 +21,8 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     //MARK: Outlets
     @IBOutlet private weak var playerImage: UIImageView!
-    @IBOutlet private weak var currentRankingLabel: UILabel!
+	@IBOutlet private weak var viewProfileButton: UIButton!
+	@IBOutlet private weak var currentRankingLabel: UILabel!
     @IBOutlet private weak var recordLabel: UILabel!
 	@IBOutlet private weak var spinner: UIActivityIndicatorView!
 	@IBOutlet private weak var matchTableView: UITableView!
@@ -48,6 +49,13 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
+	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "viewProfile", let navVc = segue.destination as? UINavigationController, let vc = navVc.viewControllers.first as? ProfileViewController {
+			vc.myId = me?.user.userId
+			vc.userId = player.user.userId
+		}
+	}
 	
 	//MARK: UITableViewDataSource/Delegate
     
@@ -157,7 +165,11 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 		currentRankingLabel.text = "#\(String(player.ranking))"
 		recordLabel.text = String("\(player.wins) - \(player.losses)")
 		
-		toolbar.isHidden = me == nil || me == player
+		//If nobody is logged in, or if you're looking at yourself, remove a few buttons
+		if me == nil || me == player {
+			toolbar.isHidden = true
+			viewProfileButton.removeFromSuperview()
+		}
 	}
 }
 
