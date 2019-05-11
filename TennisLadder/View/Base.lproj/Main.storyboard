@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jMz-bB-F6X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jMz-bB-F6X">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -174,30 +174,49 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albus Dumbledore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRb-jI-act">
-                                                    <rect key="frame" x="88.5" y="34" width="141.5" height="21"/>
+                                                    <rect key="frame" x="88.5" y="34" width="141.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1F-Ns-Cni">
-                                                    <rect key="frame" x="331" y="34" width="29" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="NZX-w0-Q8D">
+                                                    <rect key="frame" x="284.5" y="19.5" width="74.5" height="49.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earned: 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqP-9W-YtW">
+                                                            <rect key="frame" x="7" y="0.0" width="67.5" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" name="MatchWinner"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Borrowed: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ef-21-GNV">
+                                                            <rect key="frame" x="5.5" y="14.5" width="69" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" name="MatchLoser"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1F-Ns-Cni">
+                                                            <rect key="frame" x="0.0" y="29" width="74.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="tZK-KB-l38" firstAttribute="leading" secondItem="gac-Ry-nrF" secondAttribute="leading" constant="8" id="55q-DK-ie0"/>
+                                                <constraint firstItem="NZX-w0-Q8D" firstAttribute="centerY" secondItem="gac-Ry-nrF" secondAttribute="centerY" id="56C-Cv-PgQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="NZX-w0-Q8D" secondAttribute="trailing" constant="16" id="E6I-o2-1zl"/>
                                                 <constraint firstItem="PRb-jI-act" firstAttribute="leading" secondItem="tZK-KB-l38" secondAttribute="trailing" constant="8" id="Gsa-gE-JBY"/>
-                                                <constraint firstItem="G1F-Ns-Cni" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PRb-jI-act" secondAttribute="trailing" constant="8" id="Lvc-sJ-Iz4"/>
                                                 <constraint firstAttribute="bottom" secondItem="tZK-KB-l38" secondAttribute="bottom" constant="8" id="WBp-q6-JPv"/>
-                                                <constraint firstItem="G1F-Ns-Cni" firstAttribute="trailing" secondItem="gac-Ry-nrF" secondAttribute="trailingMargin" id="fCB-KW-dqS"/>
-                                                <constraint firstItem="G1F-Ns-Cni" firstAttribute="centerY" secondItem="tZK-KB-l38" secondAttribute="centerY" id="rnw-XD-gx5"/>
                                                 <constraint firstItem="tZK-KB-l38" firstAttribute="top" secondItem="gac-Ry-nrF" secondAttribute="top" constant="8" id="uGO-ER-EVn"/>
                                                 <constraint firstItem="PRb-jI-act" firstAttribute="centerY" secondItem="tZK-KB-l38" secondAttribute="centerY" id="wxD-Na-iAh"/>
+                                                <constraint firstItem="NZX-w0-Q8D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PRb-jI-act" secondAttribute="trailing" constant="8" id="z6k-LP-Kw3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="borrowedPointsLabel" destination="2ef-21-GNV" id="t8O-8n-E3C"/>
+                                            <outlet property="earnedPointsLabel" destination="hqP-9W-YtW" id="C2f-C2-FbU"/>
                                             <outlet property="name" destination="PRb-jI-act" id="xZW-Pg-cOY"/>
                                             <outlet property="points" destination="G1F-Ns-Cni" id="9lc-8H-xvK"/>
                                             <outlet property="userImage" destination="tZK-KB-l38" id="ScP-uO-N6P"/>
@@ -851,6 +870,12 @@
         <image name="userIcon" width="50" height="50"/>
         <namedColor name="Accent">
             <color red="0.24699999392032623" green="0.31799998879432678" blue="0.70999997854232788" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MatchLoser">
+            <color red="0.78431372549019607" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MatchWinner">
+            <color red="0.0" green="0.5" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Primary">
             <color red="0.2630000114440918" green="0.62699997425079346" blue="0.27799999713897705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
