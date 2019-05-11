@@ -114,7 +114,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 	
 	@objc private func loadLadders() {
 		//Make a request to get the ladders and reload the UI when the response comes back
-		Endpoints.getLadders().response { (response: Response<[Ladder]>) in
+		Endpoints.getLadders.response { (response: Response<[Ladder]>) in
 			self.spinner.stopAnimating()
 			self.tableView.refreshControl?.endRefreshing()
 			

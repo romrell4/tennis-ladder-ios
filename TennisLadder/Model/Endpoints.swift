@@ -16,7 +16,7 @@ enum Endpoints: URLRequestConvertible {
 	
 	case getUser(String)
 	case updateUser(String, TLUser)
-	case getLadders()
+	case getLadders
 	case getPlayers(Int)
 	case getMatches(Int, String)
 	case reportMatch(Int, Match)
