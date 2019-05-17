@@ -119,8 +119,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 		//Only let them edit the photo if we are editable
 		if editable {
 			showEditDialog(label: "Photo URL") {
-				self.user?.photoUrl = $0
-				self.profileImage.moa.url = $0
+				let url = $0.isEmpty ? nil : $0
+				self.user?.photoUrl = url
+				if let url = url {
+					self.profileImage.moa.url = url
+				} else {
+					self.profileImage.image = #imageLiteral(resourceName: "userIcon")
+				}
 			}
 		}
 	}
