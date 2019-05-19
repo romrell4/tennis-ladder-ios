@@ -17,8 +17,13 @@ default_platform(:ios)
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
-  lane :beta do
+  lane :submit do
     build_app(workspace: "TennisLadder.xcworkspace", scheme: "TennisLadder")
     upload_to_testflight
+    deliver(
+      skip_app_version_update: true,
+      submit_for_review: true,
+      force: true
+    )
   end
 end
