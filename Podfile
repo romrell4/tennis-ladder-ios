@@ -7,8 +7,8 @@ target 'TennisLadder' do
   use_frameworks!
 
   # Pods for TennisLadder
-  pod 'Alamofire', '~> 4.8.0'
-  pod 'moa', '~> 10.0'
+  pod 'Alamofire'
+  pod 'moa'
   pod 'Firebase/Core'
   pod 'FirebaseUI/Auth'
   pod 'FirebaseUI/Google'
