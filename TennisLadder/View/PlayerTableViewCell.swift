@@ -18,8 +18,13 @@ class PlayerTableViewCell: UITableViewCell {
     var player: Player! {
         didSet {
             name.text = player.user.name
-			earnedPointsLabel.text = "Earned: \(player.earnedPoints)"
-			borrowedPointsLabel.text = "Borrowed: \(player.borrowedPoints)"
+			if player.borrowedPoints == 0 {
+				earnedPointsLabel.isHidden = true
+				borrowedPointsLabel.isHidden = true
+			} else {
+				earnedPointsLabel.text = "Earned: \(player.earnedPoints)"
+				borrowedPointsLabel.text = "Borrowed: \(player.borrowedPoints)"
+			}
 			points.text = "Total: \(player.score)"
 			userImage.image = UIImage(named: "userIcon")
 			if let photoUrl = player.user.photoUrl {
