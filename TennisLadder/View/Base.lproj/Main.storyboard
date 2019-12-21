@@ -194,6 +194,9 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Borrowed: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ef-21-GNV">
                                                             <rect key="frame" x="5.5" y="14.5" width="69" height="14.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14.5" id="fAJ-23-0nd"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" name="MatchLoser"/>
                                                             <nil key="highlightedColor"/>
@@ -403,10 +406,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="jXG-FY-o7r" firstAttribute="centerY" secondItem="BjS-Mc-hoA" secondAttribute="centerY" id="4uq-re-YaB"/>
+                                                <constraint firstItem="jXG-FY-o7r" firstAttribute="top" secondItem="BjS-Mc-hoA" secondAttribute="top" constant="5" id="ANm-bE-kT0"/>
                                                 <constraint firstItem="ppd-35-rbM" firstAttribute="centerY" secondItem="BjS-Mc-hoA" secondAttribute="centerY" id="K3O-MD-NBr"/>
                                                 <constraint firstItem="ppd-35-rbM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jXG-FY-o7r" secondAttribute="trailing" constant="8" id="Rrx-5F-E8j"/>
                                                 <constraint firstItem="jXG-FY-o7r" firstAttribute="leading" secondItem="BjS-Mc-hoA" secondAttribute="leading" constant="15" id="f8B-FO-6Wn"/>
+                                                <constraint firstAttribute="bottom" secondItem="jXG-FY-o7r" secondAttribute="bottom" constant="5" id="kGS-og-Fz8"/>
                                                 <constraint firstAttribute="trailing" secondItem="ppd-35-rbM" secondAttribute="trailing" constant="15" id="uda-cn-ZNh"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -715,15 +719,15 @@
             <objects>
                 <viewController id="gd8-QH-3wy" customClass="ProfileViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fYe-Cg-cnM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sXp-SE-oZQ">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="402.5" width="37" height="37"/>
                                 <color key="color" name="Primary"/>
                             </activityIndicatorView>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LCZ-RP-CyC">
-                                <rect key="frame" x="157" y="104" width="100" height="100"/>
+                                <rect key="frame" x="157" y="72" width="100" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Huj-EE-scM"/>
@@ -734,7 +738,7 @@
                                 </connections>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QJp-vW-9FG">
-                                <rect key="frame" x="0.0" y="220" width="414" height="642"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="620"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="lJ8-Ed-vRD" customClass="ProfileInfoTableViewCell" customModule="TennisLadder" customModuleProvider="target">
@@ -847,7 +851,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="usk-00-JSJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zWY-jS-0EH">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" name="Primary"/>
                         <textAttributes key="titleTextAttributes">
@@ -880,7 +884,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eCM-A9-NGf"/>
+        <segue reference="8FF-J4-wrg"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="Tint"/>
 </document>
