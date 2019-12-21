@@ -61,12 +61,18 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alex's Ladder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMV-Hc-KTC">
                                                             <rect key="frame" x="0.0" y="0.0" width="158.5" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Pjq-0J-jBg"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/1/2018 - 3/4/2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-8J-UEg">
                                                             <rect key="frame" x="0.0" y="42" width="158.5" height="20.5"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="PbF-uV-qZj"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -78,7 +84,6 @@
                                                 <constraint firstItem="Vtb-7e-ufd" firstAttribute="centerX" secondItem="vWw-WW-xLs" secondAttribute="centerX" id="eFF-NM-mou"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Vtb-7e-ufd" secondAttribute="bottom" constant="8" id="jev-Cn-RPJ"/>
                                                 <constraint firstItem="Vtb-7e-ufd" firstAttribute="centerY" secondItem="vWw-WW-xLs" secondAttribute="centerY" id="uFv-gl-SqP"/>
-                                                <constraint firstItem="xMV-Hc-KTC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vWw-WW-xLs" secondAttribute="top" constant="8" id="uNu-Q2-hjw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -719,15 +724,15 @@
             <objects>
                 <viewController id="gd8-QH-3wy" customClass="ProfileViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fYe-Cg-cnM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sXp-SE-oZQ">
-                                <rect key="frame" x="188.5" y="402.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
                                 <color key="color" name="Primary"/>
                             </activityIndicatorView>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LCZ-RP-CyC">
-                                <rect key="frame" x="157" y="72" width="100" height="100"/>
+                                <rect key="frame" x="157" y="104" width="100" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Huj-EE-scM"/>
@@ -738,7 +743,7 @@
                                 </connections>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QJp-vW-9FG">
-                                <rect key="frame" x="0.0" y="188" width="414" height="620"/>
+                                <rect key="frame" x="0.0" y="220" width="414" height="642"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="lJ8-Ed-vRD" customClass="ProfileInfoTableViewCell" customModule="TennisLadder" customModuleProvider="target">
@@ -851,7 +856,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="usk-00-JSJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zWY-jS-0EH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" name="Primary"/>
                         <textAttributes key="titleTextAttributes">
@@ -884,7 +889,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8FF-J4-wrg"/>
+        <segue reference="eCM-A9-NGf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="Tint"/>
 </document>
