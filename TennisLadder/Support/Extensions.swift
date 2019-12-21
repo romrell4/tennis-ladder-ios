@@ -152,7 +152,8 @@ extension UIViewController {
 		
 		guard let authUI = FUIAuth.defaultAuthUI() else { return }
 		authUI.providers = [
-			FUIGoogleAuth()
+			FUIGoogleAuth(),
+			FUIEmailAuth()
 		]
 		present(authUI.authViewController(), animated: true)
 	}
