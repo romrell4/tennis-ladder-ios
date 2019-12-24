@@ -104,6 +104,7 @@ extension UITableView {
 			let messageLabel = UILabel()
 			messageLabel.translatesAutoresizingMaskIntoConstraints = false
 			messageLabel.text = message
+			//TODO: Dark mode issue?
 			messageLabel.textColor = .black
 			messageLabel.numberOfLines = 0
 			messageLabel.textAlignment = .center
@@ -162,6 +163,7 @@ extension UIViewController {
 		if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
 			let svc = SFSafariViewController(url: url)
 			svc.delegate = delegate
+			//TODO: Dark Mode issue?
 			svc.preferredBarTintColor = .primary
 			svc.preferredControlTintColor = .white
 			

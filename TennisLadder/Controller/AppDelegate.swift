@@ -22,9 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		//Initialize the firebase application
 		FirebaseApp.configure()
 		
-		//Change the status bar color for the entire app
-		UINavigationBar.appearance().barStyle = .black
-		
         return true
     }
 	
