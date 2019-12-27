@@ -121,6 +121,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8Vu-8R-oyY" firstAttribute="leading" secondItem="X5V-Di-j0K" secondAttribute="leading" id="0AD-v6-SoT"/>
                             <constraint firstItem="Qjv-C6-ynu" firstAttribute="centerX" secondItem="ALs-F2-Azm" secondAttribute="centerX" id="252-UL-73p"/>
@@ -265,6 +266,7 @@
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="LCU-Cj-9Ez" firstAttribute="top" secondItem="XiY-Or-Otp" secondAttribute="bottom" id="32z-zh-Fsl"/>
                             <constraint firstItem="39n-Hv-vum" firstAttribute="centerX" secondItem="AuY-um-ykN" secondAttribute="centerX" id="LAM-un-jbK"/>
@@ -462,6 +464,7 @@
                                 <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5ZE-Wn-5ZH" firstAttribute="centerX" secondItem="svv-ao-YxB" secondAttribute="centerX" id="0sH-B5-Vqp"/>
                             <constraint firstItem="zxx-0b-c4h" firstAttribute="trailing" secondItem="Lbj-fg-kob" secondAttribute="trailing" id="345-Ha-5IH"/>
