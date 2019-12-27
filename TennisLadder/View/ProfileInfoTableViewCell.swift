@@ -21,6 +21,16 @@ class ProfileInfoTableViewCell: UITableViewCell {
 		valueLabel?.text = value ?? (editable ? "Tap to set" : nil)
 		
 		//If the value is not set yet, make the text gray
-		valueLabel?.textColor = value != nil ? .black : .gray
+		valueLabel?.textColor = value != nil ? .defaultLabel : .gray
+	}
+}
+
+private extension UIColor {
+	static var defaultLabel: UIColor {
+		if #available(iOS 13.0, *) {
+			return .label
+		} else {
+			return .black
+		}
 	}
 }
