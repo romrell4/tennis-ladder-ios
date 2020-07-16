@@ -22,6 +22,8 @@ class PlayerTableViewCell: UITableViewCell {
 				earnedPointsLabel.isHidden = true
 				borrowedPointsLabel.isHidden = true
 			} else {
+				earnedPointsLabel.isHidden = false
+				borrowedPointsLabel.isHidden = false
 				earnedPointsLabel.text = "Earned: \(player.earnedPoints)"
 				borrowedPointsLabel.text = "Borrowed: \(player.borrowedPoints)"
 			}
