@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BracketView" customModule="BracketChallenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="410"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dnn-QG-Vsc" userLabel="Top View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
+                    <subviews>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="BQL-hN-g45">
+                            <rect key="frame" x="168" y="-2" width="39" height="37"/>
+                            <color key="pageIndicatorTintColor" red="0.97254901959999995" green="1" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="currentPageIndicatorTintColor" red="0.1450980392" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </pageControl>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BbL-bg-OeT">
+                            <rect key="frame" x="285" y="6" width="82" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rnd 64" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-AN-Vy9">
+                            <rect key="frame" x="8" y="6" width="56" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="DG8-AN-Vy9" firstAttribute="centerY" secondItem="BQL-hN-g45" secondAttribute="centerY" id="2WG-9V-O8h"/>
+                        <constraint firstAttribute="height" constant="32" id="9pK-Ld-QpH"/>
+                        <constraint firstItem="BQL-hN-g45" firstAttribute="centerY" secondItem="dnn-QG-Vsc" secondAttribute="centerY" id="AGh-J0-MD2"/>
+                        <constraint firstItem="DG8-AN-Vy9" firstAttribute="leading" secondItem="dnn-QG-Vsc" secondAttribute="leadingMargin" id="Ae5-cl-bfi"/>
+                        <constraint firstItem="BbL-bg-OeT" firstAttribute="centerY" secondItem="BQL-hN-g45" secondAttribute="centerY" id="UDV-s9-Fqs"/>
+                        <constraint firstItem="BQL-hN-g45" firstAttribute="centerX" secondItem="dnn-QG-Vsc" secondAttribute="centerX" id="UQa-fn-VSV"/>
+                        <constraint firstItem="BbL-bg-OeT" firstAttribute="trailing" secondItem="dnn-QG-Vsc" secondAttribute="trailingMargin" id="YFQ-Lu-LVt"/>
+                    </constraints>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hxn-XO-HNl">
+                    <rect key="frame" x="0.0" y="31" width="375" height="379"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="375" id="oUj-w8-Deb"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="vMe-ZM-05R" appends="YES" id="Tem-g2-3Qk"/>
+                    </connections>
+                </stackView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="k0l-os-bG1">
+                    <rect key="frame" x="169" y="187" width="37" height="37"/>
+                    <color key="color" red="0.1450980392" green="0.40784313729999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="dnn-QG-Vsc" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="9bL-XC-3RR"/>
+                <constraint firstItem="dnn-QG-Vsc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BVA-Uy-CU3"/>
+                <constraint firstItem="dnn-QG-Vsc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FZ1-F4-pUl"/>
+                <constraint firstItem="k0l-os-bG1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="GkW-Ja-I4G"/>
+                <constraint firstItem="Hxn-XO-HNl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gOO-AG-sRQ"/>
+                <constraint firstItem="k0l-os-bG1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kCP-M6-RP8"/>
+                <constraint firstItem="Hxn-XO-HNl" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="r13-La-tHQ"/>
+                <constraint firstItem="Hxn-XO-HNl" firstAttribute="top" secondItem="dnn-QG-Vsc" secondAttribute="bottom" constant="-1" id="yWT-U4-MGT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="pageControl" destination="BQL-hN-g45" id="MVw-5D-zVh"/>
+                <outlet property="roundLabel" destination="DG8-AN-Vy9" id="5vr-6d-EvO"/>
+                <outlet property="scoreLabel" destination="BbL-bg-OeT" id="BVe-qs-xKq"/>
+                <outlet property="spinner" destination="k0l-os-bG1" id="bXr-BI-cog"/>
+                <outlet property="stackView" destination="Hxn-XO-HNl" id="mAu-u3-TsK"/>
+                <outlet property="stackViewWidthConstraint" destination="oUj-w8-Deb" id="Zax-5g-wUi"/>
+                <outlet property="topView" destination="dnn-QG-Vsc" id="rDi-EB-G47"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="207"/>
+        </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="vMe-ZM-05R">
+            <connections>
+                <action selector="panGestureHandler:" destination="iN0-l3-epB" id="smn-2A-h75"/>
+            </connections>
+        </panGestureRecognizer>
+    </objects>
+</document>

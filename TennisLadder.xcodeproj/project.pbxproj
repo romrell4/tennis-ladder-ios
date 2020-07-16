@@ -13,6 +13,15 @@
 		0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */; };
 		0C5E77A121D6762A00E6BAC9 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */; };
 		0C5E77A321D6762A00E6BAC9 /* LadderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */; };
+		0C9436D024BFEEDC007E6F68 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436CA24BFEEDC007E6F68 /* MatchView.swift */; };
+		0C9436D124BFEEDC007E6F68 /* RoundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9436CB24BFEEDC007E6F68 /* RoundView.xib */; };
+		0C9436D224BFEEDC007E6F68 /* BracketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436CC24BFEEDC007E6F68 /* BracketView.swift */; };
+		0C9436D324BFEEDC007E6F68 /* BracketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9436CD24BFEEDC007E6F68 /* BracketView.xib */; };
+		0C9436D424BFEEDC007E6F68 /* MatchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9436CE24BFEEDC007E6F68 /* MatchView.xib */; };
+		0C9436D524BFEEDC007E6F68 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436CF24BFEEDC007E6F68 /* RoundView.swift */; };
+		0C9436D724BFEF13007E6F68 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436D624BFEF13007E6F68 /* Tournament.swift */; };
+		0C9436D924BFEF4D007E6F68 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436D824BFEF4D007E6F68 /* Round.swift */; };
+		0C9436DB24BFEF9F007E6F68 /* TournamentMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436DA24BFEF9F007E6F68 /* TournamentMatch.swift */; };
 		0CACC7FB22222AF400D804E7 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CACC7FA22222AF400D804E7 /* ProfileInfoTableViewCell.swift */; };
 		0CC4B1F821EC1B95003B6FBB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4B1F721EC1B95003B6FBB /* ProfileViewController.swift */; };
 		0CC4B1FC21EC3ED4003B6FBB /* TLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4B1FB21EC3ED4003B6FBB /* TLUser.swift */; };
@@ -39,6 +48,15 @@
 		0C5E779C21D6762A00E6BAC9 /* ReportMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportMatchViewController.swift; sourceTree = "<group>"; };
 		0C5E779D21D6762A00E6BAC9 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LadderViewController.swift; sourceTree = "<group>"; };
+		0C9436CA24BFEEDC007E6F68 /* MatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		0C9436CB24BFEEDC007E6F68 /* RoundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoundView.xib; sourceTree = "<group>"; };
+		0C9436CC24BFEEDC007E6F68 /* BracketView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BracketView.swift; sourceTree = "<group>"; };
+		0C9436CD24BFEEDC007E6F68 /* BracketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BracketView.xib; sourceTree = "<group>"; };
+		0C9436CE24BFEEDC007E6F68 /* MatchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatchView.xib; sourceTree = "<group>"; };
+		0C9436CF24BFEEDC007E6F68 /* RoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
+		0C9436D624BFEF13007E6F68 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
+		0C9436D824BFEF4D007E6F68 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		0C9436DA24BFEF9F007E6F68 /* TournamentMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentMatch.swift; sourceTree = "<group>"; };
 		0CACC7FA22222AF400D804E7 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		0CC4B1F721EC1B95003B6FBB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0CC4B1FB21EC3ED4003B6FBB /* TLUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLUser.swift; sourceTree = "<group>"; };
@@ -116,6 +134,9 @@
 				0CD92EFF21C1921500480763 /* Player.swift */,
 				0C3CCE9F21CCA0F3005CBE57 /* Match.swift */,
 				0C3AFFF221E53AB800360F8F /* ServerError.swift */,
+				0C9436D624BFEF13007E6F68 /* Tournament.swift */,
+				0C9436D824BFEF4D007E6F68 /* Round.swift */,
+				0C9436DA24BFEF9F007E6F68 /* TournamentMatch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,6 +149,12 @@
 				0CACC7FA22222AF400D804E7 /* ProfileInfoTableViewCell.swift */,
 				0CD92F0121C19A2200480763 /* PlayerTableViewCell.swift */,
 				0CC4B1FF21ED5D57003B6FBB /* MatchTableViewCell.swift */,
+				0C9436CC24BFEEDC007E6F68 /* BracketView.swift */,
+				0C9436CD24BFEEDC007E6F68 /* BracketView.xib */,
+				0C9436CA24BFEEDC007E6F68 /* MatchView.swift */,
+				0C9436CE24BFEEDC007E6F68 /* MatchView.xib */,
+				0C9436CF24BFEEDC007E6F68 /* RoundView.swift */,
+				0C9436CB24BFEEDC007E6F68 /* RoundView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -237,7 +264,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9436D424BFEEDC007E6F68 /* MatchView.xib in Resources */,
 				0CD92ECE21C15F8600480763 /* LaunchScreen.storyboard in Resources */,
+				0C9436D324BFEEDC007E6F68 /* BracketView.xib in Resources */,
+				0C9436D124BFEEDC007E6F68 /* RoundView.xib in Resources */,
 				7F12B61E21D83E4000B9019C /* GoogleService-Info.plist in Resources */,
 				0CD92ECB21C15F8600480763 /* Assets.xcassets in Resources */,
 				0CD92EC621C15F8500480763 /* Main.storyboard in Resources */,
@@ -306,19 +336,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9436DB24BFEF9F007E6F68 /* TournamentMatch.swift in Sources */,
+				0C9436D724BFEF13007E6F68 /* Tournament.swift in Sources */,
 				0C5E77A321D6762A00E6BAC9 /* LadderViewController.swift in Sources */,
 				0CD92EFE21C18C8100480763 /* Extensions.swift in Sources */,
 				0CACC7FB22222AF400D804E7 /* ProfileInfoTableViewCell.swift in Sources */,
 				0C3CCE9E21CAB3A1005CBE57 /* Endpoints.swift in Sources */,
+				0C9436D024BFEEDC007E6F68 /* MatchView.swift in Sources */,
 				0CC4B1F821EC1B95003B6FBB /* ProfileViewController.swift in Sources */,
 				0CD92F0221C19A2200480763 /* PlayerTableViewCell.swift in Sources */,
 				0CD92EFB21C1727500480763 /* LadderTableViewCell.swift in Sources */,
 				0CD92EF921C16F0500480763 /* Ladder.swift in Sources */,
+				0C9436D524BFEEDC007E6F68 /* RoundView.swift in Sources */,
 				0C5E77A121D6762A00E6BAC9 /* PlayerViewController.swift in Sources */,
 				0CC4B20021ED5D57003B6FBB /* MatchTableViewCell.swift in Sources */,
 				0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */,
+				0C9436D924BFEF4D007E6F68 /* Round.swift in Sources */,
 				0CD92F0021C1921500480763 /* Player.swift in Sources */,
 				0CC4B1FC21EC3ED4003B6FBB /* TLUser.swift in Sources */,
+				0C9436D224BFEEDC007E6F68 /* BracketView.swift in Sources */,
 				0C3AFFF321E53AB800360F8F /* ServerError.swift in Sources */,
 				0CD92EF521C160B000480763 /* MainViewController.swift in Sources */,
 				0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */,
