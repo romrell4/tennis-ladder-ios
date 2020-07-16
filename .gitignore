@@ -4,3 +4,6 @@ Pods/*
 Podfile.lock
 GoogleService-info.plist
 .DS_Store
+fastlane/report.xml
+*.ipa
+*.dSYM.zip
