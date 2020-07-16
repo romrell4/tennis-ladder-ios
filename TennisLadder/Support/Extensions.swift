@@ -13,12 +13,12 @@ import FirebaseUI
 import SafariServices
 
 extension DateFormatter {
-    static func defaultDateFormat(_ format: String) -> DateFormatter {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "US")
-        formatter.dateFormat = format
-        return formatter
-    }
+	static func defaultDateFormat(_ format: String) -> DateFormatter {
+		let formatter = DateFormatter()
+		formatter.locale = Locale(identifier: "US")
+		formatter.dateFormat = format
+		return formatter
+	}
 	
 	func string(fromOptional date: Date?) -> String? {
 		if let date = date {
@@ -46,6 +46,13 @@ extension JSONEncoder {
 		if let dateFormat = dateFormat {
 			dateEncodingStrategy = .formatted(DateFormatter.defaultDateFormat(dateFormat))
 		}
+	}
+}
+
+extension NumberFormatter {
+	convenience init(style: NumberFormatter.Style) {
+		self.init()
+		numberStyle = style
 	}
 }
 
@@ -96,6 +103,10 @@ extension UITableView {
 	
 	func hideEmptyCells() {
 		tableFooterView = UIView()
+	}
+	
+	func registerNib(nibName: String, forCellIdentifier cellId: String = "cell") {
+		self.register(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: cellId)
 	}
 	
 	func setEmptyMessage(_ message: String) {

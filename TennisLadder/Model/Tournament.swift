@@ -10,4 +10,5 @@ import Foundation
 
 struct Tournament: Codable {
 	let tournamentId: Int
+	let rounds: [Round]
 }

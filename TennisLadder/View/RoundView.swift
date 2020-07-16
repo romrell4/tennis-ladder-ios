@@ -10,11 +10,7 @@ import UIKit
 
 private let MATCH_VIEW_HEIGHT = MATCH_CELL_HEIGHT * 2
 
-protocol RoundViewDelegate {
-	func player(_ player: Player?, selectedIn roundView: RoundView, and matchView: MatchView)
-}
-
-class RoundView: UIScrollView, MatchViewDelegate {
+class RoundView: UIScrollView {
 	private struct UI {
 		static let cellAnimationDuration = 0.5
 	}
@@ -24,10 +20,10 @@ class RoundView: UIScrollView, MatchViewDelegate {
 	@IBOutlet private var topBottomConstraints: [NSLayoutConstraint]!
 	
 	//MARK: Public properties
-	var matches: [MatchHelper]! {
+	var matches: [TournamentMatch]! {
 		didSet {
 			if oldValue != nil {
-				loadUI(firstTime: false)
+				loadUI()
 			}
 		}
 	}
@@ -61,25 +57,19 @@ class RoundView: UIScrollView, MatchViewDelegate {
 	}
 	
 	//MARK: Private properties
-	private var roundDelegate: RoundViewDelegate!
-	private var clickDelegate: MatchViewClickableDelegate!
-	private var masterMatches: [MatchHelper]?
-	private var matchViews = [MatchView]()
+	private var matchViews = [TournamentMatchView]()
 	
 	//MARK: Public Functions
 	
-	static func initWith(scrollDelegate: UIScrollViewDelegate, roundDelegate: RoundViewDelegate, clickDelegate: MatchViewClickableDelegate, matches: [MatchHelper], masterMatches: [MatchHelper]? = nil) -> RoundView {
+	static func initWith(scrollDelegate: UIScrollViewDelegate, round: Round) -> RoundView {
 		let roundView = UINib(nibName: "RoundView", bundle: nil).instantiate(withOwner: nil).first as! RoundView
 		roundView.delegate = scrollDelegate
-		roundView.roundDelegate = roundDelegate
-		roundView.clickDelegate = clickDelegate
-		roundView.matches = matches
-		roundView.masterMatches = masterMatches
-		roundView.loadUI(firstTime: true)
+		roundView.matches = round.matches
+		roundView.loadUI()
 		return roundView
 	}
 	
-	func index(of matchView: MatchView) -> Int? {
+	func index(of matchView: TournamentMatchView) -> Int? {
 		return matchViews.firstIndex(of: matchView)
 	}
 	
@@ -87,27 +77,17 @@ class RoundView: UIScrollView, MatchViewDelegate {
 		matchViews[index].match = matches[index]
 	}
 	
-	//MARK: MatchViewDelegate
-	
-	func player(_ player: Player?, selectedInView view: MatchView) {
-		roundDelegate.player(player, selectedIn: self, and: view)
-	}
-	
 	//MARK: Private functions
 	
-	private func loadUI(firstTime: Bool) {
+	private func loadUI() {
 		for i in 0..<matches.count {
-			if firstTime {
-				let matchView = MatchView.initWith(delegate: self, clickDelegate: clickDelegate, match: matches[i], masterMatch: masterMatches?[i])
-				stackView.addArrangedSubview(matchView)
-				
-				NSLayoutConstraint.activate([
-					matchView.heightAnchor.constraint(equalToConstant: MATCH_VIEW_HEIGHT)
-				])
-				matchViews.append(matchView)
-			} else {
-				matchViews[i].match = matches[i]
-			}
+			let matchView = TournamentMatchView.initWith(match: matches[i])
+			stackView.addArrangedSubview(matchView)
+			
+			NSLayoutConstraint.activate([
+				matchView.heightAnchor.constraint(equalToConstant: MATCH_VIEW_HEIGHT)
+			])
+			matchViews.append(matchView)
 		}
 	}
 }

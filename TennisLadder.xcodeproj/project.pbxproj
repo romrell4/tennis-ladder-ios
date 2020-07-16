@@ -22,6 +22,8 @@
 		0C9436D724BFEF13007E6F68 /* Tournament.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436D624BFEF13007E6F68 /* Tournament.swift */; };
 		0C9436D924BFEF4D007E6F68 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436D824BFEF4D007E6F68 /* Round.swift */; };
 		0C9436DB24BFEF9F007E6F68 /* TournamentMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436DA24BFEF9F007E6F68 /* TournamentMatch.swift */; };
+		0C9436DE24BFF38A007E6F68 /* TournamentMatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9436DC24BFF38A007E6F68 /* TournamentMatchTableViewCell.swift */; };
+		0C9436DF24BFF38A007E6F68 /* TournamentMatchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C9436DD24BFF38A007E6F68 /* TournamentMatchTableViewCell.xib */; };
 		0CACC7FB22222AF400D804E7 /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CACC7FA22222AF400D804E7 /* ProfileInfoTableViewCell.swift */; };
 		0CC4B1F821EC1B95003B6FBB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4B1F721EC1B95003B6FBB /* ProfileViewController.swift */; };
 		0CC4B1FC21EC3ED4003B6FBB /* TLUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC4B1FB21EC3ED4003B6FBB /* TLUser.swift */; };
@@ -57,6 +59,8 @@
 		0C9436D624BFEF13007E6F68 /* Tournament.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tournament.swift; sourceTree = "<group>"; };
 		0C9436D824BFEF4D007E6F68 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		0C9436DA24BFEF9F007E6F68 /* TournamentMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentMatch.swift; sourceTree = "<group>"; };
+		0C9436DC24BFF38A007E6F68 /* TournamentMatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TournamentMatchTableViewCell.swift; path = "../../../../BracketChallenge/bracket-challenge-ios/BracketChallenge/view/TournamentMatchTableViewCell.swift"; sourceTree = "<group>"; };
+		0C9436DD24BFF38A007E6F68 /* TournamentMatchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TournamentMatchTableViewCell.xib; sourceTree = "<group>"; };
 		0CACC7FA22222AF400D804E7 /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		0CC4B1F721EC1B95003B6FBB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0CC4B1FB21EC3ED4003B6FBB /* TLUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLUser.swift; sourceTree = "<group>"; };
@@ -155,6 +159,8 @@
 				0C9436CE24BFEEDC007E6F68 /* MatchView.xib */,
 				0C9436CF24BFEEDC007E6F68 /* RoundView.swift */,
 				0C9436CB24BFEEDC007E6F68 /* RoundView.xib */,
+				0C9436DC24BFF38A007E6F68 /* TournamentMatchTableViewCell.swift */,
+				0C9436DD24BFF38A007E6F68 /* TournamentMatchTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 				7F12B61E21D83E4000B9019C /* GoogleService-Info.plist in Resources */,
 				0CD92ECB21C15F8600480763 /* Assets.xcassets in Resources */,
 				0CD92EC621C15F8500480763 /* Main.storyboard in Resources */,
+				0C9436DF24BFF38A007E6F68 /* TournamentMatchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +362,7 @@
 				0CD92F0021C1921500480763 /* Player.swift in Sources */,
 				0CC4B1FC21EC3ED4003B6FBB /* TLUser.swift in Sources */,
 				0C9436D224BFEEDC007E6F68 /* BracketView.swift in Sources */,
+				0C9436DE24BFF38A007E6F68 /* TournamentMatchTableViewCell.swift in Sources */,
 				0C3AFFF321E53AB800360F8F /* ServerError.swift in Sources */,
 				0CD92EF521C160B000480763 /* MainViewController.swift in Sources */,
 				0C5E77A021D6762A00E6BAC9 /* ReportMatchViewController.swift in Sources */,

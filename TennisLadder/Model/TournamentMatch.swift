@@ -9,5 +9,10 @@
 import Foundation
 
 struct TournamentMatch: Codable {
+	let player1: Player
+	let player2: Player
 	let match: Match
+	
+	let player1Full: String
+	let player2Full: String
 }

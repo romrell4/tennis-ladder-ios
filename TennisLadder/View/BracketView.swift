@@ -10,7 +10,7 @@ import UIKit
 
 private let NUMBER_FORMATTER = NumberFormatter(style: .ordinal)
 
-class BracketView: UIView, UIScrollViewDelegate, RoundViewDelegate {
+class BracketView: UIView, UIScrollViewDelegate {
 	private struct UI {
 		static let roundWidth: CGFloat = UIScreen.main.bounds.width * 0.8
 		static let minimumPanAmount = roundWidth / 4
@@ -21,36 +21,9 @@ class BracketView: UIView, UIScrollViewDelegate, RoundViewDelegate {
 	@IBOutlet weak var spinner: UIActivityIndicatorView!
 	
 	//MARK: Public properties
-	var bracket: Bracket! {
-		didSet {
-			//If there is a cached bracket that did not get saved, save it
-			if let bracketDict = UserDefaults.standard.dictionary(forKey: bracket.unsavedBracketKey), let unsavedBracket = try? Bracket(dict: bracketDict) {
-				BCClient.updateBracket(bracket: unsavedBracket) { (bracket, error) in
-					if let updatedBracket = bracket {
-						//This will delete the cached bracket
-						self.changesMade = false
-						self.bracket = updatedBracket
-					}
-				}
-			}
-			//If oldValue is nil, you're really creating the UI instead of just loading it
-			loadUI(firstTime: oldValue == nil)
-		}
-	}
-	var masterBracket: Bracket? {
+	var bracket: Tournament! {
 		didSet {
 			loadUI()
-		}
-	}
-	var changesMade = false {
-		didSet {
-			if changesMade {
-				//Cache the bracket in user defaults, so that it can be saved later
-				UserDefaults.standard.set(bracket.toDict(), forKey: bracket.unsavedBracketKey)
-			} else {
-				//Delete the cached bracket
-				UserDefaults.standard.removeObject(forKey: bracket.unsavedBracketKey)
-			}
 		}
 	}
 	
@@ -64,7 +37,6 @@ class BracketView: UIView, UIScrollViewDelegate, RoundViewDelegate {
 	
 	//MARK: Private properties
 	private var tournament: Tournament!
-	private var clickDelegate: MatchViewClickableDelegate!
 	private var roundViews = [RoundView]()
 	private var currentPage = 0 {
 		didSet {
@@ -77,7 +49,7 @@ class BracketView: UIView, UIScrollViewDelegate, RoundViewDelegate {
 		}
 	}
 	
-	static func initAsSubview(in superview: UIView, clickDelegate: MatchViewClickableDelegate, tournament: Tournament) -> BracketView {
+	static func initAsSubview(in superview: UIView, tournament: Tournament) -> BracketView {
 		let bracketView = UINib(nibName: "BracketView", bundle: nil).instantiate(withOwner: nil).first as! BracketView
 		bracketView.translatesAutoresizingMaskIntoConstraints = false
 		superview.addSubview(bracketView)
@@ -87,7 +59,6 @@ class BracketView: UIView, UIScrollViewDelegate, RoundViewDelegate {
 			bracketView.topAnchor.constraint(equalTo: superview.topAnchor),
 			bracketView.bottomAnchor.constraint(equalTo: superview.bottomAnchor)
 		])
-		bracketView.clickDelegate = clickDelegate
 		bracketView.tournament = tournament
 		return bracketView
 	}
@@ -99,36 +70,6 @@ class BracketView: UIView, UIScrollViewDelegate, RoundViewDelegate {
 		roundViews.filter { $0 != scrollView }.forEach {
 			$0.contentOffset = scrollView.contentOffset
 		}
-	}
-	
-	//MARK: RoundViewDelegate
-	
-	func player(_ player: Player?, selectedIn roundView: RoundView, and matchView: MatchView) {
-		guard let round = roundViews.firstIndex(of: roundView), let position = roundView.index(of: matchView) else { return }
-		
-		//Set the winner
-		bracket?.rounds?[round][position].winner = player
-		
-		//Reload the UI for this match
-		roundView.reloadItems(at: position)
-		
-		//Update the next round
-		let nextRound = round + 1
-		let newPosition = position / 2 //Integer division will automatically do a "floor"
-		if nextRound < roundViews.count {
-			let match = bracket?.rounds?[nextRound][newPosition]
-			if position % 2 == 0 {
-				match?.player1 = player
-			} else {
-				match?.player2 = player
-			}
-			
-			//Reload the UI for the next match
-			roundViews[nextRound].reloadItems(at: newPosition)
-		}
-		
-		//Save the bracket to the device (so that it can be saved later)
-		changesMade = true
 	}
 	
 	//MARK: Listeners
@@ -162,40 +103,30 @@ class BracketView: UIView, UIScrollViewDelegate, RoundViewDelegate {
 	
 	//MARK: Private functions
 	
-	private func loadUI(firstTime: Bool = false) {
+	private func loadUI() {
 		//Only load the UI if the user's bracket is loaded already (if the master gets loaded, wait until the user's bracket loads
 		if let bracket = bracket {
 			spinner.stopAnimating()
 			
-			scoreLabel.text = "Score: \(bracket.score)"
+			topView.isHidden = false
 			
-			//Only allow the UI to be created once
-			if firstTime {
-				topView.isHidden = false
+			//Create a new round view for each round in the bracket
+			for i in 0 ..< bracket.rounds.count {
+				let roundView = RoundView.initWith(scrollDelegate: self, round: bracket.rounds[i])
+				roundView.translatesAutoresizingMaskIntoConstraints = false
+				roundViews.append(roundView)
+				stackView.addArrangedSubview(roundView)
 				
-				//Create a new round view for each round in the bracket
-				for i in 0..<(bracket.rounds?.count ?? 0) {
-					let roundView = RoundView.initWith(scrollDelegate: self, roundDelegate: self, clickDelegate: clickDelegate, matches: bracket.rounds?[i] ?? [], masterMatches: masterBracket?.rounds?[i])
-					roundView.translatesAutoresizingMaskIntoConstraints = false
-					roundViews.append(roundView)
-					stackView.addArrangedSubview(roundView)
-					
-					//The width constraint in the storyboard is just a placeholder. This will actually set the width of the roundView
-					roundView.widthAnchor.constraint(equalToConstant: UI.roundWidth).isActive = true
-				}
-				
-				//Allow the stack view enough space to see everything
-				stackViewWidthConstraint.constant = UI.roundWidth * CGFloat(bracket.rounds?.count ?? 0)
-				
-				//This will make sure all of the spacing is correct
-				pageControl.numberOfPages = roundViews.count
-				currentPage = 0
-			} else {
-				//If we're just updating the view, setting the matches will reload each individual roundView
-				for i in 0..<(bracket.rounds?.count ?? 0) {
-					roundViews[i].matches = bracket.rounds?[i] ?? []
-				}
+				//The width constraint in the storyboard is just a placeholder. This will actually set the width of the roundView
+				roundView.widthAnchor.constraint(equalToConstant: UI.roundWidth).isActive = true
 			}
+			
+			//Allow the stack view enough space to see everything
+			stackViewWidthConstraint.constant = UI.roundWidth * CGFloat(bracket.rounds.count)
+			
+			//This will make sure all of the spacing is correct
+			pageControl.numberOfPages = roundViews.count
+			currentPage = 0
 		}
 	}
 
