@@ -21,7 +21,6 @@ platform :ios do
     build_app(workspace: "TennisLadder.xcworkspace", scheme: "TennisLadder")
     upload_to_testflight
     deliver(
-      skip_app_version_update: true,
       submit_for_review: true,
       force: true
     )
