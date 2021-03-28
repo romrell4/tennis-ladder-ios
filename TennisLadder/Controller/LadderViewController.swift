@@ -60,7 +60,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     @objc func longPressDetected(sender: UILongPressGestureRecognizer) {
-        if me?.user.admin == true && sender.state == UIGestureRecognizer.State.began {
+        // If the user is part of the ladder, we can shortcut if we know they aren't an admin
+        if me?.user.admin != false && sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 var player = players[indexPath.row]
