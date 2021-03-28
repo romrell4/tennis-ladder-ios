@@ -13,7 +13,7 @@ struct Player: Codable, Equatable {
 	let ladderId: Int
 	let score: Int
 	let earnedPoints: Int
-	let borrowedPoints: Int
+	var borrowedPoints: Int
     let ranking: Int
     let wins: Int
     let losses: Int

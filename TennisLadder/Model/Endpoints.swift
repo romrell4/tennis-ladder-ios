@@ -18,6 +18,7 @@ enum Endpoints: URLRequestConvertible {
 	case updateUser(String, TLUser)
 	case getLadders
 	case getPlayers(Int)
+    case updatePlayer(ladderId: Int, userId: String, player: Player)
 	case getMatches(Int, String)
 	case reportMatch(Int, Match)
 	case addUserToLadder(Int, String)
@@ -25,16 +26,22 @@ enum Endpoints: URLRequestConvertible {
 	private var method: HTTPMethod {
 		switch self {
 		case .getUser, .getLadders, .getPlayers, .getMatches: return .get
-		case .updateUser: return .put
+        case .updateUser, .updatePlayer: return .put
 		case .reportMatch, .addUserToLadder: return .post
 		}
 	}
 	
 	private func getBody() throws -> [String: Any]? {
+        func createBodyPayload<T: Encodable>(_ value: T) throws -> [String: Any]? {
+            let encoder = JSONEncoder(dateFormat: dateFormat)
+            return try JSONSerialization.jsonObject(with: try encoder.encode(value)) as? [String: Any]
+        }
+        
 		switch self {
 		case .getUser, .getLadders, .getPlayers, .getMatches, .addUserToLadder: return nil
-		case .updateUser(_, let user): return try JSONSerialization.jsonObject(with: try JSONEncoder(dateFormat: dateFormat).encode(user)) as? [String: Any]
-		case .reportMatch(_, let match): return try JSONSerialization.jsonObject(with: try JSONEncoder(dateFormat: dateFormat).encode(match)) as? [String: Any]
+		case .updateUser(_, let user): return try createBodyPayload(user)
+        case .updatePlayer(_, _, let player): return try createBodyPayload(player)
+		case .reportMatch(_, let match): return try createBodyPayload(match)
 		}
 	}
 	
@@ -43,6 +50,7 @@ enum Endpoints: URLRequestConvertible {
 		case .getUser(let userId), .updateUser(let userId, _): return ["users", userId]
 		case .getLadders: return ["ladders"]
 		case .getPlayers(let ladderId), .addUserToLadder(let ladderId, _): return ["ladders", String(ladderId), "players"]
+        case .updatePlayer(let ladderId, let userId, _): return ["ladders", String(ladderId), "players", userId]
 		case .getMatches(let ladderId, let userId): return ["ladders", String(ladderId), "players", userId, "matches"]
 		case .reportMatch(let ladderId, _): return ["ladders", String(ladderId), "matches"]
 		}

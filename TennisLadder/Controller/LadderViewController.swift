@@ -54,8 +54,41 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		title = ladder.name
 		tableView.hideEmptyCells()
 		tableView.refreshControl = UIRefreshControl(title: "Refreshing...", target: self, action: #selector(loadPlayers))
+        tableView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressDetected(sender:))))
 		
 		loadPlayers()
+    }
+    
+    @objc func longPressDetected(sender: UILongPressGestureRecognizer) {
+        if me?.user.admin == true && sender.state == UIGestureRecognizer.State.began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                var player = players[indexPath.row]
+                
+                let alert = UIAlertController(title: "Update Player", message: "Please enter the new borrowed points for this player.", preferredStyle: .alert)
+                alert.addTextField {
+                    $0.keyboardType = .numberPad
+                    $0.placeholder = "Borrowed Points"
+                }
+                alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
+                    if let text = alert.textFields?.first?.text, let newBorrowedPoints = Int(text) {
+                        player.borrowedPoints = newBorrowedPoints
+                        self.spinner.startAnimating()
+                        Endpoints.updatePlayer(ladderId: self.ladder.ladderId, userId: player.user.userId, player: player).response { (response: Response<[Player]>) in
+                            self.spinner.stopAnimating()
+                            switch (response) {
+                            case .success(let players):
+                                self.players = players
+                            case .failure(let error):
+                                self.displayError(error)
+                            }
+                        }
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                self.present(alert, animated: true)
+            }
+        }
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
