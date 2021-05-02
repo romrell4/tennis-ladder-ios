@@ -64,6 +64,10 @@ extension String {
 	func format(_ format: String) -> String {
 		return String(format: format, self)
 	}
+    
+    func toInt() -> Int? {
+        return Int(self)
+    }
 }
 
 extension UIColor {

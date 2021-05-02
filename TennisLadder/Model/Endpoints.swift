@@ -21,12 +21,13 @@ enum Endpoints: URLRequestConvertible {
     case updatePlayer(ladderId: Int, userId: String, player: Player)
 	case getMatches(Int, String)
 	case reportMatch(Int, Match)
+    case updateMatchScores(Int, Int, Match)
 	case addUserToLadder(Int, String)
 	
 	private var method: HTTPMethod {
 		switch self {
 		case .getUser, .getLadders, .getPlayers, .getMatches: return .get
-        case .updateUser, .updatePlayer: return .put
+        case .updateUser, .updatePlayer, .updateMatchScores: return .put
 		case .reportMatch, .addUserToLadder: return .post
 		}
 	}
@@ -41,7 +42,7 @@ enum Endpoints: URLRequestConvertible {
 		case .getUser, .getLadders, .getPlayers, .getMatches, .addUserToLadder: return nil
 		case .updateUser(_, let user): return try createBodyPayload(user)
         case .updatePlayer(_, _, let player): return try createBodyPayload(player)
-		case .reportMatch(_, let match): return try createBodyPayload(match)
+        case .reportMatch(_, let match), .updateMatchScores(_, _, let match): return try createBodyPayload(match)
 		}
 	}
 	
@@ -53,6 +54,7 @@ enum Endpoints: URLRequestConvertible {
         case .updatePlayer(let ladderId, let userId, _): return ["ladders", String(ladderId), "players", userId]
 		case .getMatches(let ladderId, let userId): return ["ladders", String(ladderId), "players", userId, "matches"]
 		case .reportMatch(let ladderId, _): return ["ladders", String(ladderId), "matches"]
+        case .updateMatchScores(let ladderId, let matchId, _): return ["ladders", String(ladderId), "matches", String(matchId)]
 		}
 	}
 	
@@ -66,7 +68,7 @@ enum Endpoints: URLRequestConvertible {
 	private var dateFormat: String? {
 		switch self {
 		case .getLadders: return "yyyy-MM-dd"
-		case .getMatches, .reportMatch: return "yyyy-MM-dd'T'HH:mm:ssX"
+        case .getMatches, .reportMatch, .updateMatchScores: return "yyyy-MM-dd'T'HH:mm:ssX"
 		default: return nil
 		}
 	}
