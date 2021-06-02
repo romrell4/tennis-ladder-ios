@@ -12,5 +12,6 @@ target 'TennisLadder' do
 	pod 'Firebase/Core', '~>6.14.0'
 	pod 'FirebaseUI/Auth', '~>8.4.0'
 	pod 'FirebaseUI/Email', '~>8.4.0'
+  pod 'FirebaseUI/OAuth', '~>8.4.0'
 	pod 'FirebaseUI/Google', '~>8.4.0'
 end

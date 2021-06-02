@@ -156,10 +156,18 @@ extension UIViewController {
 		}
 		
 		guard let authUI = FUIAuth.defaultAuthUI() else { return }
-		authUI.providers = [
-			FUIGoogleAuth(),
-			FUIEmailAuth()
-		]
+        if #available(iOS 13.0, *) {
+            authUI.providers = [
+                FUIGoogleAuth(),
+                FUIOAuth.appleAuthProvider(),
+                FUIEmailAuth()
+            ]
+        } else {
+            authUI.providers = [
+                FUIGoogleAuth(),
+                FUIEmailAuth()
+            ]
+        }
 		present(authUI.authViewController(), animated: true)
 	}
 	

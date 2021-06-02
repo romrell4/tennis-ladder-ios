@@ -16,7 +16,11 @@ private enum ButtonState {
 	var statusText: String {
 		switch self {
 		case .loggedIn(let user):
-			return "Logged in as \(user.displayName ?? "Anonymous")"
+            if let name = user.displayName {
+                return "Logged in as \(name)"
+            } else {
+                return "Logged in"
+            }
 		default:
 			return "Not logged in"
 		}
