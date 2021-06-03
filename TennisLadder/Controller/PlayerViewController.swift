@@ -74,55 +74,15 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if me?.user.admin != false {
-            var match = matches[indexPath.row]
-            let alert = UIAlertController(title: "Edit Match Scores", message: nil, preferredStyle: .alert)
-            alert.addTextField { $0.text = String(match.winnerSet1Score) }
-            alert.addTextField { $0.text = String(match.loserSet1Score) }
-            alert.addTextField { $0.text = String(match.winnerSet2Score) }
-            alert.addTextField { $0.text = String(match.loserSet2Score) }
-            alert.addTextField {
-                if let score = match.winnerSet3Score {
-                    $0.text = String(score)
-                } else {
-                    $0.placeholder = "Winner set 3 score"
-                }
-            }
-            alert.addTextField {
-                if let score = match.loserSet3Score {
-                    $0.text = String(score)
-                } else {
-                    $0.placeholder = "Loser set 3 score"
-                }
-            }
-            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
-                if let matchId = match.matchId,
-                   let winnerSet1 = alert.textFields?[0].text?.toInt(), let loserSet1 = alert.textFields?[1].text?.toInt(),
-                   let winnerSet2 = alert.textFields?[2].text?.toInt(), let loserSet2 = alert.textFields?[3].text?.toInt() {
-                    let winnerSet3 = alert.textFields?[4].text?.toInt()
-                    let loserSet3 = alert.textFields?[5].text?.toInt()
-                    
-                    match.winnerSet1Score = winnerSet1
-                    match.winnerSet2Score = winnerSet2
-                    match.winnerSet3Score = winnerSet3
-                    match.loserSet1Score = loserSet1
-                    match.loserSet2Score = loserSet2
-                    match.loserSet3Score = loserSet3
-                    self.spinner.startAnimating()
-                    Endpoints.updateMatchScores(match.ladderId, matchId, match).response { (response: Response<Match>) in
-                        self.spinner.stopAnimating()
-                        
-                        switch response {
-                        case .success(let match):
-                            self.matches[indexPath.row] = match
-                            self.matchTableView.reloadRows(at: [indexPath], with: .automatic)
-                        case .failure(let error):
-                            self.displayError(error)
-                        }
-                    }
-                }
+            let actionSheet = UIAlertController(title: "What would you like to do with this match?", message: nil, preferredStyle: .actionSheet)
+            actionSheet.addAction(UIAlertAction(title: "Edit Scores", style: .default, handler: { _ in
+                self.editMatchScores(at: indexPath)
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
+            actionSheet.addAction(UIAlertAction(title: "Delete", style: .default, handler: { _ in
+                self.deleteMatch(at: indexPath)
+            }))
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(actionSheet, animated: true)
         }
     }
 	
@@ -226,5 +186,73 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
 			viewProfileButton.removeFromSuperview()
 		}
 	}
+    
+    private func editMatchScores(at indexPath: IndexPath) {
+        var match = matches[indexPath.row]
+        let alert = UIAlertController(title: "Edit Match Scores", message: nil, preferredStyle: .alert)
+        alert.addTextField { $0.text = String(match.winnerSet1Score) }
+        alert.addTextField { $0.text = String(match.loserSet1Score) }
+        alert.addTextField { $0.text = String(match.winnerSet2Score) }
+        alert.addTextField { $0.text = String(match.loserSet2Score) }
+        alert.addTextField {
+            if let score = match.winnerSet3Score {
+                $0.text = String(score)
+            } else {
+                $0.placeholder = "Winner set 3 score"
+            }
+        }
+        alert.addTextField {
+            if let score = match.loserSet3Score {
+                $0.text = String(score)
+            } else {
+                $0.placeholder = "Loser set 3 score"
+            }
+        }
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
+            if let matchId = match.matchId,
+               let winnerSet1 = alert.textFields?[0].text?.toInt(), let loserSet1 = alert.textFields?[1].text?.toInt(),
+               let winnerSet2 = alert.textFields?[2].text?.toInt(), let loserSet2 = alert.textFields?[3].text?.toInt() {
+                let winnerSet3 = alert.textFields?[4].text?.toInt()
+                let loserSet3 = alert.textFields?[5].text?.toInt()
+                
+                match.winnerSet1Score = winnerSet1
+                match.winnerSet2Score = winnerSet2
+                match.winnerSet3Score = winnerSet3
+                match.loserSet1Score = loserSet1
+                match.loserSet2Score = loserSet2
+                match.loserSet3Score = loserSet3
+                self.spinner.startAnimating()
+                Endpoints.updateMatchScores(match.ladderId, matchId, match).response { (response: Response<Match>) in
+                    self.spinner.stopAnimating()
+                    
+                    switch response {
+                    case .success(let match):
+                        self.matches[indexPath.row] = match
+                        self.matchTableView.reloadRows(at: [indexPath], with: .automatic)
+                    case .failure(let error):
+                        self.displayError(error)
+                    }
+                }
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    private func deleteMatch(at indexPath: IndexPath) {
+        let match = matches[indexPath.row]
+        self.spinner.startAnimating()
+        Endpoints.deleteMatch(ladderId: match.ladderId, matchId: match.matchId ?? 0).response { response in
+            self.spinner.stopAnimating()
+            
+            switch response {
+            case .success:
+                self.matches.remove(at: indexPath.row)
+                self.matchTableView.deleteRows(at: [indexPath], with: .automatic)
+            case .failure(let error):
+                self.displayError(error)
+            }
+        }
+    }
 }
 

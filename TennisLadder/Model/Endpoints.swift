@@ -22,6 +22,7 @@ enum Endpoints: URLRequestConvertible {
 	case getMatches(Int, String)
 	case reportMatch(Int, Match)
     case updateMatchScores(Int, Int, Match)
+    case deleteMatch(ladderId: Int, matchId: Int)
 	case addUserToLadder(Int, String)
 	
 	private var method: HTTPMethod {
@@ -29,6 +30,7 @@ enum Endpoints: URLRequestConvertible {
 		case .getUser, .getLadders, .getPlayers, .getMatches: return .get
         case .updateUser, .updatePlayer, .updateMatchScores: return .put
 		case .reportMatch, .addUserToLadder: return .post
+        case .deleteMatch: return .delete
 		}
 	}
 	
@@ -39,7 +41,7 @@ enum Endpoints: URLRequestConvertible {
         }
         
 		switch self {
-		case .getUser, .getLadders, .getPlayers, .getMatches, .addUserToLadder: return nil
+        case .getUser, .getLadders, .getPlayers, .getMatches, .addUserToLadder, .deleteMatch: return nil
 		case .updateUser(_, let user): return try createBodyPayload(user)
         case .updatePlayer(_, _, let player): return try createBodyPayload(player)
         case .reportMatch(_, let match), .updateMatchScores(_, _, let match): return try createBodyPayload(match)
@@ -55,6 +57,7 @@ enum Endpoints: URLRequestConvertible {
 		case .getMatches(let ladderId, let userId): return ["ladders", String(ladderId), "players", userId, "matches"]
 		case .reportMatch(let ladderId, _): return ["ladders", String(ladderId), "matches"]
         case .updateMatchScores(let ladderId, let matchId, _): return ["ladders", String(ladderId), "matches", String(matchId)]
+        case .deleteMatch(let ladderId, let matchId): return ["ladders", String(ladderId), "matches", String(matchId)]
 		}
 	}
 	
