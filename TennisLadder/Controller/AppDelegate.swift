@@ -9,8 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseUI
-
-let DEBUG_MODE = false
+import moa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		//Initialize the firebase application
 		FirebaseApp.configure()
+        
+        Moa.settings.cache.requestCachePolicy = .returnCacheDataElseLoad
 		
         return true
     }

@@ -28,6 +28,14 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	private var me: Player? {
 		return players.filter { $0.user.userId == Auth.auth().currentUser?.uid }.first
 	}
+    private var isAdmin: Bool = false {
+        didSet {
+            // Only add the button if we're an admin before the start date
+            if isAdmin, ladder.startDate > Date() {
+                navigationItem.setRightBarButton(UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(adminMenuTapped)), animated: true)
+            }
+        }
+    }
 	private var buttonState: ButtonState? {
 		didSet {
 			if let buttonState = buttonState {
@@ -55,41 +63,16 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		tableView.hideEmptyCells()
 		tableView.refreshControl = UIRefreshControl(title: "Refreshing...", target: self, action: #selector(loadPlayers))
         tableView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressDetected(sender:))))
-		
-		loadPlayers()
-    }
-    
-    @objc func longPressDetected(sender: UILongPressGestureRecognizer) {
-        // If the user is part of the ladder, we can shortcut if we know they aren't an admin
-        if me?.user.admin != false && Auth.auth().currentUser != nil && sender.state == UIGestureRecognizer.State.began {
-            let touchPoint = sender.location(in: tableView)
-            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                var player = players[indexPath.row]
-                
-                let alert = UIAlertController(title: "Update Player", message: "Please enter the new borrowed points for this player.", preferredStyle: .alert)
-                alert.addTextField {
-                    $0.keyboardType = .numberPad
-                    $0.placeholder = "Borrowed Points"
+        
+        if let userId = Auth.auth().currentUser?.uid {
+            Endpoints.getUser(userId).response { (response: Response<TLUser>) in
+                if case let .success(user) = response {
+                    self.isAdmin = user.admin
                 }
-                alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
-                    if let text = alert.textFields?.first?.text, let newBorrowedPoints = Int(text) {
-                        player.borrowedPoints = newBorrowedPoints
-                        self.spinner.startAnimating()
-                        Endpoints.updatePlayer(ladderId: self.ladder.ladderId, userId: player.user.userId, player: player).response { (response: Response<[Player]>) in
-                            self.spinner.stopAnimating()
-                            switch (response) {
-                            case .success(let players):
-                                self.players = players
-                            case .failure(let error):
-                                self.displayError(error)
-                            }
-                        }
-                    }
-                }))
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-                self.present(alert, animated: true)
             }
         }
+		
+		loadPlayers()
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -137,6 +120,18 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        players.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+    }
 	
 	//MARK: Listeners
 	
@@ -160,9 +155,54 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		}
 	}
     
-	@IBAction func rulesTapped(_ sender: Any) {
-		presentSafariViewController(urlString: "https://romrell4.github.io/tennis-ladder-ws/rules.html")
-	}
+    @objc func longPressDetected(sender: UILongPressGestureRecognizer) {
+        if isAdmin && ladder.startDate < Date() && sender.state == UIGestureRecognizer.State.began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                var player = players[indexPath.row]
+                
+                let alert = UIAlertController(title: "Update Player", message: "Please enter the new borrowed points for this player.", preferredStyle: .alert)
+                alert.addTextField {
+                    $0.keyboardType = .numberPad
+                    $0.placeholder = "Borrowed Points"
+                }
+                alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { (_) in
+                    if let text = alert.textFields?.first?.text, let newBorrowedPoints = Int(text) {
+                        player.borrowedPoints = newBorrowedPoints
+                        self.spinner.startAnimating()
+                        Endpoints.updatePlayer(ladderId: self.ladder.ladderId, userId: player.user.userId, player: player).response { (response: Response<[Player]>) in
+                            self.spinner.stopAnimating()
+                            switch (response) {
+                            case .success(let players):
+                                self.players = players
+                            case .failure(let error):
+                                self.displayError(error)
+                            }
+                        }
+                    }
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                self.present(alert, animated: true)
+            }
+        }
+    }
+    
+    @objc func adminMenuTapped(_ sender: Any) {
+        let actionSheet = UIAlertController(title: "Admin options", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: tableView.isEditing ? "Save" : "Edit", style: .default) { _ in
+            if self.tableView.isEditing {
+                // Just finished editing. Need to save order
+                self.updatePlayerOrder(generateBorrowedPoints: false)
+            } else {
+                self.tableView.isEditing = true
+            }
+        })
+        actionSheet.addAction(UIAlertAction(title: "Generate borrowed points", style: .destructive) { _ in
+            self.updatePlayerOrder(generateBorrowedPoints: true)
+        })
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(actionSheet, animated: true)
+    }
 	
 	@IBAction func bottomButtonTapped(_ sender: Any) {
 		if let buttonState = buttonState {
@@ -209,6 +249,20 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 				}
 			}
 		}
+    }
+    
+    private func updatePlayerOrder(generateBorrowedPoints: Bool) {
+        spinner.startAnimating()
+        Endpoints.updatePlayerOrder(ladderId: self.ladder.ladderId, players: self.players, generateBorrowedPoints: generateBorrowedPoints).response { (response: Response<[Player]>) in
+            self.spinner.stopAnimating()
+            switch response {
+            case .success(let players):
+                self.tableView.isEditing = false
+                self.players = players
+            case .failure(let error):
+                self.displayError(error)
+            }
+        }
     }
 	
 	private func updateState() {

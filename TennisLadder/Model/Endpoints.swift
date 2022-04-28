@@ -24,25 +24,27 @@ enum Endpoints: URLRequestConvertible {
     case updateMatchScores(Int, Int, Match)
     case deleteMatch(ladderId: Int, matchId: Int)
 	case addUserToLadder(Int, String)
+    case updatePlayerOrder(ladderId: Int, players: [Player], generateBorrowedPoints: Bool)
 	
 	private var method: HTTPMethod {
 		switch self {
 		case .getUser, .getLadders, .getPlayers, .getMatches: return .get
-        case .updateUser, .updatePlayer, .updateMatchScores: return .put
+        case .updateUser, .updatePlayer, .updateMatchScores, .updatePlayerOrder: return .put
 		case .reportMatch, .addUserToLadder: return .post
         case .deleteMatch: return .delete
 		}
 	}
 	
-	private func getBody() throws -> [String: Any]? {
-        func createBodyPayload<T: Encodable>(_ value: T) throws -> [String: Any]? {
+	private func getBody() throws -> Any? {
+        func createBodyPayload<T: Encodable>(_ value: T) throws -> Any? {
             let encoder = JSONEncoder(dateFormat: dateFormat)
-            return try JSONSerialization.jsonObject(with: try encoder.encode(value)) as? [String: Any]
+            return try JSONSerialization.jsonObject(with: try encoder.encode(value))
         }
         
 		switch self {
         case .getUser, .getLadders, .getPlayers, .getMatches, .addUserToLadder, .deleteMatch: return nil
 		case .updateUser(_, let user): return try createBodyPayload(user)
+        case .updatePlayerOrder(_, let players, _): return try createBodyPayload(players)
         case .updatePlayer(_, _, let player): return try createBodyPayload(player)
         case .reportMatch(_, let match), .updateMatchScores(_, _, let match): return try createBodyPayload(match)
 		}
@@ -54,6 +56,7 @@ enum Endpoints: URLRequestConvertible {
 		case .getLadders: return ["ladders"]
 		case .getPlayers(let ladderId), .addUserToLadder(let ladderId, _): return ["ladders", String(ladderId), "players"]
         case .updatePlayer(let ladderId, let userId, _): return ["ladders", String(ladderId), "players", userId]
+        case .updatePlayerOrder(let ladderId, _, _): return ["ladders", String(ladderId), "players"]
 		case .getMatches(let ladderId, let userId): return ["ladders", String(ladderId), "players", userId, "matches"]
 		case .reportMatch(let ladderId, _): return ["ladders", String(ladderId), "matches"]
         case .updateMatchScores(let ladderId, let matchId, _): return ["ladders", String(ladderId), "matches", String(matchId)]
@@ -64,6 +67,7 @@ enum Endpoints: URLRequestConvertible {
 	private var queryParams: [(String, String)]? {
 		switch self {
 		case .addUserToLadder(_, let code): return [("code", code)]
+        case .updatePlayerOrder(_, _, let generateBorrowedPoints): return [("generate_borrowed_points", String(generateBorrowedPoints))]
 		default: return nil
 		}
 	}
@@ -85,8 +89,11 @@ enum Endpoints: URLRequestConvertible {
 		if let token = Endpoints.TOKEN {
 			urlRequest.addValue(token, forHTTPHeaderField: "X-Firebase-Token")
 		}
-		
-		return try JSONEncoding.default.encode(urlRequest, with: getBody())
+        
+        if let body = try? getBody() {
+            urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        }
+        return urlRequest
 	}
 	
 	func response<T: Decodable>(_ callback: @escaping (Response<[T]>) -> Void) {
@@ -121,13 +128,14 @@ enum Endpoints: URLRequestConvertible {
 		if let user = Auth.auth().currentUser {
 			user.getIDToken(completion: { (token, _) in
 				Endpoints.TOKEN = token
-				if DEBUG_MODE {
-					print("Token: \(token ?? "")")
-				}
+#if DEBUG
+                print("Token: \(token ?? "")")
+#endif
 				makeRequest()
-				Endpoints.TOKEN = nil
 			})
 		} else {
+            // Clear the statically cached token
+            Endpoints.TOKEN = nil
 			makeRequest()
 		}
 	}
@@ -179,9 +187,9 @@ private extension DataRequest {
 	}
 	
 	private func getSuccessData(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> Data {
-		if DEBUG_MODE {
-			self.log(request: request, response: response, data: data, error: error)
-		}
+#if DEBUG
+        self.log(request: request, response: response, data: data, error: error)
+#endif
 		
 		if let error = error {
 			throw error

@@ -113,6 +113,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 		actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 		present(actionSheet, animated: true)
 	}
+    
+    @IBAction func rulesTapped(_ sender: Any) {
+        presentSafariViewController(urlString: "https://romrell4.github.io/tennis-ladder-ws/rules.html")
+    }
 	
 	//MARK: Private Functions
 	
