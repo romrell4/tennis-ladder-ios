@@ -58,6 +58,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+        tableView.refreshControl = UIRefreshControl(title: "Refreshing...", target: self, action: #selector(loadLadders))
 		tableView.hideEmptyCells()
 		
 		setupLoginState()

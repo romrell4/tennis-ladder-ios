@@ -74,6 +74,7 @@ extension UIColor {
 	static var meRowColor: UIColor { return UIColor(named: "MeRowColor")! }
 	static var primary: UIColor { return UIColor(named: "Primary")! }
 	static var tint: UIColor { return UIColor(named: "Tint")! }
+    static var refreshControl: UIColor { return UIColor(named: "RefreshControl")! }
 	static var matchWinner: UIColor { return UIColor(named: "MatchWinner")! }
 	static var matchLoser: UIColor { return UIColor(named: "MatchLoser")! }
 }
@@ -81,8 +82,8 @@ extension UIColor {
 extension UIRefreshControl {
 	convenience init(title: String, target: Any, action: Selector) {
 		self.init()
-		attributedTitle = NSAttributedString(string: title, attributes: [.foregroundColor: UIColor.tint])
-		tintColor = .tint
+		attributedTitle = NSAttributedString(string: title, attributes: [.foregroundColor: UIColor.refreshControl])
+		tintColor = .refreshControl
 		addTarget(target, action: action, for: .valueChanged)
 	}
 }
