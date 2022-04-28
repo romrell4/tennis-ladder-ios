@@ -130,7 +130,9 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        players.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        let movedObject = players[sourceIndexPath.row]
+        players.remove(at: sourceIndexPath.row)
+        players.insert(movedObject, at: destinationIndexPath.row)
     }
 	
 	//MARK: Listeners

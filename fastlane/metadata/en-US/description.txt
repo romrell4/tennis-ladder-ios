@@ -1,0 +1,1 @@
+Tennis Ladder is an app with one purpose: to let you play more tennis! This app allows players to host and join local tennis ladders, and handles everything from login to point calculations.
