@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jMz-bB-F6X">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -13,24 +13,11 @@
         <!--Navigation Controller-->
         <scene sceneID="ZgY-8e-Ncw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jMz-bB-F6X" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jMz-bB-F6X" customClass="TLNavigationController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nLe-Wj-5dE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" name="Primary"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                        <textAttributes key="largeTitleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                        <navigationBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" name="Primary"/>
-                        </navigationBarAppearance>
-                        <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" name="Primary"/>
-                        </navigationBarAppearance>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="hidesShadow" value="YES"/>
                         </userDefinedRuntimeAttributes>
@@ -846,7 +833,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Mlf-Mz-y7m">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mjv-dq-MHu" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mjv-dq-MHu" customClass="TLNavigationController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="jy0-jT-Efc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -874,7 +861,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ldZ-wr-muv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="usk-00-JSJ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="usk-00-JSJ" customClass="TLNavigationController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xLT-in-y1s"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zWY-jS-0EH">

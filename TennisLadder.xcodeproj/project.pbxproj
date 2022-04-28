@@ -29,6 +29,7 @@
 		0CD92F0221C19A2200480763 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD92F0121C19A2200480763 /* PlayerTableViewCell.swift */; };
 		7F12B61E21D83E4000B9019C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7F12B61D21D83E4000B9019C /* GoogleService-Info.plist */; };
 		BAB87F969B2F836BA1BFEB7F /* Pods_TennisLadder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A83618983DD274FE9A2D8A1B /* Pods_TennisLadder.framework */; };
+		F887E7E5281B47AC00C9F9E4 /* TLNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F887E7E4281B47AC00C9F9E4 /* TLNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		7F12B61D21D83E4000B9019C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A83618983DD274FE9A2D8A1B /* Pods_TennisLadder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TennisLadder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E4BB323CF0F78FCE102409 /* Pods-TennisLadder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TennisLadder.release.xcconfig"; path = "Pods/Target Support Files/Pods-TennisLadder/Pods-TennisLadder.release.xcconfig"; sourceTree = "<group>"; };
+		F887E7E4281B47AC00C9F9E4 /* TLNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				0CD92EC021C15F8500480763 /* AppDelegate.swift */,
+				F887E7E4281B47AC00C9F9E4 /* TLNavigationController.swift */,
 				0CD92EF421C160B000480763 /* MainViewController.swift */,
 				0CC4B1F721EC1B95003B6FBB /* ProfileViewController.swift */,
 				0C5E779F21D6762A00E6BAC9 /* LadderViewController.swift */,
@@ -318,6 +321,7 @@
 				0CC4B20021ED5D57003B6FBB /* MatchTableViewCell.swift in Sources */,
 				0CD92EC121C15F8500480763 /* AppDelegate.swift in Sources */,
 				0CD92F0021C1921500480763 /* Player.swift in Sources */,
+				F887E7E5281B47AC00C9F9E4 /* TLNavigationController.swift in Sources */,
 				0CC4B1FC21EC3ED4003B6FBB /* TLUser.swift in Sources */,
 				0C3AFFF321E53AB800360F8F /* ServerError.swift in Sources */,
 				0CD92EF521C160B000480763 /* MainViewController.swift in Sources */,
@@ -474,7 +478,7 @@
 				CODE_SIGN_ENTITLEMENTS = TennisLadder/TennisLadder.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = G9JN5J3VZ9;
 				INFOPLIST_FILE = TennisLadder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -482,7 +486,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romrell4.tennisladder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -499,7 +503,7 @@
 				CODE_SIGN_ENTITLEMENTS = TennisLadder/TennisLadder.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = G9JN5J3VZ9;
 				INFOPLIST_FILE = TennisLadder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -507,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.7;
+				MARKETING_VERSION = 2.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romrell4.tennisladder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Tennis Ladder";
