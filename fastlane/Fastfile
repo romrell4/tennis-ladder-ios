@@ -31,5 +31,8 @@ platform :ios do
         add_id_info_uses_idfa: false
       }
     )
+    commit_version_bump
+    add_git_tag
+    push_to_git_remote
   end
 end
