@@ -13,4 +13,5 @@ struct Ladder: Codable {
     let name: String
     let startDate: Date
     let endDate: Date
+    let loggedInUserIsAdmin: Bool
 }

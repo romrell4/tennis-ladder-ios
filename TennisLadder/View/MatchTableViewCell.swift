@@ -15,12 +15,16 @@ class MatchTableViewCell: UITableViewCell {
 	@IBOutlet private weak var nameLabel: UILabel!
 	@IBOutlet private weak var dateLabel: UILabel!
 	@IBOutlet private weak var scoreLabel: UILabel!
-	
+    @IBOutlet private weak var earnedPointsLabel: UILabel!
+    
 	//MARK: Public Functions
 	func setup(match: Match, for player: Player) {
 		nameLabel.text = [match.winner, match.loser].first { $0 != player }?.user.name
 		dateLabel.text = DATE_FORMATTER.string(fromOptional: match.matchDate)
 		scoreLabel.text = match.scoreDisplay(forPlayer: player)
-		scoreLabel.textColor = (match.winner == player) ? .matchWinner : .matchLoser
+        earnedPointsLabel.text = "Earned points: \(match.points(forPlayer: player))"
+        let color: UIColor = (match.winner == player) ? .matchWinner : .matchLoser
+		scoreLabel.textColor = color
+        earnedPointsLabel.textColor = color
 	}
 }

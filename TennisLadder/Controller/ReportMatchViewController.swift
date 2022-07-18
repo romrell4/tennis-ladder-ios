@@ -135,7 +135,10 @@ class ReportMatchViewController: UIViewController {
 			winnerSet2Score: meSet2TextField.toInt(),
 			loserSet2Score: opponentSet2TextField.toInt(),
 			winnerSet3Score: playedThirdSet ? meSet3TextField.toInt() : nil,
-			loserSet3Score: playedThirdSet ? opponentSet3TextField.toInt() : nil
+			loserSet3Score: playedThirdSet ? opponentSet3TextField.toInt() : nil,
+            // These will be computed by the backend
+            winnerPoints: 0,
+            loserPoints: 0
 		)
     }
 }

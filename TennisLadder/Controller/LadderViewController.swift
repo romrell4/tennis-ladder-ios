@@ -28,14 +28,6 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	private var me: Player? {
 		return players.filter { $0.user.userId == Auth.auth().currentUser?.uid }.first
 	}
-    private var isAdmin: Bool = false {
-        didSet {
-            // Only add the button if we're an admin before the start date
-            if isAdmin, ladder.startDate > Date() {
-                navigationItem.setRightBarButton(UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(adminMenuTapped)), animated: true)
-            }
-        }
-    }
 	private var buttonState: ButtonState? {
 		didSet {
 			if let buttonState = buttonState {
@@ -64,12 +56,8 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 		tableView.refreshControl = UIRefreshControl(title: "Refreshing...", target: self, action: #selector(loadPlayers))
         tableView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPressDetected(sender:))))
         
-        if let userId = Auth.auth().currentUser?.uid {
-            Endpoints.getUser(userId).response { (response: Response<TLUser>) in
-                if case let .success(user) = response {
-                    self.isAdmin = user.admin
-                }
-            }
+        if ladder.loggedInUserIsAdmin, ladder.startDate > Date() {
+            navigationItem.setRightBarButton(UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(adminMenuTapped)), animated: true)
         }
 		
 		loadPlayers()
@@ -89,6 +77,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 			
             vc.player = players[indexPath.row]
 			vc.me = me
+            vc.isAdmin = ladder.loggedInUserIsAdmin
         } else if segue.identifier == "matchReported",
             let navVc = segue.destination as? UINavigationController,
 			let vc = navVc.viewControllers.first as? ReportMatchViewController,
@@ -158,7 +147,7 @@ class LadderViewController: UIViewController, UITableViewDataSource, UITableView
 	}
     
     @objc func longPressDetected(sender: UILongPressGestureRecognizer) {
-        if isAdmin && ladder.startDate < Date() && sender.state == UIGestureRecognizer.State.began {
+        if ladder.loggedInUserIsAdmin && ladder.startDate < Date() && sender.state == UIGestureRecognizer.State.began {
             let touchPoint = sender.location(in: tableView)
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 var player = players[indexPath.row]

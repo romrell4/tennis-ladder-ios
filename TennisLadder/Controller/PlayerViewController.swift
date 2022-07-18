@@ -15,6 +15,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     //MARK: Public Properties
     var player: Player!
 	var me: Player?
+    var isAdmin: Bool!
     
     //MARK: Private Properties
     private var matches = [Match]()
@@ -73,7 +74,7 @@ class PlayerViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if me?.user.admin != false {
+        if isAdmin {
             let actionSheet = UIAlertController(title: "What would you like to do with this match?", message: nil, preferredStyle: .actionSheet)
             actionSheet.addAction(UIAlertAction(title: "Edit Scores", style: .default, handler: { _ in
                 self.editMatchScores(at: indexPath)

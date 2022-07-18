@@ -15,7 +15,6 @@ struct TLUser: Codable, Equatable {
 	var phoneNumber: String?
 	var photoUrl: String?
 	var availabilityText: String?
-    let admin: Bool
 	
 	static func ==(lhs: TLUser, rhs: TLUser) -> Bool {
 		return lhs.userId == rhs.userId

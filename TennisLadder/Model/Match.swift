@@ -20,6 +20,8 @@ struct Match: Codable {
 	var loserSet2Score: Int
 	var winnerSet3Score: Int?
 	var loserSet3Score: Int?
+    let winnerPoints: Int
+    let loserPoints: Int
     
 	func scoreDisplay(forPlayer player: Player) -> String {
         let sets = [
@@ -31,5 +33,9 @@ struct Match: Codable {
 		return sets.filter { $0.0 != nil && $0.1 != nil }
 			.map { player == winner ? "\($0.0!)-\($0.1!)" : "\($0.1!)-\($0.0!)" }
 			.joined(separator: ", ")
+    }
+    
+    func points(forPlayer player: Player) -> Int {
+        return player == winner ? winnerPoints : loserPoints
     }
 }
