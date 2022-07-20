@@ -178,12 +178,23 @@
                                                         <constraint firstAttribute="height" priority="999" constant="75" id="xAF-b8-Pqa"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albus Dumbledore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRb-jI-act">
-                                                    <rect key="frame" x="89" y="34.5" width="141" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="BlB-33-r9g">
+                                                    <rect key="frame" x="89" y="25" width="141" height="39"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Albus Dumbledore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRb-jI-act">
+                                                            <rect key="frame" x="0.0" y="0.0" width="141" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking: #1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZN-eF-NRL">
+                                                            <rect key="frame" x="0.0" y="24.5" width="141" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="NZX-w0-Q8D">
                                                     <rect key="frame" x="324" y="20" width="74" height="49.5"/>
                                                     <subviews>
@@ -221,11 +232,11 @@
                                                 <constraint firstItem="tZK-KB-l38" firstAttribute="leading" secondItem="gac-Ry-nrF" secondAttribute="leading" constant="8" id="55q-DK-ie0"/>
                                                 <constraint firstItem="NZX-w0-Q8D" firstAttribute="centerY" secondItem="gac-Ry-nrF" secondAttribute="centerY" id="56C-Cv-PgQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="NZX-w0-Q8D" secondAttribute="trailing" constant="16" id="E6I-o2-1zl"/>
-                                                <constraint firstItem="PRb-jI-act" firstAttribute="leading" secondItem="tZK-KB-l38" secondAttribute="trailing" constant="8" id="Gsa-gE-JBY"/>
                                                 <constraint firstAttribute="bottom" secondItem="tZK-KB-l38" secondAttribute="bottom" constant="8" id="WBp-q6-JPv"/>
+                                                <constraint firstItem="BlB-33-r9g" firstAttribute="centerY" secondItem="gac-Ry-nrF" secondAttribute="centerY" id="awf-t9-Sud"/>
+                                                <constraint firstItem="BlB-33-r9g" firstAttribute="leading" secondItem="tZK-KB-l38" secondAttribute="trailing" constant="8" id="bqp-aM-9AG"/>
+                                                <constraint firstItem="NZX-w0-Q8D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="BlB-33-r9g" secondAttribute="trailing" constant="8" id="gNR-yE-88J"/>
                                                 <constraint firstItem="tZK-KB-l38" firstAttribute="top" secondItem="gac-Ry-nrF" secondAttribute="top" constant="8" id="uGO-ER-EVn"/>
-                                                <constraint firstItem="PRb-jI-act" firstAttribute="centerY" secondItem="tZK-KB-l38" secondAttribute="centerY" id="wxD-Na-iAh"/>
-                                                <constraint firstItem="NZX-w0-Q8D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PRb-jI-act" secondAttribute="trailing" constant="8" id="z6k-LP-Kw3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -233,6 +244,7 @@
                                             <outlet property="earnedPointsLabel" destination="hqP-9W-YtW" id="C2f-C2-FbU"/>
                                             <outlet property="name" destination="PRb-jI-act" id="xZW-Pg-cOY"/>
                                             <outlet property="points" destination="G1F-Ns-Cni" id="9lc-8H-xvK"/>
+                                            <outlet property="rankingLabel" destination="rZN-eF-NRL" id="hYm-gq-wZV"/>
                                             <outlet property="userImage" destination="tZK-KB-l38" id="ScP-uO-N6P"/>
                                             <segue destination="Q6L-4W-ixA" kind="show" identifier="playerSelected" id="YeV-eD-gQl"/>
                                         </connections>
