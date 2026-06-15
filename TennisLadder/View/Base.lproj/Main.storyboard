@@ -787,11 +787,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="This is really really really really long text that should have to wrap" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3I-3p-hWR">
-                                                    <rect key="frame" x="95.5" y="12.5" width="303.5" height="41"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="YES" text="This is really really really really long text that should have to wrap" translatesAutoresizingMaskIntoConstraints="NO" id="g3I-3p-hWR">
+                                                    <rect key="frame" x="95.5" y="11" width="303.5" height="43.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <textContainer key="textContainer" lineFragmentPadding="0.0" inset="0.0,0.0,0.0,0.0"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="g3I-3p-hWR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XKA-5G-ngS" secondAttribute="top" constant="12" id="6Ow-rt-hSS"/>
@@ -805,7 +807,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="titleLabel" destination="bba-KS-JLP" id="2g5-hj-VIW"/>
-                                            <outlet property="valueLabel" destination="g3I-3p-hWR" id="oW9-T6-sIa"/>
+                                            <outlet property="valueTextView" destination="g3I-3p-hWR" id="oW9-T6-sIa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

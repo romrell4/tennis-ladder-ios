@@ -12,16 +12,24 @@ class ProfileInfoTableViewCell: UITableViewCell {
 	
 	//MARK: Private Outlets
 	@IBOutlet private weak var titleLabel: UILabel!
-	@IBOutlet private weak var valueLabel: UILabel!
+	@IBOutlet private weak var valueTextView: UITextView!
+
+	override func awakeFromNib() {
+		super.awakeFromNib()
+
+		valueTextView.textContainerInset = .zero
+		valueTextView.textContainer.lineFragmentPadding = 0
+	}
 	
 	//MARK: Public Functions
 	
 	func setup(title: String, value: String?, editable: Bool) {
 		titleLabel?.text = title
-		valueLabel?.text = value ?? (editable ? "Tap to set" : nil)
-		
+		valueTextView.text = value ?? (editable ? "Tap to set" : "")
 		//If the value is not set yet, make the text gray
-		valueLabel?.textColor = value != nil ? .defaultLabel : .gray
+		valueTextView.textColor = value != nil ? .defaultLabel : .gray
+		valueTextView.dataDetectorTypes = value != nil ? [.link] : []
+		valueTextView.isSelectable = value != nil
 	}
 }
 
