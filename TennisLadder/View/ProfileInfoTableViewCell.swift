@@ -28,8 +28,6 @@ class ProfileInfoTableViewCell: UITableViewCell {
 		valueTextView.text = value ?? (editable ? "Tap to set" : "")
 		//If the value is not set yet, make the text gray
 		valueTextView.textColor = value != nil ? .defaultLabel : .gray
-		valueTextView.dataDetectorTypes = value != nil ? [.link] : []
-		valueTextView.isSelectable = value != nil
 	}
 }
 
