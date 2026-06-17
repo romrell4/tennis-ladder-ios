@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jMz-bB-F6X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jMz-bB-F6X">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,7 +16,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jMz-bB-F6X" customClass="TLNavigationController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nLe-Wj-5dE">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="96" width="414" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="hidesShadow" value="YES"/>
@@ -36,15 +36,15 @@
             <objects>
                 <viewController id="HX2-na-rtR" customClass="MainViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ALs-F2-Azm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-8R-oyY">
-                                <rect key="frame" x="0.0" y="24" width="414" height="784"/>
+                                <rect key="frame" x="0.0" y="24" width="414" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="84" id="zca-j3-9p9" customClass="LadderTableViewCell" customModule="TennisLadder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="84"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zca-j3-9p9" id="vWw-WW-xLs">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
@@ -93,7 +93,7 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Qjv-C6-ynu">
-                                <rect key="frame" x="188.5" y="385.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="354.5" width="37" height="37"/>
                                 <color key="color" name="Primary"/>
                             </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lg-1Q-CWg">
@@ -157,15 +157,15 @@
             <objects>
                 <viewController id="S9k-L7-jyX" customClass="LadderViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AuY-um-ykN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XiY-Or-Otp" userLabel="tableView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="730"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="634"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="89" id="oKJ-nd-DFY" customClass="PlayerTableViewCell" customModule="TennisLadder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="89"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="89"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oKJ-nd-DFY" id="gac-Ry-nrF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
@@ -256,11 +256,11 @@
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="39n-Hv-vum">
-                                <rect key="frame" x="188.5" y="385.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="354.5" width="37" height="37"/>
                                 <color key="color" name="Primary"/>
                             </activityIndicatorView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCU-Cj-9Ez">
-                                <rect key="frame" x="0.0" y="730" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="634" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="K0B-rA-8tm"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="xWe-EW-oyZ"/>
@@ -308,7 +308,7 @@
             <objects>
                 <viewController id="Q6L-4W-ixA" customClass="PlayerViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svv-ao-YxB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="746"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxx-0b-c4h">
@@ -395,11 +395,11 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cs1-PK-uKF">
-                                <rect key="frame" x="0.0" y="281" width="414" height="444"/>
+                                <rect key="frame" x="0.0" y="281" width="414" height="349"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="45" id="1PZ-E1-gHf" customClass="MatchTableViewCell" customModule="TennisLadder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1PZ-E1-gHf" id="BjS-Mc-hoA">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
@@ -468,7 +468,7 @@
                                 <color key="color" name="Primary"/>
                             </activityIndicatorView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zM0-Aq-UXQ">
-                                <rect key="frame" x="0.0" y="725" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="630" width="414" height="48"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="tbg-dZ-gC8"/>
                                     <barButtonItem title="Challenge" id="ASG-rJ-NdN">
@@ -524,11 +524,11 @@
             <objects>
                 <viewController id="IDX-Bh-4cb" customClass="ReportMatchViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1w-tS-fdq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="794"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8VQ-kG-M4z">
-                                <rect key="frame" x="8" y="8" width="398" height="289.5"/>
+                                <rect key="frame" x="8" y="28" width="398" height="289.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hNo-Rd-UPt">
                                         <rect key="frame" x="70" y="0.0" width="258" height="132"/>
@@ -752,15 +752,15 @@
             <objects>
                 <viewController id="gd8-QH-3wy" customClass="ProfileViewController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fYe-Cg-cnM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="786"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="794"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sXp-SE-oZQ">
-                                <rect key="frame" x="188.5" y="374.5" width="37" height="37"/>
+                                <rect key="frame" x="188.5" y="378.5" width="37" height="37"/>
                                 <color key="color" name="Primary"/>
                             </activityIndicatorView>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LCZ-RP-CyC">
-                                <rect key="frame" x="157" y="16" width="100" height="100"/>
+                                <rect key="frame" x="157" y="36" width="100" height="100"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Huj-EE-scM"/>
@@ -771,27 +771,29 @@
                                 </connections>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QJp-vW-9FG">
-                                <rect key="frame" x="0.0" y="132" width="414" height="654"/>
+                                <rect key="frame" x="0.0" y="152" width="414" height="642"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="lJ8-Ed-vRD" customClass="ProfileInfoTableViewCell" customModule="TennisLadder" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="65.5"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="82"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lJ8-Ed-vRD" id="XKA-5G-ngS">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bba-KS-JLP">
-                                                    <rect key="frame" x="16" y="22.5" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bba-KS-JLP">
+                                                    <rect key="frame" x="16" y="30.5" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="This is really really really really long text that should have to wrap" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3I-3p-hWR">
-                                                    <rect key="frame" x="95.5" y="12.5" width="303.5" height="41"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" text="This is really really really really long text that should have to wrap" translatesAutoresizingMaskIntoConstraints="NO" id="g3I-3p-hWR">
+                                                    <rect key="frame" x="85.5" y="12.5" width="313.5" height="57"/>
+                                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="g3I-3p-hWR" firstAttribute="top" relation="greaterThanOrEqual" secondItem="XKA-5G-ngS" secondAttribute="top" constant="12" id="6Ow-rt-hSS"/>
@@ -805,7 +807,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="titleLabel" destination="bba-KS-JLP" id="2g5-hj-VIW"/>
-                                            <outlet property="valueLabel" destination="g3I-3p-hWR" id="oW9-T6-sIa"/>
+                                            <outlet property="valueTextView" destination="g3I-3p-hWR" id="oW9-T6-sIa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -861,7 +863,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mjv-dq-MHu" customClass="TLNavigationController" customModule="TennisLadder" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="jy0-jT-Efc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" name="Primary"/>
                         <textAttributes key="titleTextAttributes">
@@ -890,7 +892,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="xLT-in-y1s"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="zWY-jS-0EH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" name="Primary"/>
                         <textAttributes key="titleTextAttributes">
@@ -938,7 +940,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
