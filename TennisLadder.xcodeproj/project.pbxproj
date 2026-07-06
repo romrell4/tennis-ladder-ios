@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -162,7 +162,6 @@
 				23A544C90AAF5396C7BFAD47 /* Pods-TennisLadder.debug.xcconfig */,
 				DFC6D2CBBD2FECC3AD9D16EF /* Pods-TennisLadder.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -259,9 +258,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TennisLadder/Pods-TennisLadder-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TennisLadder/Pods-TennisLadder-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -298,9 +301,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TennisLadder/Pods-TennisLadder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-TennisLadder/Pods-TennisLadder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -483,7 +490,7 @@
 				CODE_SIGN_ENTITLEMENTS = TennisLadder/TennisLadder.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = G9JN5J3VZ9;
 				INFOPLIST_FILE = TennisLadder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -491,7 +498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.10;
+				MARKETING_VERSION = 2.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romrell4.tennisladder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -508,7 +515,7 @@
 				CODE_SIGN_ENTITLEMENTS = TennisLadder/TennisLadder.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = G9JN5J3VZ9;
 				INFOPLIST_FILE = TennisLadder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -516,7 +523,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.10;
+				MARKETING_VERSION = 2.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.romrell4.tennisladder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Tennis Ladder";
